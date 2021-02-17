@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BalanceItem = styled.div`
   background-color: #FBFBFB;
-  width: 300px;
+  width: 310px;
   height: 180px;
   border-radius: 8px;
   margin-right: 50px;
@@ -30,7 +30,7 @@ export const BalanceItem = styled.div`
   }
 
   h3 {
-    font-size: 23px;
+    font-size: 21px;
     font-weight: 700;
     margin-right: 30px;
   }
@@ -38,7 +38,7 @@ export const BalanceItem = styled.div`
   div {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-top: 25px;
     h3 {
       color: #68DE5A;
