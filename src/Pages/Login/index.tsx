@@ -4,7 +4,8 @@ import { FaArrowRight } from 'react-icons/fa'
 
 import Logo from '../../assets/main-logo.png';
 
-import { Container, Img, Form, FormTitle, FormInput, FormButtonSubmit } from './styles';
+import { Container, Img, Form, FormTitle, FormInput } from './styles';
+import Button from '../../components/Button';
 
 const Login: React.FC = () => {
   return (
@@ -17,13 +18,15 @@ const Login: React.FC = () => {
         <FormInput placeholder="Digite seu usuário" />
         <FormInput placeholder="Digite sua senha" type="password" />
 
-        <FormButtonSubmit>
-          Continuar
-          <FaArrowRight />
-        </FormButtonSubmit>
+        <Button 
+          type="submit" 
+          text="Continuar" 
+          Icon={ FaArrowRight }
+          className="form-button"
+        />
 
-        <Link to="#">Esqueci minha senha</Link>
-        <Link to="#">Ainda não sou cliente</Link>
+        <Link to="/recover">Esqueci minha senha</Link>
+        <Link to="/">Ainda não sou cliente</Link>
 
       </Form>
     </Container>

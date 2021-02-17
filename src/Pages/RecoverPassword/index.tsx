@@ -2,8 +2,9 @@ import React, { FormEvent, useCallback } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
 import Logo from '../../assets/main-logo.png';
+import Button from '../../components/Button';
 
-import { Container, Form, FormDescription, FormTitle, Input, InputFields, MainLogo, SubmitButton } from './styles';
+import { Container, Form, FormDescription, FormTitle, Input, InputFields, MainLogo } from './styles';
 
 const RecoverPassword: React.FC = () => {
     const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
@@ -24,10 +25,12 @@ const RecoverPassword: React.FC = () => {
                     <Input type="text" placeholder="Confirme sua nova senha" />
                 </InputFields>
 
-                <SubmitButton>
-                    <span>Enviar</span>
-                    <FaArrowRight size={20} color="#fff" />
-                </SubmitButton>
+                <Button 
+                    text="enviar" 
+                    Icon={ FaArrowRight } 
+                    type="submit" 
+                    style={{ marginTop: 28 }}
+                />
             </Form>
         </Container>
     );

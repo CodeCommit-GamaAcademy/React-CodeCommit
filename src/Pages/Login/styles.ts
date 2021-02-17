@@ -40,6 +40,11 @@ export const Form = styled.form`
       margin-top: 10px;
     }
   }
+
+  .form-button {
+    margin-bottom: 38px;
+    margin-top: 36px;
+  }
 `;
 
 export const FormTitle = styled.h2`
@@ -62,24 +67,5 @@ export const FormInput = styled.input`
 
   &:focus {
     border-bottom: 1px solid #68de5a;
-  }
-`;
-
-export const FormButtonSubmit = styled.button`
-  background: #68de5a;
-  margin-bottom: 38px;
-  align-items: center;
-  margin-top: 36px;
-  width: 100%;
-  padding: 10px 35px;
-  display: flex;
-  color: #fff;
-  font-size: 16px;
-  border-radius: 20px;
-  border: none;
-  justify-content: space-between;
-
-  svg {
-    font-size: 22px;
   }
 `;

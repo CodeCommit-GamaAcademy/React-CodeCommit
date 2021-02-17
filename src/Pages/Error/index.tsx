@@ -4,6 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 
 import { Container, Content } from './styles';
+import Button from '../../components/Button';
 
 const Error: React.FC = () => {
     const history = useHistory();
@@ -21,10 +22,7 @@ const Error: React.FC = () => {
 
                 <h3>Oops, algo deu errado! Confime seus dados e tente novamente!</h3>
 
-                <button onClick={ handleGoBack }>
-                    Voltar
-                    <FaArrowLeft size={ 21 } />
-                </button>
+                <Button text="Voltar" Icon={ FaArrowLeft } onClick={ handleGoBack } />
             </Content>
          </Container>
   );
