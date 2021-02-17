@@ -3,14 +3,21 @@ import styled from 'styled-components';
 export const BalanceItem = styled.div`
   background-color: #FBFBFB;
   width: 310px;
-  height: 180px;
+  height: 190px;
   border-radius: 8px;
   margin-right: 50px;
   margin-left: 50px;
 
   .title {
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    p {
+      margin-top: 5px;
+      margin-left: 20px;
+    }
   }
 
   .value {
@@ -19,6 +26,12 @@ export const BalanceItem = styled.div`
 
   .credit {
     color: #1783E7;
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+    margin-left: 30px;
   }
 
   p {
