@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
 import { BalanceContainer, BalanceItem } from './style';
+import currentIcon from '../svgs/current-icon.svg';
+import creditIcon from '../svgs/credit-card-icon.svg';
 
 interface Plano {
   descricao: string,
@@ -87,8 +88,10 @@ const Balance: React.FC = () => {
   return (
     <BalanceContainer>
       <BalanceItem>
-        <img/>
-        <p className='title'>Conta</p>
+        <div className='title'>
+          <img src={currentIcon} alt="current icon"/>
+          <p>Conta</p>
+        </div>
         <p>Saldo disponivel</p>
         <h3 className='value acccount'>{contaBanco.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
         <div>
@@ -97,8 +100,10 @@ const Balance: React.FC = () => {
         </div>
       </BalanceItem>
       <BalanceItem>
-        <img/>
-        <p className='title'>Conta-Crédito</p>
+        <div className='title'>
+          <img src={creditIcon} alt="current icon"/>
+          <p>Conta Crédit</p>
+        </div>
         <p>Fatura atual</p>
         <h3 className='value credit'>{contaCredito.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
         <div>
