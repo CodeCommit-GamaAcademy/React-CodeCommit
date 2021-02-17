@@ -7,7 +7,6 @@ export const DashMenu = styled.nav`
   background-color: #68DE5A;
   display: flex;
   justify-content: center;
-
   img {
     width: 90px;
     height: 90px;
@@ -18,24 +17,24 @@ export const DashMenu = styled.nav`
 export const DashNameSection = styled.div`
   color: white;
   display: flex;
+  align-self: center;
   justify-content: space-evenly;
   margin: 20px 0;
   margin-top: 40px;
+  width: 695px;
   div {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0px 30px;
     img {
       background: #68DE5A;
       height: 40px;
       width: 40px;
       border-radius: 50%;
       padding: 8px;
-      margin-left: 150px
-    }
+    };
   }
 `
 
