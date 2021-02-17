@@ -47,9 +47,9 @@ const INITIAL_STATE = {
       tipoMovimento: '',
     },
     tipo: '',
-    valor: 99999,
+    valor: 0,
   }],
-  saldo: 99999,
+  saldo: 0,
 }
 
 const Balance: React.FC = () => {
@@ -102,7 +102,7 @@ const Balance: React.FC = () => {
       <BalanceItem>
         <div className='title'>
           <img src={creditIcon} alt="current icon"/>
-          <p>Conta Crédit</p>
+          <p>Conta Crédito</p>
         </div>
         <p>Fatura atual</p>
         <h3 className='value credit'>{contaCredito.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
