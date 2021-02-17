@@ -13,7 +13,12 @@ export const Container = styled.div`
     background-position: center bottom;
     background-repeat: no-repeat;
 `;
-
+export const LogoGama = styled.img`
+position: absolute;
+left: 65px;
+height: 65px;
+top: 58px;
+`
 
 export const CardLeft = styled.div`
 display: flex;
@@ -23,7 +28,6 @@ left: 180px;
 top: 351px;
 position: absolute;
 `
-
 
 export const TextContainer = styled.div`
     p{
@@ -59,13 +63,70 @@ export const Button = styled.button`
     margin-top:25px;
 `
 
-export const Img = styled.img`
-position: absolute;
-left: 65px;
-height: 65px;
-top: 58px;
 
+
+export const CardRight = styled.div`
+position: absolute;
+background-color: #fff;
+width: 349px;
+height: 461.23px;
+top: 220px;
+right: 135px;
+border-radius: 8px;
+padding-left: 40px;
+padding-right: 40px;
+`
+export const FormHomeTitle = styled.h1`
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 19px;
+line-height: 22px;
+display: flex;
+align-items: center;
+margin-top: 25px;
+color: #1D1D1D;
 `
 
+
+export const FormInput = styled.input`
+  margin-top: 20px;
+  border: none;
+  border-bottom: 1px solid #878686;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  &::placeholder {
+    color: #878686;
+  }
+  &:focus {
+    border-bottom: 1px solid #68de5a;
+  }
+`;
+
+export const HomeFormButton = styled.button`
+background: #D8D8D8;
+border-radius: 20px;
+height: 47.66px;
+width: 100%;
+border:  none;
+margin-top: 30px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+color: #9B9B9B;
+
+
+.ArrowRight { 
+    width: 24px;
+    height: 20px;
+    justify-content: right;
+}
+
+` 
 
 
