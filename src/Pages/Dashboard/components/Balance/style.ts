@@ -2,26 +2,26 @@ import styled from 'styled-components';
 
 export const BalanceItem = styled.div`
   background-color: #FBFBFB;
-  width: 310px;
-  height: 190px;
+  width: 290px;
+  height: 160px;
   border-radius: 8px;
   margin-right: 50px;
   margin-left: 50px;
 
   .title {
-    margin-top: 15px;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     p {
       margin-top: 5px;
-      margin-left: 20px;
+      margin-left: 15px;
     }
   }
 
   .value {
-    margin-left: 30px;
+    margin-left: 25px;
   }
 
   .credit {
@@ -29,30 +29,30 @@ export const BalanceItem = styled.div`
   }
 
   img {
-    width: 32px;
-    height: 32px;
-    margin-left: 30px;
+    width: 27px;
+    height: 27px;
+    margin-left: 25px;
   }
 
   p {
-    margin-left: 30px;
+    margin-left: 25px;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #9B9B9B;
   }
 
   h3 {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 700;
-    margin-right: 30px;
+    margin-right: 25px;
   }
 
   div {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-top: 25px;
+    margin-top: 20px;
     h3 {
       color: #68DE5A;
     }
