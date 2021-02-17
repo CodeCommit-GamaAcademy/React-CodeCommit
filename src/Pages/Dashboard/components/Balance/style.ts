@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const BalanceItem = styled.div`
   background-color: #FBFBFB;
-  width: 290px;
-  height: 160px;
+  width: 300px;
+  height: 170px;
   border-radius: 8px;
   margin-right: 50px;
   margin-left: 50px;
@@ -37,7 +37,7 @@ export const BalanceItem = styled.div`
   p {
     margin-left: 25px;
     margin-bottom: 5px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     color: #9B9B9B;
   }
