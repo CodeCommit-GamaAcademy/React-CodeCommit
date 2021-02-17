@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
 `;
 
 export const Img = styled.img`
@@ -25,8 +26,15 @@ export const Form = styled.form`
   a {
     color: #8c52e5;
     font-size: 13px;
-    display: block;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: '>';
+      display: inline-block;
+      margin-left: 4px;
+    }
 
     & + a {
       margin-top: 10px;
@@ -60,13 +68,18 @@ export const FormInput = styled.input`
 export const FormButtonSubmit = styled.button`
   background: #68de5a;
   margin-bottom: 38px;
+  align-items: center;
   margin-top: 36px;
   width: 100%;
-  padding: 12px 35px;
+  padding: 10px 35px;
   display: flex;
   color: #fff;
   font-size: 16px;
   border-radius: 20px;
   border: none;
   justify-content: space-between;
+
+  svg {
+    font-size: 22px;
+  }
 `;

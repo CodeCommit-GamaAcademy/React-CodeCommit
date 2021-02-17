@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa'
 
 import Logo from '../../assets/main-logo.png';
 
@@ -10,7 +11,6 @@ const Login: React.FC = () => {
     <Container>
       <Img src={Logo} alt="Logo principal" />
 
-
       <Form>
         <FormTitle>Faça o login</FormTitle>
 
@@ -19,7 +19,7 @@ const Login: React.FC = () => {
 
         <FormButtonSubmit>
           Continuar
-          <span>➔</span>
+          <FaArrowRight />
         </FormButtonSubmit>
 
         <Link to="#">Esqueci minha senha</Link>
