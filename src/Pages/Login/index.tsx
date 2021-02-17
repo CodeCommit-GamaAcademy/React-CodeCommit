@@ -2,15 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa'
 
-import Logo from '../../assets/main-logo.png';
-
-import { Container, Img, Form, FormTitle, FormInput } from './styles';
+import { Container, Form, FormTitle, FormInput } from './styles';
 import Button from '../../components/Button';
+import Logo from '../../components/Logo';
 
 const Login: React.FC = () => {
   return (
     <Container>
-      <Img src={Logo} alt="Logo principal" />
+      <Logo />
 
       <Form>
         <FormTitle>Faça o login</FormTitle>

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Container, Content } from './styles';
 import Button from '../../components/Button';
+import Logo from '../../components/Logo';
 
 const Error: React.FC = () => {
     const history = useHistory();
@@ -15,7 +16,7 @@ const Error: React.FC = () => {
 
     return (
         <Container>
-            {/* <Logo /> */}
+            <Logo />
 
             <Content>
                 <FiAlertTriangle className="icon" size={ 102 } />

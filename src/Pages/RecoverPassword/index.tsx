@@ -1,10 +1,10 @@
 import React, { FormEvent, useCallback } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
-import Logo from '../../assets/main-logo.png';
 import Button from '../../components/Button';
+import Logo from '../../components/Logo';
 
-import { Container, Form, FormDescription, FormTitle, Input, InputFields, MainLogo } from './styles';
+import { Container, Form, FormDescription, FormTitle, Input, InputFields } from './styles';
 
 const RecoverPassword: React.FC = () => {
     const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
@@ -13,7 +13,7 @@ const RecoverPassword: React.FC = () => {
 
     return (
         <Container>
-            <MainLogo src={ Logo } alt="Main Logo" />
+            <Logo />
 
             <Form onSubmit={ handleSubmit } >
                 <FormTitle>Esqueci minha senha</FormTitle>
@@ -26,7 +26,7 @@ const RecoverPassword: React.FC = () => {
                 </InputFields>
 
                 <Button 
-                    text="enviar" 
+                    text="Enviar" 
                     Icon={ FaArrowRight } 
                     type="submit" 
                     style={{ marginTop: 28 }}

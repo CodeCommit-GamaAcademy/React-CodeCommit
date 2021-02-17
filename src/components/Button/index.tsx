@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = ({ text, Icon, ...props }) => {
     return (
         <SubmitButton {...props} >
-            <span>Enviar</span>
+            <span>{ text }</span>
             <Icon size={ 21 } color="#fff" />
         </SubmitButton>
     );

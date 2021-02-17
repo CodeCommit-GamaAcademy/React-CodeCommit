@@ -9,13 +9,6 @@ export const Container = styled.div`
   padding: 20px 0;
 `;
 
-export const Img = styled.img`
-  position: absolute;
-  left: 65px;
-  height: 65px;
-  top: 58px;
-`;
-
 export const Form = styled.form`
   padding: 40px 46px;
   background: #fff;

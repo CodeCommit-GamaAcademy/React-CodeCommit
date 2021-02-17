@@ -9,12 +9,6 @@ export const Container = styled.div`
     width: 100vw;
 `;
 
-export const MainLogo = styled.img`
-    position: absolute;
-    top: 64px;
-    left: 64px;
-`
-
 export const Form = styled.form`
     width: 455px;
     min-height: 422px;
