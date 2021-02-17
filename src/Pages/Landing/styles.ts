@@ -8,32 +8,37 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: row;
     width: 100%;
-    height: 85vh;
+    height: 100vh;
     background-image: url(${Model});
-    background-size: 700px;
-    background-position:center bottom;
+    background-position: center bottom;
     background-repeat: no-repeat;
-
 `;
 
-export const TextContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    
-    position: absolute;
-    width: 481px;
-    height: 173px;
-    margin-top: -250px;
-    
 
+export const CardLeft = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+left: 180px;
+top: 351px;
+position: absolute;
+`
+
+
+export const TextContainer = styled.div`
     p{
+        width: 281px;
+        height: 173px;
         font-size:29px;
         color: #fff;
-        margin-left: 180px;
         font-weight: normal;
         line-height: 34px;
         font-style: normal;
+    }
+
+    span { 
+        display: block;
+        margin-top: 20px;
     }
 
 `
@@ -42,10 +47,7 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
-    left: 180px;
-    top: 449px;
-    width: 261px;
+    width: 100%;
     height: 42px;
     background: #FFFFFF;
     border-radius: 20px;
@@ -54,14 +56,15 @@ export const Button = styled.button`
     font-weight: 500;
     color: #8C52E5;
     padding: 20px;
+    margin-top:25px;
 `
 
-export const Header = styled.header`
+export const Img = styled.img`
+position: absolute;
+left: 65px;
+height: 65px;
+top: 58px;
 
-    img{
-        margin-left: 63px;
-        margin-top: 52px;
-    }
 `
 
 
