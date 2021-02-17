@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const BalanceItem = styled.div`
   background-color: #FBFBFB;
-  width: 330px;
-  height: 210px;
+  width: 300px;
+  height: 180px;
   border-radius: 8px;
   margin-right: 50px;
   margin-left: 50px;
