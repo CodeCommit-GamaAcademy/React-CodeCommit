@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 16px;
 `;
 
 export const Form = styled.form`
@@ -15,6 +15,8 @@ export const Form = styled.form`
   min-height: 422px;
   border-radius: 8px;
   width: 455px;
+
+  animation: 0.6s forwards toRight;
 
   a {
     color: #8c52e5;

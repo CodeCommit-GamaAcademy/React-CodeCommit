@@ -16,6 +16,18 @@ export const MainBanner = styled.div`
   background-attachment: fixed;
   background-repeat: no-repeat;
 
+  opacity: 0;
+  animation: 0.3s forwards animationBg;
+  animation-delay: 0.2s;
+  @keyframes animationBg {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   @media (max-width: 680px) {
     min-height: auto;
     background-size: 100%;
@@ -43,6 +55,10 @@ export const MainBannerContent = styled.div`
 `;
 
 export const MainBannerContentLeft = styled.div`
+  animation: 0.6s forwards toRight;
+  animation-delay: 0.4s;
+  opacity: 0;
+
   @media (max-width: 680px) {
     width: 82%;
     position: relative;
@@ -61,6 +77,10 @@ export const MainBannerContentLeft = styled.div`
 `;
 
 export const MainBannerContentRight = styled.div`
+  animation: 0.6s forwards toRight;
+  animation-delay: 0.2s;
+  opacity: 0;
+
   @media (max-width: 680px) {
     margin-bottom: 50%;
     width: 100%;
