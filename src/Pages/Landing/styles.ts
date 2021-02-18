@@ -5,33 +5,47 @@ import Landing1 from '../../assets/landing-1.png';
 import Landing2 from '../../assets/landing-2.png';
 import BackImage from '../../assets/background-landing-3.png';
 
-export const Container = styled.div`
+export const MainBannerContent = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  flex-wrap: wrap;
+`;
+
+export const Container = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
   width: 100%;
-  height: 100vh;
+  height: inherit;
+  padding: 0 16px;
+`;
+
+export const MainBanner = styled.div`
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 0;
   background-image: url(${Model});
-  background-position: center bottom;
+  background-position: 42% bottom;
   background-repeat: no-repeat;
 `;
-export const LogoGama = styled.img`
-  position: absolute;
-  left: 65px;
-  height: 65px;
-  top: 58px;
+
+//-------  Igor
+
+export const MainBannerContentRight = styled.div``;
+
+export const Form = styled.form`
+  width: 350px;
+  max-width: 100%;
+  min-height: 450px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px 46px;
 `;
 
-export const Form = styled.form``;
-
-export const CardLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  left: 180px;
-  top: 351px;
-  position: absolute;
-`;
+export const MainBannerContentLeft = styled.div``;
 
 export const TextContainer = styled.div`
   p {
@@ -60,32 +74,19 @@ export const Button = styled.button`
   border-radius: 20px;
   border: none;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 400;
   color: #8c52e5;
   padding: 20px;
   margin-top: 25px;
 `;
-
-export const CardRight = styled.div`
-  position: absolute;
-  background-color: #fff;
-  width: 349px;
-  height: 461.23px;
-  top: 220px;
-  right: 135px;
-  border-radius: 8px;
-  padding-left: 40px;
-  padding-right: 40px;
-`;
 export const FormHomeTitle = styled.h1`
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
-  font-size: 19px;
-  line-height: 22px;
+  font-weight: 400;
+  font-size: 20px;
   display: flex;
   align-items: center;
-  margin-top: 25px;
+  margin-bottom: 30px;
   color: #1d1d1d;
 `;
 
@@ -96,6 +97,11 @@ export const FormInput = styled.input`
   width: 100%;
   padding: 10px 14px;
   font-size: 14px;
+
+  & + input {
+    margin-top: 30px;
+  }
+
   &::placeholder {
     color: #878686;
   }

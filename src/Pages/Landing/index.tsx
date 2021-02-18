@@ -3,16 +3,15 @@ import { useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
 import {
-  Container, Form,
-  TextContainer, Button, LogoGama, CardLeft, CardRight, FormInput, FormHomeTitle,
+  Container, MainBanner, MainBannerContent, Form, MainBannerContentLeft, MainBannerContentRight,
+  TextContainer, Button, FormInput, FormHomeTitle,
   HomeFormButton, Section2, LeftContainer, RightContainer, Section3, LeftSide, RightSide, Section4,
   TextSection4, Section5, TextSide, ImageSide
 } from './styles';
 
-import Logo from '../../assets/main-logo.png';
-
 import Landing3 from '../../assets/landing-3.png';
 import api from '../../services/api';
+import Header from '../../components/Header';
 
 
 const Landing: React.FC = () => {
@@ -46,33 +45,38 @@ const Landing: React.FC = () => {
     } else {
       history.push('/error');
     }
-  }, [cpf, username, name, password, history]);
+  }, [cpf, username, name, password, history, confirmPassword]);
 
   return (
     <>
-      <Container>
-        <LogoGama src={Logo} alt="logo" />
-        <CardLeft>
-          <TextContainer>
-            <p>Gama Bank é um projeto de nossos alunos.
-          <span> Já tem conta?</span></p>
-          </TextContainer>
-          <Button onClick={() => history.push('/login')}>Acessar <FaArrowRight /></Button>
-        </CardLeft>
+      <Header />
 
-        <Form onSubmit={handleSubmit}>
-          <CardRight>
-            <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
-            <FormInput onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF" />
-            <FormInput onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
-            <FormInput onChange={e => setName(e.target.value)} placeholder="Nome completo" />
-            <FormInput type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
-            <FormInput type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
-            <HomeFormButton> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>
-          </CardRight>
-        </Form>
+      <MainBanner>
+        <Container>
+          <MainBannerContent>
+            <MainBannerContentLeft>
+              <TextContainer>
+                <p>Gama Bank é um projeto de nossos alunos.
+                <span> Já tem conta?</span></p>
+              </TextContainer>
+              <Button onClick={() => history.push('/login')}>Acessar <FaArrowRight /></Button>
+            </MainBannerContentLeft>
 
-      </Container>
+            <MainBannerContentRight>
+              <Form onSubmit={handleSubmit}>
+                <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
+                <FormInput onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF" />
+                <FormInput onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
+                <FormInput onChange={e => setName(e.target.value)} placeholder="Nome completo" />
+                <FormInput type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
+                <FormInput type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
+                <HomeFormButton> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>
+              </Form>
+            </MainBannerContentRight>
+          </MainBannerContent>
+        </Container>
+      </MainBanner>
+
       <Section2>
         <LeftContainer>
           <span>Conta digital do Gama Academy</span>
@@ -89,16 +93,16 @@ const Landing: React.FC = () => {
           <p>Burocracia custa caro. Somos eficientes para você não ter que pagar tarifas.</p>
         </LeftSide>
         <RightSide>
-          <span>0,00</span>
+          {/* <span>0,00</span> */}
         </RightSide>
       </Section3>
-      <Section4>
+      {/* <Section4>
         <TextSection4>
           <span>O fim da complexibilidade</span>
           <p>Para quem sabe que tecnologia e design são melhores do que agências e papelada.</p>
         </TextSection4>
-      </Section4>
-      <Section5>
+      </Section4> */}
+      {/* <Section5>
         <TextSide>
           <span>Simplifique a sua vida. Peça seu convite.</span>
           <p>GamaAcademy Bank Line S.A. - CNPJ 00.000.000/0000-00</p>
@@ -109,7 +113,7 @@ const Landing: React.FC = () => {
         <ImageSide>
           <img src={Landing3} alt="cel" />
         </ImageSide>
-      </Section5>
+      </Section5> */}
     </>
   );
 }
