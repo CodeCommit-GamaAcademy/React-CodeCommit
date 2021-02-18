@@ -22,37 +22,41 @@ const Dashboard: React.FC = () => {
   
   //Setting data accounts;
   useEffect( ()=> {
-    api.get<Contas>('/dashboard?fim=2021-02-18&inicio=2021-01-01&login=gabrielggpm', {
-      headers: {Authorization: auth}
-    }).then( (resp) => {
-      // const transacaoCredito: Lancamento = {
-      //   tipo: 'teste',
-      //   conta: 1,
-      //   data: 'teste',
-      //   descricao: 'teste',
-      //   id: 1,
-      //   planoConta: {
-      //     descricao: 'teste',
-      //     id: 1,
-      //     login: 'teste',
-      //     padrao: false,
-      //     tipoMovimento: 'R'
-      //   },
-      //   valor: 10
-      // }
+    // api.get<Contas>('/dashboard?fim=2021-02-18&inicio=2021-01-01&login=gabrielggpm', {
+    //   headers: {Authorization: auth}
+    // }).then( (resp) => {
+      
+    // });
+    const transacaoCredito: Lancamento = {
+        tipo: 'teste',
+        conta: 1,
+        data: 'teste',
+        descricao: 'teste',
+        id: 1,
+        planoConta: {
+          descricao: 'teste',
+          id: 1,
+          login: 'teste',
+          padrao: false,
+          tipoMovimento: 'R'
+        },
+        valor: 10
+      }
 
-      // const INITIAL_LAUNCHS = [
-      //   transacaoCredito
-      // ]
+      const INITIAL_LAUNCHS = [
+        transacaoCredito
+      ]
 
       const refactoredData: Contas = {
         contaBanco: {
-          ...resp.data.contaBanco,
-          lancamentos: resp.data.contaBanco.lancamentos.map( lancamento => ({ ...lancamento, tipo: 'debito' }) )
+          id: 1,
+          saldo: 0,
+          lancamentos: INITIAL_LAUNCHS.map( lancamento => ({ ...lancamento, tipo: 'débito' }) )
         },
         contaCredito: {
-          ...resp.data.contaCredito,
-          lancamentos: resp.data.contaCredito.lancamentos.map( lancamento => ({ ...lancamento, tipo: 'credito' }) )
+          id: 1,
+          saldo: 0,
+          lancamentos: INITIAL_LAUNCHS.map( lancamento => ({ ...lancamento, tipo: 'crédito' }) )
         }
       }
 
@@ -60,7 +64,6 @@ const Dashboard: React.FC = () => {
 
       setContas(refactoredData);
       setLoaded(true);
-    });
   }, [ auth ]);
 
   return (
