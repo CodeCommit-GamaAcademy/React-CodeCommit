@@ -81,7 +81,7 @@ export const Form = styled.form`
   }
 `;
 
-export const TextContainer = styled.div`
+export const MainBannerContentText = styled.div`
   p {
     width: 281px;
     height: 173px;
@@ -187,7 +187,7 @@ export const SectionAboutContent = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-export const LeftContainer = styled.div`
+export const SectionAboutContentLeft = styled.div`
   background: #000;
   display: flex;
   flex-direction: column;
@@ -248,7 +248,7 @@ export const LeftContainer = styled.div`
   }
 `;
 
-export const RightContainer = styled.div`
+export const SectionAboutContentRight = styled.div`
   display: flex;
   flex-direction: column;
   background: #f8f8f8;
@@ -347,7 +347,7 @@ export const SectionAnnuityContent = styled.div`
   }
 `;
 
-export const LeftSide = styled.div`
+export const SectionAnnuityContentLeft = styled.div`
   span {
     color: #fff;
     font-style: normal;
@@ -382,7 +382,7 @@ export const LeftSide = styled.div`
   }
 `;
 
-export const RightSide = styled.div`
+export const SectionAnnuityContentRight = styled.div`
   display: flex;
   justify-content: center;
 
@@ -463,17 +463,20 @@ export const SectionBannerInfoText = styled.div`
   }
 `;
 
-export const Section5 = styled.section`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+export const SectionAccount = styled.section`
   height: 100vh;
-  align-items: center;
-  justify-content: space-evenly;
   background: #eaeaea;
 `;
 
-export const TextSide = styled.div`
+export const SectionAccountContent = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  height: 100%;
+`;
+
+export const SectionAccountContentText = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -484,7 +487,17 @@ export const TextSide = styled.div`
     font-size: 42px;
     line-height: 49px;
     width: 400px;
+    max-width: 100%;
     margin-bottom: 25px;
+
+    @media (max-width: 990px) {
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 35px;
+      line-height: 1.1;
+    }
   }
 
   p {
@@ -497,6 +510,12 @@ export const TextSide = styled.div`
   }
 `;
 
-export const ImageSide = styled.div`
+export const SectionAccountContentImg = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+  }
 `;

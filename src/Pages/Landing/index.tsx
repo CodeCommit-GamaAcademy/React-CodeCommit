@@ -3,13 +3,15 @@ import { useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
 import {
-  Container, MainBanner, MainBannerContent, Form, MainBannerContentLeft, MainBannerContentRight,
-  TextContainer, Button, FormInput, FormHomeTitle, SectionAbout, SectionAboutContainer, SectionAboutContent, SectionAnnuity, SectionAnnuityContent, SectionBannerInfo, SectionBannerInfoContent, SectionBannerInfoText,
-  HomeFormButton, LeftContainer, RightContainer, LeftSide, RightSide,
-  Section5, TextSide, ImageSide
+  Container, Button,
+  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, Form, FormHomeTitle, FormInput, HomeFormButton,
+  SectionAbout, SectionAboutContainer, SectionAboutContent, SectionAboutContentLeft, SectionAboutContentRight,
+  SectionAnnuity, SectionAnnuityContent, SectionAnnuityContentLeft, SectionAnnuityContentRight,
+  SectionBannerInfo, SectionBannerInfoContent, SectionBannerInfoText,
+  SectionAccount, SectionAccountContent, SectionAccountContentText, SectionAccountContentImg
 } from './styles';
 
-import Landing3 from '../../assets/landing-3.png';
+import ImgCellPhone from '../../assets/landing-3.png';
 import api from '../../services/api';
 import Header from '../../components/Header';
 
@@ -55,10 +57,10 @@ const Landing: React.FC = () => {
         <Container>
           <MainBannerContent>
             <MainBannerContentLeft>
-              <TextContainer>
+              <MainBannerContentText>
                 <p>Gama Bank é um projeto de nossos alunos.
                 <span> Já tem conta?</span></p>
-              </TextContainer>
+              </MainBannerContentText>
               <Button onClick={() => history.push('/login')}>Acessar <FaArrowRight /></Button>
             </MainBannerContentLeft>
 
@@ -80,14 +82,14 @@ const Landing: React.FC = () => {
       <SectionAbout>
         <SectionAboutContainer>
           <SectionAboutContent>
-            <LeftContainer>
+            <SectionAboutContentLeft>
               <span>Conta digital do Gama Academy</span>
               <p>Rende mais que a poupança, sem taxa de manutenção nem tarifas escondidas.</p>
-            </LeftContainer>
-            <RightContainer>
+            </SectionAboutContentLeft>
+            <SectionAboutContentRight>
               <span>Cartão de Crédito</span>
               <p>Rende mais que a poupança, sem taxa de manutenção nem tarifas escondidas.</p>
-            </RightContainer>
+            </SectionAboutContentRight>
           </SectionAboutContent>
         </SectionAboutContainer>
       </SectionAbout>
@@ -95,13 +97,13 @@ const Landing: React.FC = () => {
       <SectionAnnuity>
         <Container>
           <SectionAnnuityContent>
-            <LeftSide>
+            <SectionAnnuityContentLeft>
               <span>Zero anuidade</span>
               <p>Burocracia custa caro. Somos eficientes para você não ter que pagar tarifas.</p>
-            </LeftSide>
-            <RightSide>
+            </SectionAnnuityContentLeft>
+            <SectionAnnuityContentRight>
               <span>0,00</span>
-            </RightSide>
+            </SectionAnnuityContentRight>
           </SectionAnnuityContent>
         </Container>
       </SectionAnnuity>
@@ -118,18 +120,22 @@ const Landing: React.FC = () => {
         </Container>
       </SectionBannerInfo>
 
-      {/* <Section5>
-        <TextSide>
-          <span>Simplifique a sua vida. Peça seu convite.</span>
-          <p>GamaAcademy Bank Line S.A. - CNPJ 00.000.000/0000-00</p>
-          <b />
-          <p>Rua Fictícia, 999 - 00000-000 - São Paulo, SP</p>
-          <p>Este é um projeto de avaliação | GamaAcademy | Accenture | 2021</p>
-        </TextSide>
-        <ImageSide>
-          <img src={Landing3} alt="cel" />
-        </ImageSide>
-      </Section5> */}
+      <SectionAccount>
+        <Container>
+          <SectionAccountContent>
+            <SectionAccountContentText>
+              <span>Simplifique a sua vida. Peça seu convite.</span>
+              <p>GamaAcademy Bank Line S.A. - CNPJ 00.000.000/0000-00</p>
+
+              <p>Rua Fictícia, 999 - 00000-000 - São Paulo, SP</p>
+              <p>Este é um projeto de avaliação | GamaAcademy | Accenture | 2021</p>
+            </SectionAccountContentText>
+            <SectionAccountContentImg>
+              <img src={ImgCellPhone} alt="Imagem de um celular" />
+            </SectionAccountContentImg>
+          </SectionAccountContent>
+        </Container>
+      </SectionAccount>
     </>
   );
 }
