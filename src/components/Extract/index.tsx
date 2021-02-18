@@ -11,13 +11,15 @@ interface ExtractData {
 }
 
 const Extract: React.FC<ExtractData> = ( props ) => {
-    // const [ allLauchs, setAllLaunchs ] = useState( () => {
-    //     if (props.contaBanco?.lancamentos && props.contaCredito?.lancamentos) {
-    //         return [...props.contaBanco.lancamentos, ...props.contaCredito.lancamentos]
-    //     }else {
-    //         return [];
-    //     }
-    // });
+    const [ allLauchs, setAllLaunchs ] = useState( () => {
+        console.log(props);
+        
+        if (props.contaBanco?.lancamentos && props.contaCredito?.lancamentos) {
+            return [...props.contaBanco.lancamentos, ...props.contaCredito.lancamentos]
+        }else {
+            return [];
+        }
+    });
     return(
         <>
             <ExtractContainer>
@@ -26,15 +28,18 @@ const Extract: React.FC<ExtractData> = ( props ) => {
                     <p>Últimos lançamentos</p>
                 </div>
 
-                <ExtractItem>
+                {allLauchs.map( (launch, index) => {
+                    return (
+                    <ExtractItem key={index}>
                     <img src={creditCardsIcon} alt="credit cards icon"/>
                     <div className="text-items">
-                        <strong>Compra no débito</strong>
-                        <p>Gama Academy</p>
-                        <strong>R$: 298,55</strong>
+                        <strong>Compra no {launch.tipo}</strong>
+                        <p>{launch.descricao}</p>
+                        <strong>{launch.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
                     </div>
-                    <p className="date">Dia 24 Jan.</p>
-                </ExtractItem>
+                    <p className="date">{launch.data}</p>
+                    </ExtractItem>)
+                })}
             </ExtractContainer>
         </>
     )
