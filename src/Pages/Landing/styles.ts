@@ -5,12 +5,21 @@ import Landing1 from '../../assets/landing-1.png';
 import Landing2 from '../../assets/landing-2.png';
 import BackImage from '../../assets/background-landing-3.png';
 
-export const MainBannerContent = styled.div`
+export const MainBanner = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 0;
+  background-image: url(${Model});
+  background-position: 40% bottom;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  @media (max-width: 680px) {
+    min-height: auto;
+    background-size: 100%;
+  }
 `;
 
 export const Container = styled.div`
@@ -21,20 +30,42 @@ export const Container = styled.div`
   padding: 0 16px;
 `;
 
-export const MainBanner = styled.div`
+export const MainBannerContent = styled.div`
   display: flex;
-  align-items: stretch;
-  width: 100%;
-  min-height: 100vh;
-  padding: 20px 0;
-  background-image: url(${Model});
-  background-position: 42% bottom;
-  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    padding-top: 32px;
+  }
 `;
 
-//-------  Igor
+export const MainBannerContentLeft = styled.div`
+  @media (max-width: 680px) {
+    width: 82%;
+    position: relative;
 
-export const MainBannerContentRight = styled.div``;
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: red;
+      position: absolute;
+      bottom: -16px;
+      background: #a7a7a73d;
+    }
+  }
+`;
+
+export const MainBannerContentRight = styled.div`
+  @media (max-width: 680px) {
+    margin-bottom: 50%;
+    width: 100%;
+  }
+`;
 
 export const Form = styled.form`
   width: 350px;
@@ -43,9 +74,12 @@ export const Form = styled.form`
   background-color: #fff;
   border-radius: 8px;
   padding: 40px 46px;
-`;
 
-export const MainBannerContentLeft = styled.div``;
+  @media (max-width: 680px) {
+    margin-top: 32px;
+    width: 100%;
+  }
+`;
 
 export const TextContainer = styled.div`
   p {
