@@ -6,7 +6,7 @@ import eyeIcon from '../../assets/svgs/eye-icon.svg';
 import Extract from '../../components/Extract';
 import CardMenu from '../../components/CardMenu';
 import api from '../../services/api';
-import { Conta } from '../../types/user';
+import { Conta } from '../../types/dash-board';
 
 // import { Container } from './styles';
 
@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
           </div>
         </DashNameSection>
         {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
-        <Extract />
+        {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
       </DashMain>
     </DashBoard>
   );
