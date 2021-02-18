@@ -9,58 +9,41 @@ interface Total {
   credito: number,
 }
 
-const INITIAL_STATE = {
-  id: 0,
-  lancamentos: [{
-    conta: 0,
-    data: '',
-    descricao: '',
-    id: 0,
-    planoConta: {
-      descricao: '',
-      id: 0,
-      login: '',
-      padrao: false,
-      tipoMovimento: '',
-    },
-    tipo: '',
-    valor: 0,
-  }],
-  saldo: 0,
+interface AccountProps {
+  contaBanco?: Conta,
+  contaCredito?: Conta,
 }
 
-const Balance: React.FC = () => {
-  const [contaBanco, setContaBanco] = useState<Conta>(INITIAL_STATE);
-  const [contaCredito, setContaCredito] = useState<Conta>(INITIAL_STATE);
+const Balance: React.FC<AccountProps> = ( props ) => {
+  const [contaBanco, setContaBanco] = useState<Conta>();
+  const [contaCredito, setContaCredito] = useState<Conta>();
   const [totalTransactions, setTotalTransactions] = useState<Total>({
     banco: 0,
     credito: 0,
   })
 
-  const setTotals = () => {
+  useEffect( () => {
+    console.log(props);
+    
+    setContaBanco(props.contaBanco);
+    setContaCredito(props.contaCredito);
     setTotalTransactions({
       banco: 0,
       credito: 0,
     });
-    contaBanco.lancamentos.map( lancamento => {
+    contaBanco?.lancamentos.map( lancamento => {
       setTotalTransactions({
         ...totalTransactions,
         banco: totalTransactions.banco += lancamento.valor
       });
     });
-    contaCredito.lancamentos.map( lancamento => {
+    contaCredito?.lancamentos.map( lancamento => {
       setTotalTransactions({
         ...totalTransactions,
         credito: totalTransactions.credito += lancamento.valor
       });
     })
-  }
-  
-  useEffect( () => {
-    setTotals();
-    console.log(totalTransactions);
-    
-  }, [ contaCredito, contaBanco ])
+  }, [])
 
   return (
     <BalanceContainer>
@@ -70,7 +53,7 @@ const Balance: React.FC = () => {
           <p>Conta</p>
         </div>
         <p>Saldo disponivel</p>
-        <h3 className='value acccount'>{contaBanco.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
+        <h3 className='value acccount'>{contaBanco?.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
         <div>
           <p>Transações</p>
           <h3>{totalTransactions.banco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
@@ -83,7 +66,7 @@ const Balance: React.FC = () => {
           <p>Conta Crédito</p>
         </div>
         <p>Fatura atual</p>
-        <h3 className='value credit'>{contaCredito.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
+        <h3 className='value credit'>{contaCredito?.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
         <div>
           <p>Limite Disponivel</p>
           <h3>{totalTransactions.credito.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>

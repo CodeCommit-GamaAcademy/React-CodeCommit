@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Balance from '../../components/Balance';
 import { DashMenu, DashBoard, DashMain, DashNameSection } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
 import eyeIcon from '../../assets/svgs/eye-icon.svg';
 import Extract from '../../components/Extract';
 import CardMenu from '../../components/CardMenu';
+import api from '../../services/api';
+import { Conta } from '../../types/user';
 
 // import { Container } from './styles';
 
+interface Contas {
+  contaBanco: Conta,
+  contaCredito: Conta,
+}
+
 const Dashboard: React.FC = () => {
+  const [ contas, setContas ] = useState<Contas>();
+  const auth = localStorage.getItem('@token_user');
+  const [loaded, setLoaded] = useState(false);
+  
+  //Setting data accounts;
+  useEffect( ()=> {
+    api.get<Contas>('/dashboard?fim=2021-02-18&inicio=2021-01-01&login=gabrielggpm', {
+      headers: {Authorization:auth}
+    }).then( (resp) => {
+      setContas(resp.data);
+      setLoaded(true);
+    });
+  }, [])
+
   return (
     <DashBoard>
       <DashMenu>
@@ -25,7 +46,7 @@ const Dashboard: React.FC = () => {
             <img src={eyeIcon} alt="hide informations"/>
           </div>
         </DashNameSection>
-        <Balance />
+        {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
         <Extract />
       </DashMain>
     </DashBoard>
