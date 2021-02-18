@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const MainHeader = styled.header``;
+export const MainHeader = styled.header`
+  position: absolute;
+  width: 100%;
+`;
 
 export const MainHeaderContainer = styled.div`
   max-width: 1280px;

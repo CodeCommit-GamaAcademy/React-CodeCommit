@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const LogoIMG = styled.img`
-    position: absolute;
-    top: 64px;
-    left: 64px;
-
-    cursor: pointer;
+  margin-top: 50px;
+  cursor: pointer;
 `;
