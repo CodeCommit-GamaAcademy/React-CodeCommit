@@ -26,8 +26,7 @@ const Extract: React.FC<ExtractData> = ( props ) => {
                     <p>Últimos lançamentos</p>
                 </div>
 
-                {allLauchs.map( (launch) => {
-                    return (<ExtractItem>
+                <ExtractItem>
                     <img src={creditCardsIcon} alt="credit cards icon"/>
                     <div className="text-items">
                         <strong>Compra no débito</strong>
@@ -35,8 +34,7 @@ const Extract: React.FC<ExtractData> = ( props ) => {
                         <strong>R$: 298,55</strong>
                     </div>
                     <p className="date">Dia 24 Jan.</p>
-                    </ExtractItem>)
-                })}
+                </ExtractItem>
             </ExtractContainer>
         </>
     )

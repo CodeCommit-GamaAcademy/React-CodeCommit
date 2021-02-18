@@ -6,7 +6,7 @@ import eyeIcon from '../../assets/svgs/eye-icon.svg';
 import Extract from '../../components/Extract';
 import CardMenu from '../../components/CardMenu';
 import api from '../../services/api';
-import { Conta } from '../../types/dash-board';
+import { Conta, Lancamento } from '../../types/dash-board';
 
 // import { Container } from './styles';
 
@@ -23,12 +23,45 @@ const Dashboard: React.FC = () => {
   //Setting data accounts;
   useEffect( ()=> {
     api.get<Contas>('/dashboard?fim=2021-02-18&inicio=2021-01-01&login=gabrielggpm', {
-      headers: {Authorization:auth}
+      headers: {Authorization: auth}
     }).then( (resp) => {
-      setContas(resp.data);
+      // const transacaoCredito: Lancamento = {
+      //   tipo: 'teste',
+      //   conta: 1,
+      //   data: 'teste',
+      //   descricao: 'teste',
+      //   id: 1,
+      //   planoConta: {
+      //     descricao: 'teste',
+      //     id: 1,
+      //     login: 'teste',
+      //     padrao: false,
+      //     tipoMovimento: 'R'
+      //   },
+      //   valor: 10
+      // }
+
+      // const INITIAL_LAUNCHS = [
+      //   transacaoCredito
+      // ]
+
+      const refactoredData: Contas = {
+        contaBanco: {
+          ...resp.data.contaBanco,
+          lancamentos: resp.data.contaBanco.lancamentos.map( lancamento => ({ ...lancamento, tipo: 'debito' }) )
+        },
+        contaCredito: {
+          ...resp.data.contaCredito,
+          lancamentos: resp.data.contaCredito.lancamentos.map( lancamento => ({ ...lancamento, tipo: 'credito' }) )
+        }
+      }
+
+      console.log( refactoredData );
+
+      setContas(refactoredData);
       setLoaded(true);
     });
-  }, [])
+  }, [ auth ]);
 
   return (
     <DashBoard>
