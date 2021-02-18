@@ -5,28 +5,27 @@ import { useHistory } from 'react-router-dom';
 
 import { Container, Content } from './styles';
 import Button from '../../components/Button';
-import Logo from '../../components/Logo';
+import Header from '../../components/Header';
 
 const Error: React.FC = () => {
     const history = useHistory();
 
     const handleGoBack = useCallback(() => {
         history.push('/')
-    }, [ history ]);
+    }, [history]);
 
     return (
-        <Container>
-            <Logo />
-
-            <Content>
-                <FiAlertTriangle className="icon" size={ 102 } />
-
-                <h3>Oops, algo deu errado! Confime seus dados e tente novamente!</h3>
-
-                <Button text="Voltar" Icon={ FaArrowLeft } onClick={ handleGoBack } />
-            </Content>
-         </Container>
-  );
+        <>
+            <Header />
+            <Container>
+                <Content>
+                    <FiAlertTriangle className="icon" size={102} />
+                    <h3>Oops, algo deu errado! Confime seus dados e tente novamente!</h3>
+                    <Button text="Voltar" Icon={FaArrowLeft} onClick={handleGoBack} />
+                </Content>
+            </Container>
+        </>
+    );
 }
 
 export default Error;
