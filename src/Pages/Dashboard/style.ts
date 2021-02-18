@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 export const DashMenu = styled.nav`
-  width: 110px;
-  height: 100vh;
-  position: fixed;
+  align-items: center;
   background-color: #68DE5A;
+  position: fixed;
   display: flex;
-  justify-content: center;
-  img {
+  flex-direction: column;
+  gap: 25px;
+  height: 100vh;
+  justify-content: flex-start;
+  width: 120px;
+
+  .logo {
     width: 90px;
     height: 90px;
     margin-top: 10px;
@@ -39,6 +43,7 @@ export const DashNameSection = styled.div`
 `
 
 export const DashMain = styled.main`
+  align-items: center;
   display: flex;
   flex-direction: column;
   width: 100%;
