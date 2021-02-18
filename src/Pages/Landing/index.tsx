@@ -4,9 +4,9 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import {
   Container, MainBanner, MainBannerContent, Form, MainBannerContentLeft, MainBannerContentRight,
-  TextContainer, Button, FormInput, FormHomeTitle, SectionAbout, SectionAboutContainer, SectionAboutContent,
-  HomeFormButton, LeftContainer, RightContainer, Section3, LeftSide, RightSide, Section4,
-  TextSection4, Section5, TextSide, ImageSide
+  TextContainer, Button, FormInput, FormHomeTitle, SectionAbout, SectionAboutContainer, SectionAboutContent, SectionAnnuity, SectionAnnuityContent, SectionBannerInfo, SectionBannerInfoContent, SectionBannerInfoText,
+  HomeFormButton, LeftContainer, RightContainer, LeftSide, RightSide,
+  Section5, TextSide, ImageSide
 } from './styles';
 
 import Landing3 from '../../assets/landing-3.png';
@@ -91,21 +91,33 @@ const Landing: React.FC = () => {
           </SectionAboutContent>
         </SectionAboutContainer>
       </SectionAbout>
-      <Section3>
-        <LeftSide>
-          <span>Zero anuidade</span>
-          <p>Burocracia custa caro. Somos eficientes para você não ter que pagar tarifas.</p>
-        </LeftSide>
-        <RightSide>
-          {/* <span>0,00</span> */}
-        </RightSide>
-      </Section3>
-      {/* <Section4>
-        <TextSection4>
-          <span>O fim da complexibilidade</span>
-          <p>Para quem sabe que tecnologia e design são melhores do que agências e papelada.</p>
-        </TextSection4>
-      </Section4> */}
+
+      <SectionAnnuity>
+        <Container>
+          <SectionAnnuityContent>
+            <LeftSide>
+              <span>Zero anuidade</span>
+              <p>Burocracia custa caro. Somos eficientes para você não ter que pagar tarifas.</p>
+            </LeftSide>
+            <RightSide>
+              <span>0,00</span>
+            </RightSide>
+          </SectionAnnuityContent>
+        </Container>
+      </SectionAnnuity>
+
+
+      <SectionBannerInfo>
+        <Container>
+          <SectionBannerInfoContent>
+            <SectionBannerInfoText>
+              <span>O fim da complexibilidade</span>
+              <p>Para quem sabe que tecnologia e design são melhores do que agências e papelada.</p>
+            </SectionBannerInfoText>
+          </SectionBannerInfoContent>
+        </Container>
+      </SectionBannerInfo>
+
       {/* <Section5>
         <TextSide>
           <span>Simplifique a sua vida. Peça seu convite.</span>

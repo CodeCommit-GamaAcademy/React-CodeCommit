@@ -315,56 +315,91 @@ export const RightContainer = styled.div`
   }
 `;
 
-export const Section3 = styled.section`
+export const SectionAnnuity = styled.section`
   display: flex;
   width: 100%;
   height: 100vh;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+
+  @media (max-width: 990px) {
+    height: 80vh;
+  }
+
+  @media (max-width: 680px) {
+    height: auto;
+    padding: 60px 0;
+  }
+`;
+
+export const SectionAnnuityContent = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  align-items: center;
+
+  @media (max-width: 680px) {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
 `;
 
 export const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-
   span {
     color: #fff;
     font-style: normal;
     font-weight: bold;
     font-size: 42px;
     line-height: 49px;
-    display: flex;
-    align-items: center;
+    display: block;
+
+    @media (max-width: 680px) {
+      font-size: 35px;
+    }
   }
 
   p {
     color: #fff;
     font-style: normal;
     font-weight: normal;
-    width: 459px;
     font-size: 23px;
     line-height: 27px;
     display: flex;
-    align-items: center;
     margin-top: 36px;
+    width: 450px;
+
+    @media (max-width: 990px) {
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 18px;
+      margin-top: 4px;
+    }
   }
 `;
 
 export const RightSide = styled.div`
   display: flex;
+  justify-content: center;
 
   span {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 186px;
-    line-height: 218px;
     color: #68de5a;
+
+    @media (max-width: 680px) {
+      font-size: 120px;
+    }
   }
 `;
 
-export const Section4 = styled.section`
+export const SectionBannerInfo = styled.section`
   display: flex;
   width: 100%;
   height: 100vh;
@@ -372,12 +407,29 @@ export const Section4 = styled.section`
   flex-direction: row;
   background: #68de5a;
   background-image: url(${BackImage});
-`;
-export const TextSection4 = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 170px;
+  background-size: cover;
+  background-attachment: fixed;
 
+  @media (max-width: 990px) {
+    height: 60vh;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 0;
+  }
+`;
+
+export const SectionBannerInfoContent = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @media (max-width: 990px) {
+    justify-content: center;
+    text-align: center;
+  }
+`;
+
+export const SectionBannerInfoText = styled.div`
   span {
     font-family: Roboto;
     font-style: normal;
@@ -385,6 +437,10 @@ export const TextSection4 = styled.div`
     font-size: 42px;
     line-height: 49px;
     color: #fff;
+
+    @media (max-width: 680px) {
+      font-size: 35px;
+    }
   }
 
   p {
@@ -395,8 +451,18 @@ export const TextSection4 = styled.div`
     width: 459px;
     margin-top: 36px;
     color: #fff;
+
+    @media (max-width: 990px) {
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 18px;
+      margin-top: 4px;
+    }
   }
 `;
+
 export const Section5 = styled.section`
   display: flex;
   flex-direction: row;
