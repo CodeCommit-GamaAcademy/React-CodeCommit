@@ -5,8 +5,6 @@ import Landing1 from '../../assets/landing-1.png';
 import Landing2 from '../../assets/landing-2.png';
 import BackImage from '../../assets/background-landing-3.png';
 
-
-
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -22,7 +20,9 @@ export const LogoGama = styled.img`
   left: 65px;
   height: 65px;
   top: 58px;
-`
+`;
+
+export const Form = styled.form``;
 
 export const CardLeft = styled.div`
   display: flex;
@@ -31,25 +31,24 @@ export const CardLeft = styled.div`
   left: 180px;
   top: 351px;
   position: absolute;
-`
+`;
 
 export const TextContainer = styled.div`
-    p{
-      width: 281px;
-      height: 173px;
-      font-size:29px;
-      color: #fff;
-      font-weight: normal;
-      line-height: 34px;
-      font-style: normal;
-    }
+  p {
+    width: 281px;
+    height: 173px;
+    font-size: 29px;
+    color: #fff;
+    font-weight: normal;
+    line-height: 34px;
+    font-style: normal;
+  }
 
-    span { 
-      display: block;
-      margin-top: 20px;
-    }
-
-`
+  span {
+    display: block;
+    margin-top: 20px;
+  }
+`;
 
 export const Button = styled.button`
   display: flex;
@@ -57,17 +56,15 @@ export const Button = styled.button`
   justify-content: space-between;
   width: 100%;
   height: 42px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 20px;
   border: none;
   font-size: 17px;
   font-weight: 500;
-  color: #8C52E5;
+  color: #8c52e5;
   padding: 20px;
-  margin-top:25px;
-`
-
-
+  margin-top: 25px;
+`;
 
 export const CardRight = styled.div`
   position: absolute;
@@ -79,7 +76,7 @@ export const CardRight = styled.div`
   border-radius: 8px;
   padding-left: 40px;
   padding-right: 40px;
-`
+`;
 export const FormHomeTitle = styled.h1`
   font-family: Roboto;
   font-style: normal;
@@ -89,9 +86,8 @@ export const FormHomeTitle = styled.h1`
   display: flex;
   align-items: center;
   margin-top: 25px;
-  color: #1D1D1D;
-`
-
+  color: #1d1d1d;
+`;
 
 export const FormInput = styled.input`
   margin-top: 20px;
@@ -109,11 +105,11 @@ export const FormInput = styled.input`
 `;
 
 export const HomeFormButton = styled.button`
-  background: #D8D8D8;
+  background: #d8d8d8;
   border-radius: 20px;
   height: 47.66px;
   width: 100%;
-  border:  none;
+  border: none;
   margin-top: 30px;
   font-family: Roboto;
   font-style: normal;
@@ -124,16 +120,14 @@ export const HomeFormButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  color: #9B9B9B;
+  color: #9b9b9b;
 
-
-  .ArrowRight { 
+  .ArrowRight {
     width: 24px;
     height: 20px;
     justify-content: right;
   }
-
-` 
+`;
 
 export const Section2 = styled.section`
   display: flex;
@@ -141,7 +135,7 @@ export const Section2 = styled.section`
   width: 100%;
   height: 100vh;
   flex-direction: row;
-`
+`;
 export const LeftContainer = styled.div`
   background: #000;
   display: flex;
@@ -175,8 +169,7 @@ export const LeftContainer = styled.div`
     margin-top: 413px;
     margin-left: -100px;
   }
-
-`
+`;
 
 export const RightContainer = styled.div`
   display: flex;
@@ -212,7 +205,7 @@ export const RightContainer = styled.div`
     margin-top: 413px;
     margin-left: -100px;
   }
-`
+`;
 
 export const Section3 = styled.section`
   display: flex;
@@ -221,14 +214,13 @@ export const Section3 = styled.section`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-
-`
+`;
 
 export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
 
-  span{
+  span {
     color: #fff;
     font-family: Roboto;
     font-style: normal;
@@ -239,7 +231,7 @@ export const LeftSide = styled.div`
     align-items: center;
   }
 
-  p{
+  p {
     color: #fff;
     font-family: Roboto;
     font-style: normal;
@@ -251,7 +243,7 @@ export const LeftSide = styled.div`
     align-items: center;
     margin-top: 36px;
   }
-`
+`;
 
 export const RightSide = styled.div`
   display: flex;
@@ -264,7 +256,7 @@ export const RightSide = styled.div`
     line-height: 218px;
     color: #68de5a;
   }
-`
+`;
 
 export const Section4 = styled.section`
   display: flex;
@@ -274,7 +266,7 @@ export const Section4 = styled.section`
   flex-direction: row;
   background: #68de5a;
   background-image: url(${BackImage});
-`
+`;
 export const TextSection4 = styled.div`
   display: flex;
   flex-direction: column;
@@ -298,7 +290,7 @@ export const TextSection4 = styled.div`
     margin-top: 36px;
     color: #fff;
   }
-`
+`;
 export const Section5 = styled.section`
   display: flex;
   flex-direction: row;
@@ -306,15 +298,14 @@ export const Section5 = styled.section`
   height: 100vh;
   align-items: center;
   justify-content: space-evenly;
-  background: #EAEAEA;
-`
+  background: #eaeaea;
+`;
 
 export const TextSide = styled.div`
   display: flex;
   flex-direction: column;
-  
-  
-  span{
+
+  span {
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -332,13 +323,8 @@ export const TextSide = styled.div`
     line-height: 16px;
     margin-top: 25px;
   }
-`
+`;
 
 export const ImageSide = styled.div`
   display: flex;
-
-  
-`
-
-
-
+`;
