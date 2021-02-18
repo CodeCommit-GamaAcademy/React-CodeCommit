@@ -6,14 +6,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
-`;
-
-export const Img = styled.img`
-  position: absolute;
-  left: 65px;
-  height: 65px;
-  top: 58px;
+  padding: 20px 16px;
 `;
 
 export const Form = styled.form`
@@ -22,6 +15,8 @@ export const Form = styled.form`
   min-height: 422px;
   border-radius: 8px;
   width: 455px;
+
+  animation: 0.6s forwards toRight;
 
   a {
     color: #8c52e5;
@@ -39,6 +34,11 @@ export const Form = styled.form`
     & + a {
       margin-top: 10px;
     }
+  }
+
+  .form-button {
+    margin-bottom: 38px;
+    margin-top: 36px;
   }
 `;
 
@@ -62,24 +62,5 @@ export const FormInput = styled.input`
 
   &:focus {
     border-bottom: 1px solid #68de5a;
-  }
-`;
-
-export const FormButtonSubmit = styled.button`
-  background: #68de5a;
-  margin-bottom: 38px;
-  align-items: center;
-  margin-top: 36px;
-  width: 100%;
-  padding: 10px 35px;
-  display: flex;
-  color: #fff;
-  font-size: 16px;
-  border-radius: 20px;
-  border: none;
-  justify-content: space-between;
-
-  svg {
-    font-size: 22px;
   }
 `;
