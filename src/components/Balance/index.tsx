@@ -2,30 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BalanceContainer, BalanceItem } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditIcon from '../../assets/svgs/credit-card-icon.svg';
-
-interface Plano {
-  descricao: string,
-  id: number,
-  login: string,
-  padrao: boolean,
-  tipoMovimento: string,
-}
-
-interface Lancamento {
-  conta: number,
-  data: string,
-  descricao: string,
-  id: number,
-  planoConta: Plano,
-  tipo: string,
-  valor: number,
-}
-
-interface Conta {
-  id: number,
-  lancamentos: Lancamento[],
-  saldo: number,
-}
+import { Conta } from '../../types/user';
 
 interface Total {
   banco: number,
