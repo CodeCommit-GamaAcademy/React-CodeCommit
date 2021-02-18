@@ -5,35 +5,103 @@ import Landing1 from '../../assets/landing-1.png';
 import Landing2 from '../../assets/landing-2.png';
 import BackImage from '../../assets/background-landing-3.png';
 
-export const Container = styled.div`
+export const MainBanner = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  align-items: stretch;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px 0;
   background-image: url(${Model});
-  background-position: center bottom;
+  background-position: 40% bottom;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-`;
-export const LogoGama = styled.img`
-  position: absolute;
-  left: 65px;
-  height: 65px;
-  top: 58px;
+
+  opacity: 0;
+  animation: 0.3s forwards animationBg;
+  animation-delay: 0.2s;
+  @keyframes animationBg {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 680px) {
+    min-height: auto;
+    background-size: 100%;
+  }
 `;
 
-export const Form = styled.form``;
+export const Container = styled.div`
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  height: inherit;
+  padding: 0 16px;
+`;
 
-export const CardLeft = styled.div`
+export const MainBannerContent = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  left: 180px;
-  top: 351px;
-  position: absolute;
+  justify-content: space-between;
+  height: 100%;
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    padding-top: 32px;
+  }
 `;
 
-export const TextContainer = styled.div`
+export const MainBannerContentLeft = styled.div`
+  animation: 0.6s forwards toRight;
+  animation-delay: 0.4s;
+  opacity: 0;
+
+  @media (max-width: 680px) {
+    width: 82%;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: red;
+      position: absolute;
+      bottom: -16px;
+      background: #a7a7a73d;
+    }
+  }
+`;
+
+export const MainBannerContentRight = styled.div`
+  animation: 0.6s forwards toRight;
+  animation-delay: 0.2s;
+  opacity: 0;
+
+  @media (max-width: 680px) {
+    margin-bottom: 50%;
+    width: 100%;
+  }
+`;
+
+export const Form = styled.form`
+  width: 350px;
+  max-width: 100%;
+  min-height: 450px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px 46px;
+
+  @media (max-width: 680px) {
+    margin-top: 32px;
+    width: 100%;
+  }
+`;
+
+export const MainBannerContentText = styled.div`
   p {
     width: 281px;
     height: 173px;
@@ -60,32 +128,19 @@ export const Button = styled.button`
   border-radius: 20px;
   border: none;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 400;
   color: #8c52e5;
   padding: 20px;
   margin-top: 25px;
 `;
-
-export const CardRight = styled.div`
-  position: absolute;
-  background-color: #fff;
-  width: 349px;
-  height: 461.23px;
-  top: 220px;
-  right: 135px;
-  border-radius: 8px;
-  padding-left: 40px;
-  padding-right: 40px;
-`;
 export const FormHomeTitle = styled.h1`
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
-  font-size: 19px;
-  line-height: 22px;
+  font-weight: 400;
+  font-size: 20px;
   display: flex;
   align-items: center;
-  margin-top: 25px;
+  margin-bottom: 30px;
   color: #1d1d1d;
 `;
 
@@ -96,6 +151,11 @@ export const FormInput = styled.input`
   width: 100%;
   padding: 10px 14px;
   font-size: 14px;
+
+  & + input {
+    margin-top: 30px;
+  }
+
   &::placeholder {
     color: #878686;
   }
@@ -129,136 +189,237 @@ export const HomeFormButton = styled.button`
   }
 `;
 
-export const Section2 = styled.section`
-  display: flex;
+export const SectionAbout = styled.section`
   background: #eaeaea;
+  padding: 60px 0;
   width: 100%;
-  height: 100vh;
-  flex-direction: row;
 `;
-export const LeftContainer = styled.div`
+
+export const SectionAboutContainer = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 16px;
+`;
+
+export const SectionAboutContent = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
+export const SectionAboutContentLeft = styled.div`
   background: #000;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 660px;
   height: 700px;
-  margin-left: 63px;
-  margin-top: 54px;
   background-image: url(${Landing1});
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 450px 450px;
+  justify-content: space-between;
+  padding: 40px 10px;
+
+  @media (max-width: 770px) {
+    background-size: contain;
+  }
+
+  @media (max-width: 680px) {
+    height: 500px;
+  }
 
   span {
     color: #68de5a;
     font-size: 34px;
     font-style: normal;
-    font-family: Roboto;
     font-weight: 500;
-    margin-top: 80px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-left: 50px;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 28px;
+    }
   }
 
   p {
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     color: #68de5a;
     font-size: 21px;
-    width: 300px;
-    margin-top: 413px;
-    margin-left: -100px;
+    width: 370px;
+    max-width: 100%;
+    padding-left: 50px;
+    display: block;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 16px;
+    }
   }
 `;
 
-export const RightContainer = styled.div`
+export const SectionAboutContentRight = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
   background: #f8f8f8;
-  width: 660px;
   height: 700px;
-  margin-top: 54px;
-  margin-right: 58px;
   background-image: url(${Landing2});
-  background-position: 125px 150px;
+  background-position: 103px 150px;
   background-repeat: no-repeat;
   background-size: 320px 370px;
+  justify-content: space-between;
+  padding: 40px 10px;
+
+  @media (max-width: 990px) {
+    background-position: 45px 150px;
+  }
+
+  @media (max-width: 770px) {
+    background-size: 70%;
+    background-position: center;
+  }
+
+  @media (max-width: 680px) {
+    height: 500px;
+    font-size: 16px;
+  }
 
   span {
     color: #000;
     font-size: 34px;
     font-style: normal;
-    font-family: Roboto;
     font-weight: 500;
-    margin-top: 80px;
-    margin-left: -150px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-left: 90px;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 28px;
+    }
   }
 
   p {
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     color: #000;
     font-size: 21px;
-    width: 300px;
-    margin-top: 413px;
-    margin-left: -100px;
+    width: 370px;
+    max-width: 100%;
+    padding-left: 90px;
+    display: block;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 16px;
+    }
   }
 `;
 
-export const Section3 = styled.section`
+export const SectionAnnuity = styled.section`
   display: flex;
   width: 100%;
   height: 100vh;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+
+  @media (max-width: 990px) {
+    height: 80vh;
+  }
+
+  @media (max-width: 680px) {
+    height: auto;
+    padding: 60px 0;
+  }
 `;
 
-export const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
+export const SectionAnnuityContent = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  align-items: center;
 
+  @media (max-width: 680px) {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+`;
+
+export const SectionAnnuityContentLeft = styled.div`
   span {
     color: #fff;
-    font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 42px;
     line-height: 49px;
-    display: flex;
-    align-items: center;
+    display: block;
+
+    @media (max-width: 680px) {
+      font-size: 35px;
+    }
   }
 
   p {
     color: #fff;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    width: 459px;
     font-size: 23px;
     line-height: 27px;
     display: flex;
-    align-items: center;
     margin-top: 36px;
+    width: 450px;
+
+    @media (max-width: 990px) {
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 18px;
+      margin-top: 4px;
+    }
   }
 `;
 
-export const RightSide = styled.div`
+export const SectionAnnuityContentRight = styled.div`
   display: flex;
+  justify-content: center;
 
   span {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 186px;
-    line-height: 218px;
     color: #68de5a;
+
+    @media (max-width: 680px) {
+      font-size: 120px;
+    }
   }
 `;
 
-export const Section4 = styled.section`
+export const SectionBannerInfo = styled.section`
   display: flex;
   width: 100%;
   height: 100vh;
@@ -266,12 +427,29 @@ export const Section4 = styled.section`
   flex-direction: row;
   background: #68de5a;
   background-image: url(${BackImage});
-`;
-export const TextSection4 = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 170px;
+  background-size: cover;
+  background-attachment: fixed;
 
+  @media (max-width: 990px) {
+    height: 60vh;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 0;
+  }
+`;
+
+export const SectionBannerInfoContent = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @media (max-width: 990px) {
+    justify-content: center;
+    text-align: center;
+  }
+`;
+
+export const SectionBannerInfoText = styled.div`
   span {
     font-family: Roboto;
     font-style: normal;
@@ -279,6 +457,10 @@ export const TextSection4 = styled.div`
     font-size: 42px;
     line-height: 49px;
     color: #fff;
+
+    @media (max-width: 680px) {
+      font-size: 35px;
+    }
   }
 
   p {
@@ -289,19 +471,32 @@ export const TextSection4 = styled.div`
     width: 459px;
     margin-top: 36px;
     color: #fff;
+
+    @media (max-width: 990px) {
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 18px;
+      margin-top: 4px;
+    }
   }
 `;
-export const Section5 = styled.section`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+
+export const SectionAccount = styled.section`
   height: 100vh;
-  align-items: center;
-  justify-content: space-evenly;
   background: #eaeaea;
 `;
 
-export const TextSide = styled.div`
+export const SectionAccountContent = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  height: 100%;
+`;
+
+export const SectionAccountContentText = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -312,7 +507,17 @@ export const TextSide = styled.div`
     font-size: 42px;
     line-height: 49px;
     width: 400px;
+    max-width: 100%;
     margin-bottom: 25px;
+
+    @media (max-width: 990px) {
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 35px;
+      line-height: 1.1;
+    }
   }
 
   p {
@@ -325,6 +530,12 @@ export const TextSide = styled.div`
   }
 `;
 
-export const ImageSide = styled.div`
+export const SectionAccountContentImg = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+  }
 `;

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const LogoIMG = styled.img`
-    position: absolute;
-    top: 64px;
-    left: 64px;
+  margin-top: 50px;
+  cursor: pointer;
 
-    cursor: pointer;
+  @media (max-width: 680px) {
+    width: 250px;
+  }
 `;
