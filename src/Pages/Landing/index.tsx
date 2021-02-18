@@ -46,7 +46,7 @@ const Landing: React.FC = () => {
     } else {
       history.push('/error');
     }
-  }, [cpf, username, name, password, history]);
+  }, [cpf, username, name, password, history, confirmPassword]);
 
   return (
     <>
