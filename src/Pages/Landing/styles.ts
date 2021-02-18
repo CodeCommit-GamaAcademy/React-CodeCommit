@@ -169,81 +169,149 @@ export const HomeFormButton = styled.button`
   }
 `;
 
-export const Section2 = styled.section`
-  display: flex;
+export const SectionAbout = styled.section`
   background: #eaeaea;
+  padding: 60px 0;
   width: 100%;
-  height: 100vh;
-  flex-direction: row;
 `;
+
+export const SectionAboutContainer = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 16px;
+`;
+
+export const SectionAboutContent = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
 export const LeftContainer = styled.div`
   background: #000;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 660px;
   height: 700px;
-  margin-left: 63px;
-  margin-top: 54px;
   background-image: url(${Landing1});
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 450px 450px;
+  justify-content: space-between;
+  padding: 40px 10px;
+
+  @media (max-width: 770px) {
+    background-size: contain;
+  }
+
+  @media (max-width: 680px) {
+    height: 500px;
+  }
 
   span {
     color: #68de5a;
     font-size: 34px;
     font-style: normal;
-    font-family: Roboto;
     font-weight: 500;
-    margin-top: 80px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-left: 50px;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 28px;
+    }
   }
 
   p {
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     color: #68de5a;
     font-size: 21px;
-    width: 300px;
-    margin-top: 413px;
-    margin-left: -100px;
+    width: 370px;
+    max-width: 100%;
+    padding-left: 50px;
+    display: block;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 16px;
+    }
   }
 `;
 
 export const RightContainer = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
   background: #f8f8f8;
-  width: 660px;
   height: 700px;
-  margin-top: 54px;
-  margin-right: 58px;
   background-image: url(${Landing2});
-  background-position: 125px 150px;
+  background-position: 103px 150px;
   background-repeat: no-repeat;
   background-size: 320px 370px;
+  justify-content: space-between;
+  padding: 40px 10px;
+
+  @media (max-width: 990px) {
+    background-position: 45px 150px;
+  }
+
+  @media (max-width: 770px) {
+    background-size: 70%;
+    background-position: center;
+  }
+
+  @media (max-width: 680px) {
+    height: 500px;
+    font-size: 16px;
+  }
 
   span {
     color: #000;
     font-size: 34px;
     font-style: normal;
-    font-family: Roboto;
     font-weight: 500;
-    margin-top: 80px;
-    margin-left: -150px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-left: 90px;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 28px;
+    }
   }
 
   p {
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     color: #000;
     font-size: 21px;
-    width: 300px;
-    margin-top: 413px;
-    margin-left: -100px;
+    width: 370px;
+    max-width: 100%;
+    padding-left: 90px;
+    display: block;
+
+    @media (max-width: 990px) {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: auto;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -262,7 +330,6 @@ export const LeftSide = styled.div`
 
   span {
     color: #fff;
-    font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 42px;
@@ -273,7 +340,6 @@ export const LeftSide = styled.div`
 
   p {
     color: #fff;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     width: 459px;

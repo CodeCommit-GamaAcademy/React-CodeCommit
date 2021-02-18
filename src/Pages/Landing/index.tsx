@@ -4,8 +4,8 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import {
   Container, MainBanner, MainBannerContent, Form, MainBannerContentLeft, MainBannerContentRight,
-  TextContainer, Button, FormInput, FormHomeTitle,
-  HomeFormButton, Section2, LeftContainer, RightContainer, Section3, LeftSide, RightSide, Section4,
+  TextContainer, Button, FormInput, FormHomeTitle, SectionAbout, SectionAboutContainer, SectionAboutContent,
+  HomeFormButton, LeftContainer, RightContainer, Section3, LeftSide, RightSide, Section4,
   TextSection4, Section5, TextSide, ImageSide
 } from './styles';
 
@@ -77,16 +77,20 @@ const Landing: React.FC = () => {
         </Container>
       </MainBanner>
 
-      <Section2>
-        <LeftContainer>
-          <span>Conta digital do Gama Academy</span>
-          <p>Rende mais que a poupança, sem taxa de manutenção nem tarifas escondidas.</p>
-        </LeftContainer>
-        <RightContainer>
-          <span>Cartão de Crédito</span>
-          <p>Rende mais que a poupança, sem taxa de manutenção nem tarifas escondidas.</p>
-        </RightContainer>
-      </Section2>
+      <SectionAbout>
+        <SectionAboutContainer>
+          <SectionAboutContent>
+            <LeftContainer>
+              <span>Conta digital do Gama Academy</span>
+              <p>Rende mais que a poupança, sem taxa de manutenção nem tarifas escondidas.</p>
+            </LeftContainer>
+            <RightContainer>
+              <span>Cartão de Crédito</span>
+              <p>Rende mais que a poupança, sem taxa de manutenção nem tarifas escondidas.</p>
+            </RightContainer>
+          </SectionAboutContent>
+        </SectionAboutContainer>
+      </SectionAbout>
       <Section3>
         <LeftSide>
           <span>Zero anuidade</span>
