@@ -1,10 +1,10 @@
 import React from 'react';
-import Balance from './components/Balance';
+import Balance from '../../components/Balance';
 import { DashMenu, DashBoard, DashMain, DashNameSection } from './style';
-import gamaIcon from './components/svgs/gama-icon.svg';
-import eyeIcon from './components/svgs/eye-icon.svg';
-import Extract from './components/Extract';
-import CardMenu from './components/CardMenu';
+import gamaIcon from '../../assets/svgs/gama-icon.svg';
+import eyeIcon from '../../assets/svgs/eye-icon.svg';
+import Extract from '../../components/Extract';
+import CardMenu from '../../components/CardMenu';
 
 // import { Container } from './styles';
 
