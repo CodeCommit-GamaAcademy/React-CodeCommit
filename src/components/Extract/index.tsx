@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ExtractContainer, ExtractItem } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditCardsIcon from '../../assets/svgs/credit-cards-icon.svg';
+import { Conta } from '../../types/dash-board';
 
-const Extract: React.FC = () => {
+interface ExtractData {
+    contaBanco?: Conta,
+    contaCredito?: Conta,
+}
+
+const Extract: React.FC<ExtractData> = ( props ) => {
+    // const [ allLauchs, setAllLaunchs ] = useState( () => {
+    //     if (props.contaBanco?.lancamentos && props.contaCredito?.lancamentos) {
+    //         return [...props.contaBanco.lancamentos, ...props.contaCredito.lancamentos]
+    //     }else {
+    //         return [];
+    //     }
+    // });
     return(
         <>
             <ExtractContainer>
@@ -13,7 +26,8 @@ const Extract: React.FC = () => {
                     <p>Últimos lançamentos</p>
                 </div>
 
-                <ExtractItem>
+                {allLauchs.map( (launch) => {
+                    return (<ExtractItem>
                     <img src={creditCardsIcon} alt="credit cards icon"/>
                     <div className="text-items">
                         <strong>Compra no débito</strong>
@@ -21,7 +35,8 @@ const Extract: React.FC = () => {
                         <strong>R$: 298,55</strong>
                     </div>
                     <p className="date">Dia 24 Jan.</p>
-                </ExtractItem>
+                    </ExtractItem>)
+                })}
             </ExtractContainer>
         </>
     )

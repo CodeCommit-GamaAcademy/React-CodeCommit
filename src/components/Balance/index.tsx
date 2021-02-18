@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BalanceContainer, BalanceItem } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditIcon from '../../assets/svgs/credit-card-icon.svg';
-import { Conta } from '../../types/user';
+import { Conta } from '../../types/dash-board';
 
 interface Total {
   banco: number,
