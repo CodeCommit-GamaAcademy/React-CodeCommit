@@ -21,7 +21,7 @@ export interface UserResponse {
       id: number,
       numero: string,
       saldo: number,
-      tipo: "CB"
+      tipo: "CC"
     },
     dataFim: Date,
     dataInicio: Date,
@@ -42,7 +42,7 @@ export interface FilteredUser {
       id: number,
       numero: string,
       saldo: number,
-      tipo: "CB"
+      tipo: "CC"
     },
     dataFim: Date,
     dataInicio: Date,
