@@ -100,6 +100,7 @@ const Balance: React.FC = () => {
         </div>
       </BalanceItem>
       <BalanceItem>
+        {/*  */}
         <div className='title'>
           <img src={creditIcon} alt="current icon"/>
           <p>Conta Crédito</p>
