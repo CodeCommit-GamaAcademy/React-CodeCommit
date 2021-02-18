@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {FaArrowRight} from 'react-icons/fa';
   
 import { Container, TextContainer, Button, LogoGama, CardLeft, CardRight, FormInput, FormHomeTitle,
@@ -11,6 +12,8 @@ import Landing3 from '../../assets/landing-3.png';
 
 
 const Landing: React.FC = () => {
+  const history = useHistory();
+
   return (
     <>
     <Container>
@@ -20,7 +23,7 @@ const Landing: React.FC = () => {
           <p>Gama Bank é um projeto de nossos alunos.
           <span> Já tem conta?</span></p>
         </TextContainer>
-          <Button>Acessar <FaArrowRight /></Button>
+          <Button onClick={() => history.push('/login')}>Acessar <FaArrowRight /></Button>
       </CardLeft>
 
       <CardRight> 
