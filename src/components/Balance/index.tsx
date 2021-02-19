@@ -31,13 +31,16 @@ const Balance: React.FC<AccountProps> = ( props ) => {
       banco: 0,
       credito: 0,
     });
-    contaBanco?.lancamentos.map( lancamento => {
+    contaBanco?.lancamentos.forEach( lancamento => {
+
       setTotalTransactions({
         ...totalTransactions,
         banco: totalTransactions.banco += lancamento.valor
       });
     });
-    contaCredito?.lancamentos.map( lancamento => {
+
+    contaCredito?.lancamentos.forEach( lancamento => {
+
       setTotalTransactions({
         ...totalTransactions,
         credito: totalTransactions.credito += lancamento.valor
