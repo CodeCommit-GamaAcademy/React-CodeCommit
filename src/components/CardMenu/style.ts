@@ -19,4 +19,8 @@ export const CardItem = styled.div`
     span {
         font-size: 12px;
     }
+
+    :hover {
+        cursor: pointer;
+    }
 `
