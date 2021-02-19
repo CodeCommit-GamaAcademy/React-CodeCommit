@@ -7,6 +7,7 @@ export const BalanceItem = styled.div`
   border-radius: 8px;
   margin-right: 50px;
   margin-left: 50px;
+  margin-top: 20px;
 
   .title {
     margin-top: 10px;
@@ -56,6 +57,11 @@ export const BalanceItem = styled.div`
     h3 {
       color: #68DE5A;
     }
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-top: 20px;
+    width: 100%;
   }
 `
 

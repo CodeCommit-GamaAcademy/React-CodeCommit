@@ -7,6 +7,7 @@ export const ExtractContainer = styled.div`
     margin-top: 35px;
     padding: 30px 20px;
     width: 700px;
+    overflow-y: auto;
 
     .title-container {
         margin-bottom: 15px;
@@ -31,6 +32,10 @@ export const ExtractContainer = styled.div`
         font-weight: 400;
         margin-bottom: 5px;
         margin-left: 25px;
+    }
+
+    @media screen and (max-width: 900px) {
+        width: 100%;
     }
 `
 
