@@ -1,13 +1,7 @@
 import { UserData } from "./types";
 import jwt from 'jsonwebtoken';
 
-interface TokenPayload {
-    sub: string;
-    idUsuario: number;
-    authorities: string[];
-    iat: number;
-    exp: number;
-}
+import { TokenPayload } from '../../types/user';
 
 const getInitialState = (): UserData | null => {
     const localToken = localStorage.getItem('@token_user');
