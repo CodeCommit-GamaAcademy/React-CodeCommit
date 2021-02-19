@@ -66,7 +66,7 @@ const Dashboard: React.FC = () => {
         {/* Componente para planos */}  
         {actual.componentName === 'Planos' && actual.isActual && <Plans func={changeComponent}></Plans>}
         {/* Componente para transações */}  
-        {actual.componentName === 'Transações' && actual.isActual && <Transactions func={changeComponent}></Transactions>}
+        {actual.componentName === 'Transações' && actual.isActual && <Transactions></Transactions>}
       </DashMain>
     </DashBoard>
   );

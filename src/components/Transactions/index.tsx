@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { TransactionsContainer } from './style';
-import { FiArrowLeft } from 'react-icons/fi';
 import { Conta, Lancamento } from '../../types/dash-board';
 import Balance from '../Balance';
 import Extract from '../Extract';
-
-interface TransactionsProps {
-  func: Function;
-}
 
 interface Contas {
   contaBanco: Conta,
   contaCredito: Conta,
 }
 
-const Transactions: React.FC<TransactionsProps> = ( props ) => {
+const Transactions: React.FC = () => {
 
   const [ contas, setContas ] = useState<Contas>();
   const [loaded, setLoaded] = useState(false);
@@ -84,7 +79,7 @@ const Transactions: React.FC<TransactionsProps> = ( props ) => {
       {/* Componente para página principal */}
       {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
       {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
-      <FiArrowLeft onClick={() => {props.func('')}}/>
+      {/* <FiArrowLeft onClick={() => {props.func('')}}/> */}
     </TransactionsContainer>
   );
 }
