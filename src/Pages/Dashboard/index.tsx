@@ -82,6 +82,10 @@ const Dashboard: React.FC = () => {
       setLoaded(true);
   }, [ auth ]);
 
+  const hideOrShowInformations = () => {
+    
+  }
+
   return (
     <DashBoard>
       <DashMenu>
@@ -95,7 +99,7 @@ const Dashboard: React.FC = () => {
         <DashNameSection>
           <div>
             <p>Olá <strong>Usuário</strong>, seja bem vindo!</p>
-            <img src={eyeIcon} alt="hide informations"/>
+            <img onClick={hideOrShowInformations} src={eyeIcon} alt="hide informations"/>
           </div>
         </DashNameSection>
         {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
