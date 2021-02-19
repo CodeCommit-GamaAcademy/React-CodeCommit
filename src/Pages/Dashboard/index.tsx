@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Balance from '../../components/Balance';
-import { Prompt, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { DashMenu, DashBoard, DashMain } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
 import Extract from '../../components/Extract';
@@ -16,8 +16,14 @@ interface Contas {
   contaCredito: Conta,
 }
 
+interface Actual {
+  componentName: string,
+  isActual: boolean,
+}
+
 const Dashboard: React.FC = () => {
   const [ contas, setContas ] = useState<Contas>();
+  const [ actual, setActual ] = useState<Actual>();
   const auth = localStorage.getItem('@token_user');
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
@@ -85,20 +91,23 @@ const Dashboard: React.FC = () => {
       setLoaded(true);
   }, [ auth ]);
 
+  const changeComponent = (title: string) => {
+    
+  }
+
   return (
     <DashBoard>
       <DashMenu>
         <img className="logo" src={gamaIcon} alt="Gama icon"/>
-        <CardMenu title = 'Depósitos'/>
-        <CardMenu title = 'Planos'/>
-        <CardMenu title = 'Pagamentos'/>
-        <CardMenu title = 'Transações'/>
+        <CardMenu title = 'Depósitos' func={changeComponent}/>
+        <CardMenu title = 'Planos' func={changeComponent}/>
+        <CardMenu title = 'Pagamentos' func={changeComponent}/>
+        <CardMenu title = 'Transações' func={changeComponent}/>
         <div className='exit'>
           <FiExternalLink onClick={ exit }/>
         </div>
       </DashMenu>
       <DashMain>
-        
         {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
         {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
       </DashMain>
