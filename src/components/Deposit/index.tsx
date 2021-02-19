@@ -13,7 +13,7 @@ const Deposit: React.FC<DepositProps> = ( props ) => {
   return (
     <DepositContainer>
       <p>Realize seu depósito</p>
-      <form action="">
+      <form>
         <label>
           <input type="date" name=""/>
           <hr/>
@@ -26,7 +26,7 @@ const Deposit: React.FC<DepositProps> = ( props ) => {
           <input type="text" name="" placeholder="Qual o valor da sua transferência?"/>
           <hr/>
         </label>
-        <button>
+        <button type="submit">
           <div>
             <p>Trasferir agora</p>
             <FiArrowRight />
