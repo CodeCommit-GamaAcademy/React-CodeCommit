@@ -11,6 +11,19 @@ export const DashMenu = styled.nav`
   justify-content: flex-start;
   width: 120px;
 
+  .exit {
+    border-radius: 50%;
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    transition: 1s;
+    :hover {
+      background: white;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
   .logo {
     width: 90px;
     height: 90px;
@@ -41,34 +54,6 @@ export const DashMenu = styled.nav`
     .logo {
       display: none;
     }
-  }
-`
-
-export const DashNameSection = styled.div`
-  color: white;
-  display: flex;
-  align-self: center;
-  justify-content: space-evenly;
-  margin: 20px 0;
-  margin-top: 40px;
-  width: 695px;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    img {
-      background: #68DE5A;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      padding: 8px;
-    };
-  }
-
-  @media screen and (max-width: 900px){
-    width: 100%;
   }
 `
 
