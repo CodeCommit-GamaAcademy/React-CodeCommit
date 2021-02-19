@@ -28,6 +28,9 @@ export const DashMenu = styled.nav`
     width: 90px;
     height: 90px;
     margin-top: 10px;
+    :hover {
+      cursor: pointer;
+    }
   }
 
   @media screen and (max-width: 900px) {
