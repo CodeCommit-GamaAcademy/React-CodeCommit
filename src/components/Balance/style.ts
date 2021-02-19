@@ -33,7 +33,6 @@ export const BalanceItem = styled.div`
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: #8C52E5;
     @keyframes glow {
       from {
         background: #68DE5A;
@@ -41,7 +40,7 @@ export const BalanceItem = styled.div`
       to {
         background: #8C52E5;
       }
-}
+    }
     animation: glow 2s infinite alternate;
   }
 
