@@ -11,9 +11,7 @@ interface ExtractData {
 }
 
 const Extract: React.FC<ExtractData> = ( props ) => {
-    const [ allLauchs, setAllLaunchs ] = useState( () => {
-        console.log(props);
-        
+    const [ allLauchs, setAllLaunchs ] = useState( () => {      
         if (props.contaBanco?.lancamentos && props.contaCredito?.lancamentos) {
             return [...props.contaBanco.lancamentos, ...props.contaCredito.lancamentos]
         }else {
