@@ -68,6 +68,7 @@ export const DashMain = styled.main`
   width: 100%;
   margin-left: 120px;
   margin-right: 50px;
+  margin-bottom: 100px;
 
   @media screen and (max-width: 900px){
     width: 100%;
