@@ -14,8 +14,8 @@ export const DashMenu = styled.nav`
   .exit {
     border-radius: 50%;
     padding: 5px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     transition: 1s;
     :hover {
       background: white;
@@ -37,6 +37,7 @@ export const DashMenu = styled.nav`
     height: 85px;
     width: 100%;
     bottom: 0;
+    
     div {
       width: 15%;
       height: 50%;
