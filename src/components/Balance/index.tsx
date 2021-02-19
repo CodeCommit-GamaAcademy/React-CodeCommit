@@ -25,7 +25,7 @@ const Balance: React.FC<AccountProps> = ( props ) => {
     credito: 0,
   });
   const [ user, setUser ] = useState<FilteredUser>();
-  const [ hide, setHide] = useState(false);
+  const [ hide, setHide] = useState(true);
 
   useEffect ( () => {
     const localUserBodyString: FilteredUser = JSON.parse(localStorage.getItem('@user_body') || '');
@@ -33,8 +33,6 @@ const Balance: React.FC<AccountProps> = ( props ) => {
   }, [])
 
   useEffect( () => {
-    console.log(props);
-    
     setContaBanco(props.contaBanco);
     setContaCredito(props.contaCredito);
     setTotalTransactions({
@@ -42,7 +40,6 @@ const Balance: React.FC<AccountProps> = ( props ) => {
       credito: 0,
     });
     contaBanco?.lancamentos.forEach( lancamento => {
-
       setTotalTransactions({
         ...totalTransactions,
         banco: totalTransactions.banco += lancamento.valor
@@ -50,13 +47,12 @@ const Balance: React.FC<AccountProps> = ( props ) => {
     });
 
     contaCredito?.lancamentos.forEach( lancamento => {
-
       setTotalTransactions({
         ...totalTransactions,
         credito: totalTransactions.credito += lancamento.valor
       });
     })
-  }, [])
+  }, [ user ])
 
   const hideOrShowInformations = () => {
     setHide(!hide);
@@ -68,7 +64,7 @@ const Balance: React.FC<AccountProps> = ( props ) => {
       <div>
         <p>Olá <strong>{user?.usuario.nome.split(' ')[0]}</strong>, seja bem vindo!</p>
         <div>
-          {hide?<FiEye size={40} onClick={hideOrShowInformations}/>:<FiEyeOff size={40} onClick={hideOrShowInformations}/>}
+          {hide?<FiEye size={35} onClick={hideOrShowInformations}/>:<FiEyeOff size={35} onClick={hideOrShowInformations}/>}
         </div>
       </div>
     </DashNameSection>
