@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BalanceContainer, BalanceItem } from './style';
 import currentIcon from '../svgs/current-icon.svg';
 import creditIcon from '../svgs/credit-card-icon.svg';
@@ -60,7 +60,7 @@ const Balance: React.FC = () => {
     credito: 0,
   })
 
-  const setTotals = () => {
+  const setTotals = useCallback(() => {
     setTotalTransactions({
       banco: 0,
       credito: 0,
@@ -77,13 +77,11 @@ const Balance: React.FC = () => {
         credito: totalTransactions.credito += lancamento.valor
       });
     })
-  }
+  }, [ contaBanco.lancamentos, contaCredito.lancamentos, totalTransactions ]);
   
   useEffect( () => {
     setTotals();
-    console.log(totalTransactions);
-    
-  }, [ contaCredito, contaBanco ])
+  }, [  ])
 
   return (
     <BalanceContainer>
