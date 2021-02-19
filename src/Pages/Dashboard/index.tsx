@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Balance from '../../components/Balance';
-import { DashMenu, DashBoard, DashMain, DashNameSection } from './style';
+import { Prompt, useHistory } from 'react-router-dom';
+import { DashMenu, DashBoard, DashMain } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
-import eyeIcon from '../../assets/svgs/eye-icon.svg';
 import Extract from '../../components/Extract';
 import CardMenu from '../../components/CardMenu';
-import api from '../../services/api';
+import { FiExternalLink } from 'react-icons/fi';
+// import api from '../../services/api';
 import { Conta, Lancamento } from '../../types/dash-board';
 
 // import { Container } from './styles';
@@ -19,7 +20,11 @@ const Dashboard: React.FC = () => {
   const [ contas, setContas ] = useState<Contas>();
   const auth = localStorage.getItem('@token_user');
   const [loaded, setLoaded] = useState(false);
+  const history = useHistory();
   
+  const exit = () => {
+    history.push('/login');
+  }
   //Setting data accounts;
   useEffect( ()=> {
     // api.get<Contas>('/dashboard?fim=2021-02-18&inicio=2021-01-01&login=gabrielggpm', {
@@ -76,15 +81,9 @@ const Dashboard: React.FC = () => {
         }
       }
 
-      console.log( refactoredData );
-
       setContas(refactoredData);
       setLoaded(true);
   }, [ auth ]);
-
-  const hideOrShowInformations = () => {
-    
-  }
 
   return (
     <DashBoard>
@@ -94,14 +93,12 @@ const Dashboard: React.FC = () => {
         <CardMenu title = 'Planos'/>
         <CardMenu title = 'Pagamentos'/>
         <CardMenu title = 'Transações'/>
+        <div className='exit'>
+          <FiExternalLink onClick={ exit }/>
+        </div>
       </DashMenu>
       <DashMain>
-        <DashNameSection>
-          <div>
-            <p>Olá <strong>Usuário</strong>, seja bem vindo!</p>
-            <img onClick={hideOrShowInformations} src={eyeIcon} alt="hide informations"/>
-          </div>
-        </DashNameSection>
+        
         {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
         {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
       </DashMain>
