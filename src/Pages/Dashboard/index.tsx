@@ -42,9 +42,25 @@ const Dashboard: React.FC = () => {
         },
         valor: 10
       }
+      const transacaoDebito: Lancamento = {
+        tipo: 'teste',
+        conta: 1,
+        data: 'teste',
+        descricao: 'teste',
+        id: 1,
+        planoConta: {
+          descricao: 'teste',
+          id: 1,
+          login: 'teste',
+          padrao: false,
+          tipoMovimento: 'R'
+        },
+        valor: 10
+      }
 
       const INITIAL_LAUNCHS = [
-        transacaoCredito
+        transacaoCredito,
+        transacaoDebito
       ]
 
       const refactoredData: Contas = {
