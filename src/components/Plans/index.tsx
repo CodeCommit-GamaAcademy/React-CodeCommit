@@ -1,6 +1,5 @@
 import React from 'react';
 import { PlansContainer, CardPlans } from './style';
-import { FiArrowLeft } from 'react-icons/fi';
 
 interface PlansProps {
   func: Function;
@@ -9,8 +8,6 @@ interface PlansProps {
 const Plans: React.FC<PlansProps> = ( props ) => {
   return (
     <>
-      <FiArrowLeft onClick={() => {props.func('')}}/>
-      <p>Planos</p>
       <PlansContainer>
         <CardPlans>
           <p className="title-card">Receitas</p>
