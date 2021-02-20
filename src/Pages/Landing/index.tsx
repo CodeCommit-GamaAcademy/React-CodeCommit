@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import {
   Container, Button,
-  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, Form, FormHomeTitle, FormInput, HomeFormButton,
+  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, Form, FormHomeTitle, HomeFormButton,
   SectionAbout, SectionAboutContainer, SectionAboutContent, SectionAboutContentLeft, SectionAboutContentRight,
   SectionAnnuity, SectionAnnuityContent, SectionAnnuityContentLeft, SectionAnnuityContentRight,
   SectionBannerInfo, SectionBannerInfoContent, SectionBannerInfoText,
@@ -14,6 +14,7 @@ import {
 import ImgCellPhone from '../../assets/landing-3.png';
 import api from '../../services/api';
 import Header from '../../components/Header';
+import Input from '../../components/Input';
 import getIsAuth from '../../services/getIsAuth';
 import { maskCPF, removeMaskCPF } from '../../utils/mask';
 import Loader from '../../components/Loader';
@@ -98,11 +99,11 @@ const Landing: React.FC = () => {
             <MainBannerContentRight>
               <Form onSubmit={handleSubmit}>
                 <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
-                <FormInput maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
-                <FormInput onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
-                <FormInput onChange={e => setName(e.target.value)} placeholder="Nome completo" />
-                <FormInput type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
-                <FormInput type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
+                <Input maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
+                <Input value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
+                <Input value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
+                <Input value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
+                <Input value={confirmPassword} type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
                 {loading ? <Loader /> : <HomeFormButton> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
               </Form>
             </MainBannerContentRight>
