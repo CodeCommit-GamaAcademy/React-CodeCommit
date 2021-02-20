@@ -9,15 +9,18 @@ import Header from '../../components/Header';
 import api from '../../services/api';
 import { UserResponse } from '../../types/user';
 import updateReduxState from '../../services/updateReduxState';
+import Loader from '../../components/Loader';
 
 const Login: React.FC = () => {
   const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     // Validation
     // TODO
@@ -40,6 +43,8 @@ const Login: React.FC = () => {
     catch (err) {
       console.log(err);
       history.push('/error');
+    } finally {
+      setLoading(false);
     }
 
   }, [username, password, history]);
@@ -54,12 +59,13 @@ const Login: React.FC = () => {
           <FormInput value={username} onChange={e => setUsername(e.target.value)} placeholder="Digite seu usuário" />
           <FormInput value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" type="password" />
 
-          <Button
+          {loading ? <Loader /> : <Button
             type="submit"
             text="Continuar"
             Icon={FaArrowRight}
             className="form-button"
           />
+          }
 
           <Link to="/recover">Esqueci minha senha</Link>
           <Link to="/">Ainda não sou cliente</Link>

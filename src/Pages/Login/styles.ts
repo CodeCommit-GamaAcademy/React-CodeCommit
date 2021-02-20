@@ -18,6 +18,10 @@ export const Form = styled.form`
 
   animation: 0.6s forwards toRight;
 
+  .loader {
+    margin: 44px auto !important;
+  }
+
   a {
     color: #8c52e5;
     font-size: 13px;
