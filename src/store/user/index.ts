@@ -6,7 +6,7 @@ const reducer: Reducer<UserData | null> = ( state = INITIAL_STATE, action ) => {
     switch ( action.type ) {
         case UserActions.SET_USER:
             const userPayload = action.payload as UserData;
-
+            
             return userPayload;
 
         case UserActions.REMOVE_USER:
