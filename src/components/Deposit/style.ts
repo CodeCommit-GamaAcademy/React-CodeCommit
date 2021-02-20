@@ -3,22 +3,21 @@ import styled from 'styled-components';
 export const DepositContainer = styled.div`
   background: #FBFBFB;
   padding: 20px;
-  width: 700px;
+  width: 80%;
   border-radius: 8px;
   height: 400px;
-  margin-top: 80px;
+  margin-top: 70px;
 
   button {
     background: white;
     border-radius: 20px;
-    border: 1px solid #8C52E5;
+    border: 2px solid #8C52E5;
 
     div {
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: #8C52E5;
-      height: 35px;
       padding: 10px;
 
       p {
