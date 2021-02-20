@@ -20,7 +20,7 @@ const Error: React.FC = () => {
             <Container>
                 <Content>
                     <FiAlertTriangle className="icon" size={102} />
-                    <h3>Oops, algo deu errado! Confime seus dados e tente novamente!</h3>
+                    <h3>Oops, algo deu errado!</h3>
                     <Button text="Voltar" Icon={FaArrowLeft} onClick={handleGoBack} />
                 </Content>
             </Container>
