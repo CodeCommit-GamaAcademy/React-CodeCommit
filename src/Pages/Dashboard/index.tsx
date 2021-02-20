@@ -28,28 +28,16 @@ const Dashboard: React.FC = () => {
 
 
   const changeComponent = (title: string) => {
-    if (title === '') {
-      setActual({
-        componentName: '',
-        isActual: true,
-      });  
-    }else {
-      setActual({
-        componentName: title,
-        isActual: true,
-      });
-    }
+    setActual({
+      componentName: title,
+      isActual: true,
+    });
   }
 
   return (
     <DashBoard>
       <DashMenu>
-        <img onClick={()=> {
-          setActual({
-            componentName: '',
-            isActual: true,
-          })
-        }} className="logo" src={gamaIcon} alt="Gama icon"/>
+        <img className="logo" src={gamaIcon} alt="Gama icon"/>
         <CardMenu title = 'Depósitos' func={changeComponent}/>
         <CardMenu title = 'Planos' func={changeComponent}/>
         <CardMenu title = 'Pagamentos' func={changeComponent}/>
