@@ -14,6 +14,8 @@ export const checkIsAuth = () => {
 
     if ( expSeconds < nowSeconds ) {
         localStorage.removeItem('@token_user');
+        localStorage.removeItem('@user_name');
+        
         window.location.reload();
 
         return false;

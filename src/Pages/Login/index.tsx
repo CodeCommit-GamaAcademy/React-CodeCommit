@@ -31,6 +31,7 @@ const Login: React.FC = () => {
       if (status !== 200) throw new Error('Something went wrong with request');
 
       localStorage.setItem('@token_user', response.token);
+      localStorage.setItem('@user_name', response.usuario.nome);
 
       history.push('/dashboard');
     }
