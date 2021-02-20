@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
   const history = useHistory();
   
   const exit = () => {
-    history.push('/login');
+    history.push('/');
   }
   //Setting data accounts;
 
