@@ -3,8 +3,11 @@ import { BalanceContainer, BalanceItem, DashNameSection } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditIcon from '../../assets/svgs/credit-card-icon.svg';
 import { Conta } from '../../types/dash-board';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
 import {FilteredUser} from '../../types/user';
+import UserHub from '../UserHub';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { ApplicationStore } from '../../store';
+import { useSelector } from 'react-redux';
 
 
 interface Total {
@@ -24,12 +27,13 @@ const Balance: React.FC<AccountProps> = ( props ) => {
     banco: 0,
     credito: 0,
   });
-  const [ user, setUser ] = useState<FilteredUser>();
+  const [ user, setUser ] = useState('');
   const [ hide, setHide] = useState(true);
+  const store = useSelector( (state: ApplicationStore) => state.user );
 
   useEffect ( () => {
-    const localUserBodyString: FilteredUser = JSON.parse(localStorage.getItem('@user_body') || '');
-    setUser(localUserBodyString);
+    if (store)
+      setUser(store.name);
   }, [])
 
   useEffect( () => {
@@ -62,9 +66,9 @@ const Balance: React.FC<AccountProps> = ( props ) => {
     <>
     <DashNameSection>
       <div>
-        <p>Olá <strong>{user?.usuario.nome.split(' ')[0]}</strong>, seja bem vindo!</p>
+        <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem vindo!</p>
         <div>
-          {hide?<FiEye size={35} onClick={hideOrShowInformations}/>:<FiEyeOff size={35} onClick={hideOrShowInformations}/>}
+          {hide?<FiEye size={35} onClick={() => hideOrShowInformations()}/>:<FiEyeOff size={35} onClick={() => hideOrShowInformations()}/>}
         </div>
       </div>
     </DashNameSection>
