@@ -21,4 +21,7 @@ export default createGlobalStyle`
         color: #000;
         text-decoration: none;
     }
-`
+
+    @keyframes toRight { from { opacity: 0; transform: translateX(-30px) } to { opacity: 1; transform: translateX(0px) }
+    }
+`;
