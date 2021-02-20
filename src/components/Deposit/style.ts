@@ -7,24 +7,11 @@ export const DepositContainer = styled.div`
   border-radius: 8px;
   height: 400px;
   margin-top: 70px;
+  padding: 40px 46px;
 
-  button {
-    background: white;
-    border-radius: 20px;
-    border: 2px solid #8C52E5;
-
-    div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #8C52E5;
-      padding: 10px;
-
-      p {
-        font-size: 14px;
-        font-weight: 300;
-      }
-    }
+  p {
+    font-size: 24px;
+    font-weight: 500;
   }
 
   form {
@@ -32,6 +19,7 @@ export const DepositContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     height: 90%;
+    
 
     hr {
       width: 80%;
@@ -46,11 +34,25 @@ export const DepositContainer = styled.div`
       height: 30px;
       
     }
-  }
 
-  p {
-    font-size: 19px;
-    font-weight: 500;
+    button {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #8C52E5;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #8C52E5;
+        padding: 10px;
+
+        p {
+          font-size: 14px;
+          font-weight: 300;
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 900px) {
