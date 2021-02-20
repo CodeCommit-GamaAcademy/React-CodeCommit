@@ -8,4 +8,5 @@ export enum UserActions {
 export interface UserData {
     token: string;
     login: string;
+    name: string;
 }
