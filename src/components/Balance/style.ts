@@ -5,9 +5,6 @@ export const BalanceItem = styled.div`
   width: 300px;
   height: 170px;
   border-radius: 8px;
-  margin-right: 50px;
-  margin-left: 50px;
-  margin-top: 20px;
 
   .title {
     margin-top: 10px;
@@ -76,14 +73,15 @@ export const BalanceItem = styled.div`
 
   @media screen and (max-width: 900px) {
     margin-top: 20px;
-    width: 100%;
+    width: 90%;
   }
 `
 
 export const BalanceContainer = styled.div`
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  width: 70%;
+  justify-content: space-around;
 `
 
 export const DashNameSection = styled.div`

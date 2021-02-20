@@ -7,6 +7,7 @@ export const DashMenu = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  grid-area: menu;
   height: 100vh;
   justify-content: flex-start;
   width: 120px;
@@ -65,20 +66,20 @@ export const DashMain = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
+  grid-area: dash;
   width: 100%;
-  margin-left: 120px;
-  margin-right: 50px;
-  margin-bottom: 20px;
-
-  @media screen and (max-width: 900px){
-    width: 100%;
-    height: 100%;
-    margin: 10px;
-    margin-bottom: 140px;
-  }
+  
 `
 
 export const DashBoard = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-areas: 'main dash';
+  grid-template-columns: 10% 90%;
   width: 100%;
+
+  @media screen and (max-width: 900px){
+    grid-template-areas: 'dash' 'menu';
+    grid-template-columns: 100%;
+    grid-template-rows: 85% 15%;
+  }
 `
