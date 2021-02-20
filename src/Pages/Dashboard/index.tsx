@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { DashMenu, DashBoard, DashMain } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
 import CardMenu from '../../components/CardMenu';
@@ -6,6 +6,8 @@ import Deposit from '../../components/Deposit';
 import Payments from '../../components/Payments';
 import Plans from '../../components/Plans';
 import Transactions from '../../components/Transactions';
+import { useDispatch } from 'react-redux';
+import { remove_user } from '../../store/user/actions';
 
 interface Actual {
   componentName: string,
@@ -20,14 +22,19 @@ const Dashboard: React.FC = () => {
   });
 
   //Setting data accounts;
-
-
+  
+  
   const changeComponent = (title: string) => {
     setActual({
       componentName: title,
       isActual: true,
     });
   }
+  const dispatch = useDispatch();
+
+  const handleLogOut = useCallback(() => {
+    dispatch(remove_user());
+  }, [ dispatch ]);
 
   return (
     <DashBoard>

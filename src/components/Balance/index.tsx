@@ -4,7 +4,6 @@ import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditIcon from '../../assets/svgs/credit-card-icon.svg';
 import { Conta } from '../../types/dash-board';
 import {FilteredUser} from '../../types/user';
-import UserHub from '../UserHub';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { ApplicationStore } from '../../store';
 import { useSelector } from 'react-redux';

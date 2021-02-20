@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useCallback } from 'react';
+import React, { useState, FormEvent, useCallback, useEffect, ChangeEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -15,9 +15,16 @@ import ImgCellPhone from '../../assets/landing-3.png';
 import api from '../../services/api';
 import Header from '../../components/Header';
 import getIsAuth from '../../services/getIsAuth';
+import { maskCPF, removeMaskCPF } from '../../utils/mask';
 
 const Landing: React.FC = () => {
   const [cpf, setCpf] = useState('');
+  const [ cpfMask, setCpfMask ] = useState('');
+
+  useEffect(() => {
+    setCpf( removeMaskCPF( cpfMask ) );
+  }, [ cpfMask ]);
+
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -56,6 +63,14 @@ const Landing: React.FC = () => {
     else history.push('/login');
   }, [ history ]);
 
+  const handleSetCpfMask = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setCpfMask( 
+      maskCPF( 
+        removeMaskCPF( e.target.value )
+      ) 
+    );
+  }, []);
+
   return (
     <>
       <Header />
@@ -74,7 +89,7 @@ const Landing: React.FC = () => {
             <MainBannerContentRight>
               <Form onSubmit={handleSubmit}>
                 <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
-                <FormInput onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF" />
+                <FormInput maxLength={ 14 } value={ cpfMask } onChange={ handleSetCpfMask } placeholder="Digite seu CPF" />
                 <FormInput onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
                 <FormInput onChange={e => setName(e.target.value)} placeholder="Nome completo" />
                 <FormInput type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />

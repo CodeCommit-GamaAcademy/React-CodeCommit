@@ -17,14 +17,16 @@ export const MainBanner = styled.div`
   background-repeat: no-repeat;
 
   opacity: 0;
-  animation: 0.3s forwards animationBg;
-  animation-delay: 0.2s;
-  @keyframes animationBg {
+  animation: 0.6s forwards animationBanner;
+  animation-delay: 0.3s;
+
+  @keyframes animationBanner {
     from {
-      opacity: 0;
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
+      transform: translateY(0px);
     }
   }
 
@@ -56,7 +58,7 @@ export const MainBannerContent = styled.div`
 
 export const MainBannerContentLeft = styled.div`
   animation: 0.6s forwards toRight;
-  animation-delay: 0.4s;
+  animation-delay: 0.6s;
   opacity: 0;
 
   @media (max-width: 680px) {
@@ -78,7 +80,7 @@ export const MainBannerContentLeft = styled.div`
 
 export const MainBannerContentRight = styled.div`
   animation: 0.6s forwards toRight;
-  animation-delay: 0.2s;
+  animation-delay: 0.8s;
   opacity: 0;
 
   @media (max-width: 680px) {
