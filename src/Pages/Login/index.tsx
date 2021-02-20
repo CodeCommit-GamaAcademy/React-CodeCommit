@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 
 import api from '../../services/api';
 import { UserResponse } from '../../types/user';
+import updateReduxState from '../../services/updateReduxState';
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -32,6 +33,7 @@ const Login: React.FC = () => {
 
       localStorage.setItem('@token_user', response.token);
       localStorage.setItem('@user_name', response.usuario.nome);
+      updateReduxState();
 
       history.push('/dashboard');
     }
