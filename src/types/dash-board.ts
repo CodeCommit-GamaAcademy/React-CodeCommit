@@ -21,3 +21,8 @@ export interface Plano {
   padrao: boolean,
   tipoMovimento: string,
 }
+
+export interface Contas {
+  contaBanco: Conta,
+  contaCredito: Conta,
+}
