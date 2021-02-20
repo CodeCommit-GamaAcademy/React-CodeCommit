@@ -5,9 +5,10 @@ import { TokenPayload } from '../../types/user';
 
 const getInitialState = (): UserData | null => {
     const localToken = localStorage.getItem('@token_user');
+    const localUserName = localStorage.getItem('@user_name');
 
     // Usuário deslogado
-    if ( !localToken ) return null;
+    if ( !localToken || !localUserName ) return null;
 
     // Usuário Logado
     const filteredToken = localToken.split(' ')[1];
@@ -15,7 +16,8 @@ const getInitialState = (): UserData | null => {
     
     const storeData: UserData =  {
         login: decodedToken.sub,
-        token: localToken
+        token: localToken,
+        name: localUserName
     }
 
     return storeData;

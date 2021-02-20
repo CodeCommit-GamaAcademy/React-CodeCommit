@@ -16,15 +16,13 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 import getIsAuth from '../../services/getIsAuth';
 
-
 const Landing: React.FC = () => {
   const [cpf, setCpf] = useState('');
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const history = useHistory()
-
+  const history = useHistory();
 
   const handleSubmit = useCallback(async (e: FormEvent) => {
     e.preventDefault();
@@ -50,6 +48,7 @@ const Landing: React.FC = () => {
     }
   }, [cpf, username, name, password, history, confirmPassword]);
 
+  // Check if user is authenticated
   const handleRedirectToLogin = useCallback(() => {
     const isAuth = getIsAuth();
 
