@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { DashMenu, DashBoard, DashMain } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
 import CardMenu from '../../components/CardMenu';
-import { FiExternalLink } from 'react-icons/fi';
 import Deposit from '../../components/Deposit';
 import Payments from '../../components/Payments';
 import Plans from '../../components/Plans';
@@ -15,15 +13,12 @@ interface Actual {
 }
 
 const Dashboard: React.FC = () => {
+  
   const [ actual, setActual ] = useState<Actual>({
     componentName: '',
     isActual: true,
   });
-  const history = useHistory();
-  
-  const exit = () => {
-    history.push('/');
-  }
+
   //Setting data accounts;
 
 
@@ -42,9 +37,6 @@ const Dashboard: React.FC = () => {
         <CardMenu title = 'Planos' func={changeComponent}/>
         <CardMenu title = 'Pagamentos' func={changeComponent}/>
         <CardMenu title = 'Transações' func={changeComponent}/>
-        <div className='exit'>
-          <FiExternalLink onClick={ exit }/>
-        </div>
       </DashMenu>
       <DashMain>
         {/* Componente para depósitos */}
