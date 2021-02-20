@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { TransactionsContainer } from './style';
-import { Conta, Lancamento } from '../../types/dash-board';
+import { Contas, Lancamento } from '../../types/dash-board';
 import Balance from '../Balance';
 import Extract from '../Extract';
-
-interface Contas {
-  contaBanco: Conta,
-  contaCredito: Conta,
-}
 
 const Transactions: React.FC = () => {
 
@@ -16,11 +11,7 @@ const Transactions: React.FC = () => {
   const auth = localStorage.getItem('@token_user');
 
   useEffect( ()=> {
-    // api.get<Contas>('/dashboard?fim=2021-02-18&inicio=2021-01-01&login=gabrielggpm', {
-    //   headers: {Authorization: auth}
-    // }).then( (resp) => {
-      
-    // });
+
     const transacaoCredito: Lancamento = {
       tipo: 'teste',
       conta: 1,
