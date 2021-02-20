@@ -4,7 +4,7 @@ import { remove_user, set_user } from '../store/user/actions';
 
 import { TokenPayload } from '../types/user';
 
-const updateState = () => {
+const updateReduxState = () => {
     const localToken = localStorage.getItem('@token_user');
     const localName = localStorage.getItem('@user_name');
 
@@ -23,4 +23,4 @@ const updateState = () => {
     }));
 }
 
-export default updateState;
+export default updateReduxState;
