@@ -1,12 +1,33 @@
+import jwt from 'jsonwebtoken';
+
+import { TokenPayload } from '../types/user';
 // Estratégia para ver se o token ainda é valido // TODO
-const validateToken = () => true;
+export const checkIsAuth = () => {
+    const localToken = localStorage.getItem('@token_user');
+    if ( !localToken ) return false;
+
+    const onlyToken = localToken.split(' ')[1];
+    const tokenPayload = jwt.decode( onlyToken ) as TokenPayload;
+    
+    const expSeconds = tokenPayload.exp;
+    const nowSeconds = Date.now() / 1000;
+
+    if ( expSeconds < nowSeconds ) {
+        localStorage.removeItem('@token_user');
+        window.location.reload();
+
+        return false;
+    }
+
+    return true;
+}
 
 
 // Verificação
 const getIsAuth = () => {
     const localToken = localStorage.getItem('@token_user');
     
-    if ( localToken && validateToken() ) return true;
+    if ( localToken && checkIsAuth() ) return true;
     
     return false;
 }

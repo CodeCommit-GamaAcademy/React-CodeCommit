@@ -14,6 +14,7 @@ import {
 import ImgCellPhone from '../../assets/landing-3.png';
 import api from '../../services/api';
 import Header from '../../components/Header';
+import getIsAuth from '../../services/getIsAuth';
 
 
 const Landing: React.FC = () => {
@@ -49,6 +50,13 @@ const Landing: React.FC = () => {
     }
   }, [cpf, username, name, password, history, confirmPassword]);
 
+  const handleRedirectToLogin = useCallback(() => {
+    const isAuth = getIsAuth();
+
+    if ( isAuth ) history.push('/dashboard');
+    else history.push('/login');
+  }, [ history ]);
+
   return (
     <>
       <Header />
@@ -61,7 +69,7 @@ const Landing: React.FC = () => {
                 <p>Gama Bank é um projeto de nossos alunos.
                 <span> Já tem conta?</span></p>
               </MainBannerContentText>
-              <Button onClick={() => history.push('/login')}>Acessar <FaArrowRight /></Button>
+              <Button onClick={handleRedirectToLogin}>Acessar <FaArrowRight /></Button>
             </MainBannerContentLeft>
 
             <MainBannerContentRight>

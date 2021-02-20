@@ -8,7 +8,6 @@ import Header from '../../components/Header';
 
 import api from '../../services/api';
 import { UserResponse } from '../../types/user';
-import filterUser from '../../utils/filterUser';
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -32,7 +31,6 @@ const Login: React.FC = () => {
       if (status !== 200) throw new Error('Something went wrong with request');
 
       localStorage.setItem('@token_user', response.token);
-      localStorage.setItem('@user_body', JSON.stringify(filterUser(response)));
 
       history.push('/dashboard');
     }

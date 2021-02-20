@@ -1,9 +1,9 @@
 import { createStore, Store } from 'redux';
-import { FilteredUser } from '../types/user';
 import rootReducer from './rootReducer';
+import { UserData } from './user/types';
 
 export interface ApplicationStore {
-    user: FilteredUser | undefined
+    user: UserData | null
 }
 
 const store: Store<ApplicationStore> = createStore( rootReducer );

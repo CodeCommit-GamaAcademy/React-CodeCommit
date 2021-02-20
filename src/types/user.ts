@@ -48,3 +48,11 @@ export interface FilteredUser {
     dataInicio: Date,
     usuario: Omit<Omit<User, "senha">, "senhaTemporaria">;
 }
+
+export interface TokenPayload {
+  sub: string;
+  idUsuario: number;
+  authorities: string[];
+  iat: number;
+  exp: number;
+}
