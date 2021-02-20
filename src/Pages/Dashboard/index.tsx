@@ -17,7 +17,7 @@ interface Actual {
 const Dashboard: React.FC = () => {
   
   const [ actual, setActual ] = useState<Actual>({
-    componentName: '',
+    componentName: 'Transações',
     isActual: true,
   });
 
