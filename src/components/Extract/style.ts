@@ -6,7 +6,7 @@ export const ExtractContainer = styled.div`
     height: 300px;
     margin-top: 35px;
     padding: 30px 20px;
-    width: 700px;
+    width: 60%;
     overflow-y: auto;
 
     .title-container {
@@ -73,5 +73,9 @@ export const ExtractItem = styled.div`
     .date {
         font-size: 12px;
         justify-self: center;
+    }
+
+    @media screen and (max-width: 900px){
+        grid-template-columns: 15% 60% 20%;
     }
 `

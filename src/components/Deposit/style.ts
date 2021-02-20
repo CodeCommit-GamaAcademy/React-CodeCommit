@@ -56,7 +56,7 @@ export const DepositContainer = styled.div`
   }
 
   @media screen and (max-width: 900px) {
-    width: 100%;
+    width: 90%;
     margin-top: 50px;
     p {
       font-size: 14px;

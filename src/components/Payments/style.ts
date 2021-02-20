@@ -3,10 +3,17 @@ import styled from 'styled-components';
 export const PaymentsContainer = styled.div`
     background: #fff;
     border-radius: 8px;
-    height: 450px;
-    margin: 70px 55px 0;
-    width: 80%;
+    width: 70%;
 
+    @media screen and (max-width: 900px) {
+        margin-top: 50px;
+        width: 90%;
+
+        p {
+        font-size: 14px;
+        font-weight: 500;
+        }
+    }
 `
 
 export const Form = styled.form`
@@ -17,6 +24,10 @@ export const Form = styled.form`
     p {
         font-size: 24px;
         font-weight: 500;
+    }
+
+    @media screen and (max-width: 900px) {
+        height: 100%
     }
 `;
 
@@ -45,7 +56,7 @@ export const Button = styled.button`
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
-    margin: 38px 0;
+    margin-top: 38px;
     transition: .3s;
     padding: 15px 40px;
     width: 100%;
