@@ -11,10 +11,7 @@ interface PaymentsProps {
 const Payments: React.FC<PaymentsProps> = ( props ) => {
   return (
     <>
-      <FiArrowLeft onClick={() => {props.func('')}}/>
-      <p>Pagamentos</p>
       <PaymentsContainer>
-
         <Form>
           <p>
             Informe os dados para realizar sua transferência
