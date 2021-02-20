@@ -32,12 +32,21 @@ export const DashNameSection = styled.div`
     width: 100%;
     align-items: center;
     flex-wrap: wrap;
-    img {
-      background: #68DE5A;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      padding: 8px;
+    .icons {
+
+      
+      img, .icon {
+        color: #8C52E5;
+        background: #68DE5A;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        padding: 8px;
+
+        cursor: pointer;
+
+        margin-left: 12px;
+      };
     };
   }
 `
