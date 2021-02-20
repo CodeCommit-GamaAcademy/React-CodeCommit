@@ -29,7 +29,7 @@ const Deposit: React.FC<DepositProps> = ( props ) => {
         <button type="submit">
           <div>
             <p>Trasferir agora</p>
-            <FiArrowRight />
+            <FiArrowRight size={20}/>
           </div>
         </button>
       </form>
