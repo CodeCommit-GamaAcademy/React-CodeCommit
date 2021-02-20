@@ -9,22 +9,17 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.section`
-  background: #fbfbfb;
-
-  padding: 48px;
-
+  background: #fff;
+  padding: 40px 46px;
   width: 455px;
   min-height: 422px;
-
   border-radius: 8px;
-
   animation: 0.6s forwards toRight;
 
   .icon {
     width: 100%;
     text-align: center;
     color: #8c52e5;
-
     margin: 25px 0;
   }
 
@@ -41,18 +36,13 @@ export const Content = styled.section`
 
   button {
     margin-top: 30px;
-
     background: #68de5a;
     border: none;
     border-radius: 20px;
     width: 100%;
-
-    padding: 8px 40px;
-
     color: #fff;
     font-size: 16px;
     font-weight: 500;
-
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -101,6 +101,10 @@ export const Form = styled.form`
     margin-top: 32px;
     width: 100%;
   }
+
+  .loader {
+    margin: 30px auto 12px !important;
+  }
 `;
 
 export const MainBannerContentText = styled.div`
