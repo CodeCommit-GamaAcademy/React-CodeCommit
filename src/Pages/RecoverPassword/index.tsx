@@ -56,9 +56,9 @@ const RecoverPassword: React.FC = () => {
                     <FormDescription>Confirme seu Nome de usuário e escolha uma nova senha</FormDescription>
 
                     <InputFields>
-                        <Input type="text" onChange={e => setUsername(e.target.value)} placeholder="Confirme seu nome de usuário" />
-                        <Input type="text" onChange={e => setPassword(e.target.value)} placeholder="Digite sua nova senha" />
-                        <Input type="text" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua nova senha" />
+                        <Input value={username} onChange={e => setUsername(e.target.value)} placeholder="Confirme seu nome de usuário" />
+                        <Input value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua nova senha" />
+                        <Input value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua nova senha" />
                     </InputFields>
 
                     {loading ? <Loader /> : <Button
