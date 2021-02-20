@@ -2,7 +2,7 @@ import React, { FormEvent, useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa'
 
-import { Container, Form, FormTitle, FormInput } from './styles';
+import { Container, Form, FormTitle } from './styles';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 
@@ -10,6 +10,7 @@ import api from '../../services/api';
 import { UserResponse } from '../../types/user';
 import updateReduxState from '../../services/updateReduxState';
 import Loader from '../../components/Loader';
+import Input from '../../components/Input';
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -56,8 +57,8 @@ const Login: React.FC = () => {
         <Form onSubmit={handleSubmit} >
           <FormTitle>Faça o login</FormTitle>
 
-          <FormInput value={username} onChange={e => setUsername(e.target.value)} placeholder="Digite seu usuário" />
-          <FormInput value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" type="password" />
+          <Input value={username} onChange={e => setUsername(e.target.value)} placeholder="Digite seu usuário" />
+          <Input value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" type="password" />
 
           {loading ? <Loader /> : <Button
             type="submit"

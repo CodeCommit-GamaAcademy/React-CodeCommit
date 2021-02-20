@@ -18,10 +18,6 @@ export const Form = styled.form`
 
   animation: 0.6s forwards toRight;
 
-  .loader {
-    margin: 44px auto !important;
-  }
-
   a {
     color: #8c52e5;
     font-size: 13px;
@@ -38,6 +34,14 @@ export const Form = styled.form`
     & + a {
       margin-top: 10px;
     }
+  }
+
+  input {
+    margin-top: 50px;
+  }
+
+  .loader {
+    margin: 44px auto !important;
   }
 
   .form-button {
