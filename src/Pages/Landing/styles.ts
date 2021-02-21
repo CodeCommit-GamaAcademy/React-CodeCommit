@@ -87,23 +87,23 @@ export const MainBannerContentRight = styled.div`
     margin-bottom: 50%;
     width: 100%;
   }
-`;
 
-export const Form = styled.form`
-  width: 350px;
-  max-width: 100%;
-  min-height: 450px;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 40px 46px;
+  form {
+    width: 350px;
+    max-width: 100%;
+    min-height: 450px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px 46px;
 
-  @media (max-width: 680px) {
-    margin-top: 32px;
-    width: 100%;
-  }
+    @media (max-width: 680px) {
+      margin-top: 32px;
+      width: 100%;
+    }
 
-  .loader {
-    margin: 30px auto 12px !important;
+    .loader {
+      margin: 30px auto 12px !important;
+    }
   }
 `;
 

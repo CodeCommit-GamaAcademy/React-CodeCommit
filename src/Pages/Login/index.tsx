@@ -1,8 +1,9 @@
 import React, { FormEvent, useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa';
+import { Form } from '@unform/web';
 
-import { Container, Form, FormTitle } from './styles';
+import { Container, FormTitle } from './styles';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 
@@ -19,8 +20,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(async (data: object) => {
     setLoading(true);
 
     // Validation
@@ -57,8 +57,8 @@ const Login: React.FC = () => {
         <Form onSubmit={handleSubmit} >
           <FormTitle>Faça o login</FormTitle>
 
-          <Input value={username} onChange={e => setUsername(e.target.value)} placeholder="Digite seu usuário" />
-          <Input value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" type="password" />
+          <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Digite seu usuário" />
+          <Input name="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" type="password" />
 
           {loading ? <Loader /> : <Button
             type="submit"

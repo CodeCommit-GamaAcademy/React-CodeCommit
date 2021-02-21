@@ -7,46 +7,46 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 16px;
-`;
 
-export const Form = styled.form`
-  padding: 40px 46px;
-  background: #fff;
-  min-height: 422px;
-  border-radius: 8px;
-  width: 455px;
+  form {
+    padding: 40px 46px;
+    background: #fff;
+    min-height: 422px;
+    border-radius: 8px;
+    width: 455px;
 
-  animation: 0.6s forwards toRight;
+    animation: 0.6s forwards toRight;
 
-  a {
-    color: #8c52e5;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    a {
+      color: #8c52e5;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    &::after {
-      content: '>';
-      display: inline-block;
-      margin-left: 4px;
+      &::after {
+        content: '>';
+        display: inline-block;
+        margin-left: 4px;
+      }
+
+      & + a {
+        margin-top: 10px;
+      }
     }
 
-    & + a {
-      margin-top: 10px;
+    input {
+      margin-top: 50px;
     }
-  }
 
-  input {
-    margin-top: 50px;
-  }
+    .loader {
+      margin: 44px auto !important;
+    }
 
-  .loader {
-    margin: 44px auto !important;
-  }
-
-  .form-button {
-    margin-bottom: 38px;
-    margin-top: 36px;
+    .form-button {
+      margin-bottom: 38px;
+      margin-top: 36px;
+    }
   }
 `;
 

@@ -1,10 +1,11 @@
-import React, { useState, FormEvent, useCallback, useEffect, ChangeEvent } from 'react';
+import React, { useState, useCallback, useEffect, ChangeEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import { Form } from '@unform/web';
 
 import {
   Container, Button,
-  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, Form, FormHomeTitle, HomeFormButton,
+  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, FormHomeTitle, HomeFormButton,
   SectionAbout, SectionAboutContainer, SectionAboutContent, SectionAboutContentLeft, SectionAboutContentRight,
   SectionAnnuity, SectionAnnuityContent, SectionAnnuityContentLeft, SectionAnnuityContentRight,
   SectionBannerInfo, SectionBannerInfoContent, SectionBannerInfoText,
@@ -34,8 +35,7 @@ const Landing: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = useCallback(async (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(async (data: object) => {
     setLoading(true);
 
     try {
@@ -59,11 +59,11 @@ const Landing: React.FC = () => {
         history.push('/error');
       }
     } catch (err) {
-
+      console.log(err);
     } finally {
       setLoading(false);
     }
-  }, [cpf, username, name, password, history, confirmPassword]);
+  }, [cpf, username, name, password, confirmPassword, history]);
 
   // Check if user is authenticated
   const handleRedirectToLogin = useCallback(() => {
@@ -99,12 +99,12 @@ const Landing: React.FC = () => {
             <MainBannerContentRight>
               <Form onSubmit={handleSubmit}>
                 <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
-                <Input maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
-                <Input value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
-                <Input value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
-                <Input value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
-                <Input value={confirmPassword} type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
-                {loading ? <Loader /> : <HomeFormButton> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
+                <Input name="Cpf" maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
+                <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
+                <Input name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
+                <Input name="password" value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
+                <Input name="confirmPassword" value={confirmPassword} type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
+                {loading ? <Loader /> : <HomeFormButton type="submit"> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
               </Form>
             </MainBannerContentRight>
           </MainBannerContent>
