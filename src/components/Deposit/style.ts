@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const DepositContainer = styled.div`
   background: #fff;
   border-radius: 8px;
