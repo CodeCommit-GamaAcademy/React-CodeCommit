@@ -73,7 +73,7 @@ export const BalanceItem = styled.div`
 
   @media screen and (max-width: 900px) {
     margin-top: 20px;
-    width: 90%;
+    width: 120%;
   }
 `
 
