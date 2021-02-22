@@ -31,7 +31,7 @@ const Plans: React.FC = () => {
       <PlansContainer>
         {loaded && plans?.map( (plan) => {
           return ( 
-          <CardPlans>
+          <CardPlans key={plan.id}>
             <p className="title-card">{plan.descricao}</p>
             <p>{plan.login}</p>
             <p className="type-movement">
