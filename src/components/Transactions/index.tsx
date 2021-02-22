@@ -1,74 +1,72 @@
-import React, { useState, useEffect } from 'react';
-import { TransactionsContainer } from './style';
+import React, { useState, useEffect, ChangeEvent, useCallback } from 'react';
+import { TransactionsContainer, MonthConatiner } from './style';
 import { Contas, Lancamento } from '../../types/dash-board';
 import Balance from '../Balance';
 import Extract from '../Extract';
+import api from '../../services/api';
+import { useSelector } from 'react-redux';
+import { ApplicationStore } from '../../store';
 
 const Transactions: React.FC = () => {
 
   const [ contas, setContas ] = useState<Contas>();
-  const [loaded, setLoaded] = useState(false);
-  const auth = localStorage.getItem('@token_user');
+  const [ loaded, setLoaded ] = useState(false);
+  const [ referenceDate, setReferenceDate ] = useState(1);
+  const store = useSelector( (state: ApplicationStore) => state.user );
+
+
+  function formatDate(date:string) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
+  const getDashboardValues = async() => {
+    const date = new Date();
+    const newD = new Date();
+    const newDate = new Date(date.setMonth(date.getMonth()-referenceDate));
+    
+    
+    const dateFormated = (newD.getFullYear() + "-" + ((newD.getMonth() + 1)) + "-" + (newD.getDate() ));
+    const newDateFormated = (newDate.getFullYear() + "-" + ((newDate.getMonth() + 1)) + "-" + (newDate.getDate() ));
+    
+    const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${store?.login}`, {
+      headers: {
+        Authorization: store?.token,
+      }
+    });
+
+    console.log(result.data);
+    setContas(result.data);
+    setLoaded(true);
+  };
 
   useEffect( ()=> {
+    getDashboardValues();
+  }, [ store?.token, referenceDate ]);
 
-    const transacaoCredito: Lancamento = {
-      tipo: 'teste',
-      conta: 1,
-      data: 'teste',
-      descricao: 'teste',
-      id: 1,
-      planoConta: {
-        descricao: 'teste',
-        id: 1,
-        login: 'teste',
-        padrao: false,
-        tipoMovimento: 'R'
-      },
-      valor: 10
-    }
-    const transacaoDebito: Lancamento = {
-      tipo: 'teste',
-      conta: 1,
-      data: 'teste',
-      descricao: 'teste',
-      id: 1,
-      planoConta: {
-        descricao: 'teste',
-        id: 1,
-        login: 'teste',
-        padrao: false,
-        tipoMovimento: 'R'
-      },
-      valor: 10
-    }
-
-    const INITIAL_LAUNCHS = [
-      transacaoCredito,
-      transacaoDebito
-    ]
-
-    const refactoredData: Contas = {
-      contaBanco: {
-        id: 1,
-        saldo: 0,
-        lancamentos: INITIAL_LAUNCHS.map( lancamento => ({ ...lancamento, tipo: 'débito' }) )
-      },
-      contaCredito: {
-        id: 1,
-        saldo: 0,
-        lancamentos: INITIAL_LAUNCHS.map( lancamento => ({ ...lancamento, tipo: 'crédito' }) )
-      }
-    }
-
-    setContas(refactoredData);
-    setLoaded(true);
-  }, [ auth ]);
+  const updateReference = (event:ChangeEvent<HTMLInputElement>) => {
+    const value = Number(event.target.value);
+    if (value > 0 && value <= 12) 
+      setReferenceDate(value);
+  } 
 
   return (
     <TransactionsContainer>
-      {/* Componente para página principal */}
+      {/* Componente para página principal */}      
       {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
+      <MonthConatiner>
+        <p>Escolhe o <strong>mês</strong> de referência: </p>
+        <input  type="number" min={1} max={12} value={referenceDate} onChange={updateReference}/>
+      </MonthConatiner>
       {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
       {/* <FiArrowLeft onClick={() => {props.func('')}}/> */}
     </TransactionsContainer>
