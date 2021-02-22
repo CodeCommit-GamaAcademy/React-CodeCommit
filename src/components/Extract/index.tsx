@@ -25,8 +25,8 @@ const Extract: React.FC<ExtractData> = ( props ) => {
                     <img src={currentIcon} alt="current icon"/>
                     <p>Últimos lançamentos</p>
                 </div>
-
-                {allLauchs.map( (launch, index) => {
+                {allLauchs.length === 0 && 'Nenhum lancamento'}
+                {allLauchs && allLauchs.map( (launch, index) => {
                     return (
                     <ExtractItem key={index}>
                     <img src={creditCardsIcon} alt="credit cards icon"/>
