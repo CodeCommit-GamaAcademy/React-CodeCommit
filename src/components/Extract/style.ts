@@ -4,7 +4,7 @@ export const ExtractContainer = styled.div`
     background-color: #FBFBFB;
     border-radius: 8px;
     height: 300px;
-    margin-top: 35px;
+    margin-top: 20px;
     padding: 30px 20px;
     width: 60%;
     overflow-y: auto;
