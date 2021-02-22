@@ -80,7 +80,7 @@ const Transactions: React.FC = () => {
 
     </TransactionsContainer>
   );
-  else return <MdCached style={{ color: '#fff' }} size={ 200 } />
+  else return <MdCached color="#f0f0f0" size={ 200 } />
   
 }
 
