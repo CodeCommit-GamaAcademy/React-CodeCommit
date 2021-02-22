@@ -11,6 +11,8 @@ export const PlansContainer = styled.div`
     padding: 30px;
     overflow: auto;
     width: 70%;
+    margin-bottom: 100px;
+    margin-top: 100px;
 
     @media screen and (max-width: 900px) {
         grid-template-columns: repeat(1, 1fr);
