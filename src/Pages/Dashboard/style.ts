@@ -71,3 +71,24 @@ export const DashBoard = styled.div`
     grid-template-rows: 85% 15%;
   }
 `
+
+export const LogOutButton = styled.button`
+  position: absolute;
+  bottom: 40px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background: #8C52E5;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media ( max-width: 900px ) {
+    bottom: auto;
+    right: 30px;
+  }
+`
