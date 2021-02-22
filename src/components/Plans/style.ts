@@ -4,31 +4,37 @@ export const PlansContainer = styled.div`
     background: #fff;
     border-radius: 8px;
     display: grid;
-    gap: 30px;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 120px;
     height: 450px;
     padding: 30px;
-    overflow: auto;
-    width: 70%;
+    gap: 40px;
+    width: 80%;
+    min-width: 270px;
     margin-bottom: 100px;
     margin-top: 100px;
+
+    @media screen and ( max-width: 1200px ) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
 
     @media screen and (max-width: 900px) {
         grid-template-columns: repeat(1, 1fr);
         height: 100%;
-        width: 90%;
+        gap: 0px;
     }
 `
 
 export const CardPlans = styled.div`
+    padding: 30px;
+    margin: 30px 0px;
+    width: 100%;
     border: 1px solid #CCC;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 15px;
-    width: 100%;
 
     .title-card {
         color: #212529;
