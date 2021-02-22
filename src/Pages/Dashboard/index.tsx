@@ -47,11 +47,11 @@ const Dashboard: React.FC = () => {
       </DashMenu>
       <DashMain>
         {/* Componente para depósitos */}
-        {actual.componentName === 'Depósitos' && actual.isActual && <Deposit func={changeComponent}></Deposit>}
+        {actual.componentName === 'Depósitos' && actual.isActual && <Deposit />}
         {/* Componente para pagamentos */}  
         {actual.componentName === 'Pagamentos' && actual.isActual && <Payments func={changeComponent}></Payments>}
         {/* Componente para planos */}  
-        {actual.componentName === 'Planos' && actual.isActual && <Plans></Plans>}
+        {actual.componentName === 'Planos' && actual.isActual && <Plans />}
         {/* Componente para transações */}  
         {actual.componentName === 'Transações' && actual.isActual && <Transactions></Transactions>}
       </DashMain>
