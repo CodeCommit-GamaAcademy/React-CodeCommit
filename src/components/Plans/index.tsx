@@ -1,42 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlansContainer, CardPlans } from './style';
+import { useSelector } from 'react-redux';
+import { ApplicationStore } from '../../store';
+import api from '../../services/api';
+import { Plano } from '../../types/dash-board';
 
-interface PlansProps {
-  func: Function;
-}
 
-const Plans: React.FC<PlansProps> = ( props ) => {
+const Plans: React.FC = () => {
+  const store = useSelector( (state: ApplicationStore) => state.user );
+  const [ plans, setPlans ] = useState<Plano[]>();
+  const [ loaded, setLoaded ] = useState(false);
+
+  const accountPlans = async() => {
+    const result = await api.get(`/lancamentos/planos-conta?login=${store?.login}`, {
+      headers: {
+        Authorization: store?.token,
+      }
+    });
+    setPlans(result.data);
+    setLoaded(true);
+  };
+
+  useEffect( () => {
+    accountPlans();
+    console.log(store);
+  }, [])
+
   return (
     <>
       <PlansContainer>
-        <CardPlans>
-          <p className="title-card">Receitas</p>
-          <p>teste 1</p>
-          <p className="type-movement">
-            Movimentação tipo: <span>R</span>
-          </p>
-        </CardPlans>
-        <CardPlans>
-          <p className="title-card">Despesas</p>
-          <p>teste 1</p>
-          <p className="type-movement">
-            Movimentação tipo: <span>D</span>
-          </p>
-        </CardPlans>
-        <CardPlans>
-          <p className="title-card">Transf entre contas</p>
-          <p>teste 1</p>
-          <p className="type-movement">
-            Movimentação tipo: <span>TC</span>
-          </p>
-        </CardPlans>
-        <CardPlans>
-          <p className="title-card">Transf de usuários</p>
-          <p>teste 1</p>
-          <p className="type-movement">
-            Movimentação tipo: <span>R</span>
-          </p>
-        </CardPlans>
+        {loaded && plans?.map( (plan) => {
+          return ( 
+          <CardPlans key={plan.id}>
+            <p className="title-card">{plan.descricao}</p>
+            <p>{plan.login}</p>
+            <p className="type-movement">
+              Movimentação tipo: <span>{plan.tipoMovimento}</span>
+            </p>
+          </CardPlans>)
+        })}
       </PlansContainer>
     </>
   );
