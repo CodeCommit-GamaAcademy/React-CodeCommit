@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BalanceItem = styled.div`
   background-color: #FBFBFB;
-  width: 300px;
+  width: 40%;
   height: 170px;
   border-radius: 8px;
 
@@ -73,15 +73,15 @@ export const BalanceItem = styled.div`
 
   @media screen and (max-width: 900px) {
     margin-top: 20px;
-    width: 90%;
+    width: 100%;
   }
 `
 
 export const BalanceContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: space-between;
 `
 
 export const DashNameSection = styled.div`

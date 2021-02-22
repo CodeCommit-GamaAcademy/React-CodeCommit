@@ -6,7 +6,7 @@ export const ExtractContainer = styled.div`
     height: 300px;
     margin-top: 20px;
     padding: 30px 20px;
-    width: 60%;
+    width: 100%;
     overflow-y: auto;
 
     .title-container {

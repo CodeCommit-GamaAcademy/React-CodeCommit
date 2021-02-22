@@ -23,4 +23,22 @@ export const CardItem = styled.div`
     :hover {
         cursor: pointer;
     }
+
+    @media ( max-width: 900px ) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: initial;
+
+        height: 55px;
+
+        img {
+            height: 16px;
+            width: 16px;
+        }
+
+        span {
+            margin-left: 12px;
+        }
+    }
 `

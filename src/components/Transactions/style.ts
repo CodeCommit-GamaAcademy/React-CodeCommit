@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const TransactionsContainer = styled.div`
-  align-items: center;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   height: 95%;
   width: 100%;
+  max-width: 700px;
 
   @media screen and (max-width: 900px){
     width: 90%;
@@ -16,10 +18,8 @@ export const TransactionsContainer = styled.div`
 export const MonthConatiner = styled.div`
   display: flex;
   color: white;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 20px;
-  width: 60%;
+  align-self: flex-end;
+  margin: 40px 0 20px 0;
 
   input {
     background: transparent;

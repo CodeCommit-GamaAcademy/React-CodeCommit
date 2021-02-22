@@ -41,20 +41,6 @@ export const DashMenu = styled.nav`
     height: 85px;
     width: 100%;
     bottom: 0;
-    
-    div {
-      width: 15%;
-      height: 50%;
-
-      span {
-        font-size: 8px;
-      }
-
-      img {
-        width: 10px;
-        height: 10px;
-      }
-    }
 
     .logo {
       display: none;
@@ -69,6 +55,7 @@ export const DashMain = styled.main`
   grid-area: dash;
   width: 100%;
   height: 100%;
+  padding: 80px 0px;
   justify-content: center;
 `
 
