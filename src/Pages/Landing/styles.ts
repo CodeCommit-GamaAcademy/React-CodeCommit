@@ -207,6 +207,10 @@ export const SectionAboutContainer = styled.div`
 export const SectionAboutContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const SectionAboutContentLeft = styled.div`
@@ -223,10 +227,13 @@ export const SectionAboutContentLeft = styled.div`
 
   @media (max-width: 770px) {
     background-size: contain;
-  }
+  } 
 
   @media (max-width: 680px) {
     height: 500px;
+
+    background-size: 235px;
+    background-position: center;
   }
 
   span {
@@ -294,6 +301,8 @@ export const SectionAboutContentRight = styled.div`
   @media (max-width: 680px) {
     height: 500px;
     font-size: 16px;
+
+    background-size: 235px;
   }
 
   span {
