@@ -68,7 +68,7 @@ export const DashMain = styled.main`
   flex-direction: column;
   grid-area: dash;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
 `
 
