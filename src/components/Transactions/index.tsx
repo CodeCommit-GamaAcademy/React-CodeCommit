@@ -1,4 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, useCallback } from 'react';
+
+import { MdCached } from 'react-icons/md';
+
 import { TransactionsContainer, MonthConatiner } from './style';
 import { Contas, Lancamento } from '../../types/dash-board';
 import Balance from '../Balance';
@@ -59,18 +62,24 @@ const Transactions: React.FC = () => {
       setReferenceDate(value);
   } 
 
-  return (
+  if ( loaded )return (
     <TransactionsContainer>
       {/* Componente para página principal */}      
-      {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
+
+      <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>
+
       <MonthConatiner>
         <p>Escolhe o <strong>mês</strong> de referência: </p>
         <input  type="number" min={1} max={12} value={referenceDate} onChange={updateReference}/>
       </MonthConatiner>
-      {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
+
+      <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>
       {/* <FiArrowLeft onClick={() => {props.func('')}}/> */}
+
     </TransactionsContainer>
   );
+  else return <MdCached style={{ color: '#fff' }} size={ 200 } />
+  
 }
 
 export default Transactions;
