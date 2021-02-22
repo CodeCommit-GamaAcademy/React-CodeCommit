@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { DashMenu, DashBoard, DashMain } from './style';
+import { useHistory } from 'react-router-dom';
+import { FiLogOut } from 'react-icons/fi';
+import { DashMenu, DashBoard, DashMain, LogOutButton } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
 import CardMenu from '../../components/CardMenu';
 import Deposit from '../../components/Deposit';
@@ -15,26 +17,27 @@ interface Actual {
 }
 
 const Dashboard: React.FC = () => {
-  
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const [ actual, setActual ] = useState<Actual>({
     componentName: 'Transações',
     isActual: true,
   });
 
   //Setting data accounts;
-  
-  
-  const changeComponent = (title: string) => {
+  const changeComponent = useCallback((title: string) => {
     setActual({
       componentName: title,
       isActual: true,
     });
-  }
-  const dispatch = useDispatch();
+  }, []);
 
   const handleLogOut = useCallback(() => {
     dispatch(remove_user());
-  }, [ dispatch ]);
+
+    history.push('/');
+  }, [ dispatch, history ]);
 
   return (
     <DashBoard>
@@ -44,6 +47,11 @@ const Dashboard: React.FC = () => {
         <CardMenu title = 'Planos' func={changeComponent}/>
         <CardMenu title = 'Pagamentos' func={changeComponent}/>
         <CardMenu title = 'Transações' func={changeComponent}/>
+
+        <LogOutButton onClick={ handleLogOut } >
+          <FiLogOut color="#fff" size={ 20 } />
+        </LogOutButton>
+
       </DashMenu>
       <DashMain>
         {/* Componente para depósitos */}
