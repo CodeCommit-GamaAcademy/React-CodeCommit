@@ -16,6 +16,8 @@ const Transactions: React.FC = () => {
 
 
   function formatDate(date:string) {
+    setLoaded(false);
+    
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
@@ -30,23 +32,23 @@ const Transactions: React.FC = () => {
   }
 
   const getDashboardValues = async() => {
-    const date = new Date();
-    const newD = new Date();
-    const newDate = new Date(date.setMonth(date.getMonth()-referenceDate));
-    
-    
-    const dateFormated = (newD.getFullYear() + "-" + ((newD.getMonth() + 1)) + "-" + (newD.getDate() ));
-    const newDateFormated = (newDate.getFullYear() + "-" + ((newDate.getMonth() + 1)) + "-" + (newDate.getDate() ));
-    
-    const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${store?.login}`, {
-      headers: {
-        Authorization: store?.token,
-      }
-    });
+    try {
+      const date = new Date();
+      const newD = new Date();
+      const newDate = new Date(date.setMonth(date.getMonth()-referenceDate));      
+      const dateFormated = (newD.getFullYear() + "-" + ((newD.getMonth() + 1)) + "-" + (newD.getDate() ));
+      const newDateFormated = (newDate.getFullYear() + "-" + ((newDate.getMonth() + 1)) + "-" + (newDate.getDate() ));
+      const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${store?.login}`, {
+        headers: {
+          Authorization: store?.token,
+        }
+      });
+      setContas(result.data);
+      setLoaded(true);
+     
+    }catch {
 
-    console.log(result.data);
-    setContas(result.data);
-    setLoaded(true);
+    }
   };
 
   useEffect( ()=> {
@@ -64,7 +66,7 @@ const Transactions: React.FC = () => {
       {/* Componente para página principal */}      
       {loaded && <Balance contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
       <MonthConatiner>
-        <p>Escolhe o <strong>mês</strong> de referência: </p>
+        <p>Escolhe a quantidade de <strong>meses</strong> para o filtro: </p>
         <input  type="number" min={1} max={12} value={referenceDate} onChange={updateReference}/>
       </MonthConatiner>
       {loaded && <Extract contaBanco={contas?.contaBanco} contaCredito={contas?.contaCredito}/>}
