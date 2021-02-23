@@ -55,10 +55,10 @@ const Dashboard: React.FC = () => {
         </SandwichDiv>
         {modalIsOpen && (
         <MenuModal>
-                  <CardMenu title = 'Depósitos' func={changeComponent}/>
-        <CardMenu title = 'Planos' func={changeComponent}/>
-        <CardMenu title = 'Pagamentos' func={changeComponent}/>
-        <CardMenu title = 'Transações' func={changeComponent}/>
+          <CardMenu title = 'Depósitos' func={changeComponent}/>
+          <CardMenu title = 'Planos' func={changeComponent}/>
+          <CardMenu title = 'Pagamentos' func={changeComponent}/>
+          <CardMenu title = 'Transações' func={changeComponent}/>
         </MenuModal>
       )}
       </DashBoardMobile> 
