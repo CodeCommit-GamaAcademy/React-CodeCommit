@@ -32,7 +32,7 @@ const Balance: React.FC<AccountProps> = ( props ) => {
   useEffect ( () => {
     if (store)
       setUser(store.name);
-  }, [])
+  }, [ store ])
 
   useEffect( () => {
     setContaBanco(props.contaBanco);
