@@ -7,15 +7,11 @@ import api from '../../services/api';
 import { useSelector } from 'react-redux';
 import { ApplicationStore } from '../../store';
 import { Contas, Plano } from '../../types/dash-board';
-import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { MdCached } from 'react-icons/md';
 
-
-
 const Deposit: React.FC = () => {
   const [ loaded, setLoaded ] = useState(true);
-  const history = useHistory();
   const [data, setData] = useState('');
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState(0);
