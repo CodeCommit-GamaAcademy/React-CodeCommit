@@ -13,6 +13,7 @@ export const PlansContainer = styled.div`
     min-width: 270px;
     margin-bottom: 100px;
     margin-top: 100px;
+    overflow-y: auto;
 
     @media screen and ( max-width: 1200px ) {
         grid-template-columns: repeat(2, 1fr);
@@ -28,7 +29,6 @@ export const PlansContainer = styled.div`
 
 export const CardPlans = styled.div`
     padding: 30px;
-    margin: 30px 0px;
     width: 100%;
     border: 1px solid #CCC;
     border-radius: 8px;
@@ -49,5 +49,7 @@ export const CardPlans = styled.div`
     .type-movement {
         color: #212529;
     }
-    
+    @media screen and (max-width: 900px) {
+        margin-top: 20px;
+    }
 `
