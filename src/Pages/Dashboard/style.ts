@@ -41,12 +41,52 @@ export const DashMenu = styled.nav`
     height: 85px;
     width: 100%;
     bottom: 0;
+    display: none;
 
     .logo {
       display: none;
     }
+
+
   }
 `
+export const DashBoardMobile = styled.div`
+
+background-color: #68DE5A;
+width: 100%;
+height: 80px;
+display: flex;
+
+
+@media screen and (min-width: 900px) {
+  display: none;
+  
+  }
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+  :hover {
+    cursor: pointer;
+  }
+
+@media screen and (min-width: 900px) {
+display: none;
+
+.logo { display: none;}
+}
+`
+export const SandwichDiv = styled.div`
+
+display: flex;
+justify-content: right;
+position: absolute; 
+right: 5px;
+margin-top: 10px;
+`
+
+
 
 export const DashMain = styled.main`
   align-items: center;
@@ -90,5 +130,6 @@ export const LogOutButton = styled.button`
   @media ( max-width: 900px ) {
     bottom: auto;
     right: 30px;
+    display: none;
   }
 `
