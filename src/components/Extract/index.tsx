@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ExtractContainer, ExtractItem } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
@@ -18,6 +18,15 @@ const Extract: React.FC<ExtractData> = ( props ) => {
             return [];
         }
     });
+
+    useEffect( () => {
+        const orderedLauchs = allLauchs.slice().sort( (a, b) => {
+            return Number(new Date(a.data)) - Number(new Date(b.data));
+        }).reverse();
+        
+        setAllLaunchs(orderedLauchs);
+    }, [])
+
     return(
         <>
             <ExtractContainer>
