@@ -34,29 +34,29 @@ const Transactions: React.FC = () => {
     return [year, month, day].join('-');
   }
 
-  const getDashboardValues = async() => {
-    try {
-      const date = new Date();
-      const newD = new Date();
-      const newDate = new Date(date.setMonth(date.getMonth()-referenceDate));      
-      const dateFormated = (newD.getFullYear() + "-" + ((newD.getMonth() + 1)) + "-" + (newD.getDate() ));
-      const newDateFormated = (newDate.getFullYear() + "-" + ((newDate.getMonth() + 1)) + "-" + (newDate.getDate() ));
-      const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${store?.login}`, {
-        headers: {
-          Authorization: store?.token,
-        }
-      });
-      setContas(result.data);
-      setLoaded(true);
-     
-    }catch {
-
-    }
-  };
-
   useEffect( ()=> {
+    const getDashboardValues = async() => {
+      try {
+        const date = new Date();
+        const newD = new Date();
+        const newDate = new Date(date.setMonth(date.getMonth()-referenceDate));      
+        const dateFormated = (newD.getFullYear() + "-" + ((newD.getMonth() + 1)) + "-" + (newD.getDate() ));
+        const newDateFormated = (newDate.getFullYear() + "-" + ((newDate.getMonth() + 1)) + "-" + (newDate.getDate() ));
+        const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${store?.login}`, {
+          headers: {
+            Authorization: store?.token,
+          }
+        });
+        setContas(result.data);
+        setLoaded(true);
+       
+      }catch {
+  
+      }
+    };
+
     getDashboardValues();
-  }, [ store?.token, referenceDate ]);
+  }, [ referenceDate, store?.login, store?.token ]);
 
   const updateReference = (event:ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
