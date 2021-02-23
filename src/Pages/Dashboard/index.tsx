@@ -48,45 +48,45 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-            <DashBoardMobile>
+      <DashBoardMobile>
         <img className="logo" src={gamaIcon} alt="Gama icon"/>
         <SandwichDiv>
         <FiAlignRight color="#fff" size={ 60 } onClick={() => setModal()} ></FiAlignRight>
         </SandwichDiv>
         {modalIsOpen && (
-        <MenuModal>
-          <CardMenu title = 'Depósitos' func={changeComponent}/>
-          <CardMenu title = 'Planos' func={changeComponent}/>
-          <CardMenu title = 'Pagamentos' func={changeComponent}/>
-          <CardMenu title = 'Transações' func={changeComponent}/>
-        </MenuModal>
-      )}
+          <MenuModal>
+            <CardMenu title = 'Depósitos' func={changeComponent} selected={actual.componentName === 'Depósitos' && actual.isActual} />
+            <CardMenu title = 'Planos' func={changeComponent} selected={actual.componentName === 'Planos' && actual.isActual} />
+            <CardMenu title = 'Pagamentos' func={changeComponent} selected={actual.componentName === 'Pagamentos' && actual.isActual} />
+            <CardMenu title = 'Transações' func={changeComponent} selected={actual.componentName === 'Transações' && actual.isActual} />
+          </MenuModal>
+        )}
       </DashBoardMobile> 
-    <DashBoard>
-      <DashMenu>
-        <img className="logo" src={gamaIcon} alt="Gama icon"/>
-        <CardMenu title = 'Depósitos' func={changeComponent}/>
-        <CardMenu title = 'Planos' func={changeComponent}/>
-        <CardMenu title = 'Pagamentos' func={changeComponent}/>
-        <CardMenu title = 'Transações' func={changeComponent}/>
+      <DashBoard>
+        <DashMenu>
+          <img className="logo" src={gamaIcon} alt="Gama icon" />
+          <CardMenu title = 'Depósitos' func={changeComponent} selected={actual.componentName === 'Depósitos' && actual.isActual} />
+          <CardMenu title = 'Planos' func={changeComponent} selected={actual.componentName === 'Planos' && actual.isActual} />
+          <CardMenu title = 'Pagamentos' func={changeComponent} selected={actual.componentName === 'Pagamentos' && actual.isActual} />
+          <CardMenu title = 'Transações' func={changeComponent} selected={actual.componentName === 'Transações' && actual.isActual} />
 
-        <LogOutButton onClick={ handleLogOut } >
-          <FiLogOut color="#fff" size={ 20 } />
-        </LogOutButton>
+          <LogOutButton onClick={ handleLogOut } >
+            <FiLogOut color="#fff" size={ 20 } />
+          </LogOutButton>
 
-      </DashMenu>
-      <DashMain>
-        {/* Componente para depósitos */}
-        {actual.componentName === 'Depósitos' && actual.isActual && <Deposit />}
-        {/* Componente para pagamentos */}  
-        {actual.componentName === 'Pagamentos' && actual.isActual && <Payments func={changeComponent}></Payments>}
-        {/* Componente para planos */}  
-        {actual.componentName === 'Planos' && actual.isActual && <Plans />}
-        {/* Componente para transações */}  
-        {actual.componentName === 'Transações' && actual.isActual && <Transactions></Transactions>}
-      </DashMain>
-    </DashBoard>
-</>
+        </DashMenu>
+        <DashMain>
+          {/* Componente para depósitos */}
+          {actual.componentName === 'Depósitos' && actual.isActual && <Deposit />}
+          {/* Componente para pagamentos */}  
+          {actual.componentName === 'Pagamentos' && actual.isActual && <Payments func={changeComponent}></Payments>}
+          {/* Componente para planos */}  
+          {actual.componentName === 'Planos' && actual.isActual && <Plans />}
+          {/* Componente para transações */}  
+          {actual.componentName === 'Transações' && actual.isActual && <Transactions></Transactions>}
+        </DashMain>
+      </DashBoard>
+    </>
   );
 }
 

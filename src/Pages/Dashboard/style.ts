@@ -52,30 +52,30 @@ export const DashMenu = styled.nav`
 `
 export const DashBoardMobile = styled.div`
 
-background-color: #68DE5A;
-width: 100%;
-height: 80px;
-display: flex;
-
-
-@media screen and (min-width: 900px) {
-  display: none;
-  
-  }
-
-.logo {
-  width: 80px;
+  background-color: #68DE5A;
+  width: 100%;
   height: 80px;
-  margin-left: 10px;
-  :hover {
-    cursor: pointer;
+  display: flex;
+
+
+  @media screen and (min-width: 900px) {
+    display: none;
   }
 
-@media screen and (min-width: 900px) {
-display: none;
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+    :hover {
+      cursor: pointer;
+    }
 
-.logo { display: none;}
-}
+    @media screen and (min-width: 900px) {
+    display: none;
+
+    .logo { display: none;}
+    }
+  }
 `
 export const SandwichDiv = styled.div`
 

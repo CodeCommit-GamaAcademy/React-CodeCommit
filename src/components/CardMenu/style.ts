@@ -11,6 +11,10 @@ export const CardItem = styled.div`
     padding: 10px;
     width: 90px;
 
+    &.card-selected {
+        border: 2px solid #FFF;
+    }
+
     img {
         height: 28px;
         width: 28px;

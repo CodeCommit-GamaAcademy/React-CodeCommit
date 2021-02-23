@@ -70,3 +70,14 @@ export const Button = styled.button`
         background-color: #68DE5A;
     }
 `
+
+export const DashNameSection = styled.div`
+  color: white;
+  margin: 20px 0;
+  margin-top: 40px;
+  width: 70%;
+
+  @media screen and (max-width: 900px){
+    width: 100%;
+  }
+`

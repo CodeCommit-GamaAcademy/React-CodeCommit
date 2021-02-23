@@ -6,6 +6,7 @@ import pixIcon from '../../assets/svgs/pix-icon.svg';
 interface ComponentProp {
     title: string;
     func: Function;
+    selected: boolean
 }
 
 const CardMenu: React.FC<ComponentProp> = ( props ) => {
@@ -16,7 +17,7 @@ const CardMenu: React.FC<ComponentProp> = ( props ) => {
 
     return (
         <>
-            <CardItem onClick={changeComponent}>
+            <CardItem className={props.selected ? 'card-selected' : ''} onClick={changeComponent}>
                 <img src={pixIcon} alt="pix icon" />
                 <span>{props.title}</span>
             </CardItem>
