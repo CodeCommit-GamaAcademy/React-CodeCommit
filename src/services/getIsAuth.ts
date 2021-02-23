@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import { TokenPayload } from '../types/user';
-// Estratégia para ver se o token ainda é valido // TODO
+// Estratégia para ver se o token ainda é valido
 export const checkIsAuth = () => {
     const localToken = localStorage.getItem('@token_user');
     if ( !localToken ) return false;
