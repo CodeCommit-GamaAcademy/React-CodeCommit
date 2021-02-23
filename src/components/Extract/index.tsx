@@ -4,7 +4,6 @@ import { ExtractContainer, ExtractItem } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditCardsIcon from '../../assets/svgs/credit-cards-icon.svg';
 import { Conta } from '../../types/dash-board';
-import { type } from 'os';
 
 interface ExtractData {
     contaBanco?: Conta,
@@ -33,14 +32,14 @@ const Extract: React.FC<ExtractData> = ( props ) => {
         }).reverse();
         
         setAllLaunchs(orderedLauchs);
-    }, [])
+    }, [ allLauchs ]);
 
     function typePlans(typePlan: string) {
-        if(typePlan == 'R') {
+        if(typePlan === 'R') {
             return PlanosConta.R;
-        } else if(typePlan == 'D') {
+        } else if(typePlan === 'D') {
             return PlanosConta.D;
-        } else if(typePlan == 'TC') {
+        } else if(typePlan === 'TC') {
             return PlanosConta.TC;
         } else {
             return PlanosConta.TU;
@@ -57,15 +56,16 @@ const Extract: React.FC<ExtractData> = ( props ) => {
                 {allLauchs.length === 0 && 'Nenhum lancamento'}
                 {allLauchs && allLauchs.map( (launch, index) => {
                     return (
-                    <ExtractItem key={index}>
-                    <img src={creditCardsIcon} alt="credit cards icon"/>
-                    <div className="text-items">
-                        <strong>{typePlans(launch.planoConta.tipoMovimento)}</strong>
-                        <p>{launch.descricao}</p>
-                        <strong>{launch.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
-                    </div>
-                    <p className="date">{launch.data}</p>
-                    </ExtractItem>)
+                        <ExtractItem key={index}>
+                            <img src={creditCardsIcon} alt="credit cards icon"/>
+                            <div className="text-items">
+                                <strong>{typePlans(launch.planoConta.tipoMovimento)}</strong>
+                                <p>{launch.descricao}</p>
+                                <strong>{launch.valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
+                            </div>
+                            <p className="date">{launch.data}</p>
+                        </ExtractItem>
+                    )
                 })}
             </ExtractContainer>
         </>

@@ -54,7 +54,7 @@ const Balance: React.FC<AccountProps> = ( props ) => {
         credito: totalTransactions.credito += lancamento.valor
       });
     })
-  }, [ user ])
+  }, [ contaBanco?.lancamentos, contaCredito?.lancamentos, props.contaBanco, props.contaCredito, totalTransactions ])
 
   const hideOrShowInformations = () => {
     setHide(!hide);

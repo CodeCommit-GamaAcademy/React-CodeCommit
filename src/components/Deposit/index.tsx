@@ -50,7 +50,7 @@ const Deposit: React.FC = () => {
         }
       });
 
-      const { data: response, status } = await api.post('/lancamentos', {
+      const { status } = await api.post('/lancamentos', {
         "conta": result.data.contaBanco.id,
         "data": data,
         "descricao": descricao,
@@ -71,7 +71,7 @@ const Deposit: React.FC = () => {
       toast.error('Ocorreu algum erro ao tentar realizar o depósito.');
     }
     setLoaded(true);
-  }, [data, descricao, valor]);
+  }, [data, descricao, valor, store?.login, store?.token]);
 
   if (loaded) {
     return (

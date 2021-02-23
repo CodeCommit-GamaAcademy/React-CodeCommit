@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { MdCached } from 'react-icons/md';
 
-import { PaymentsContainer, Form, FormInput, Button, DashNameSection } from './style';
+import { PaymentsContainer, Form, FormInput, Button } from './style';
 import { ApplicationStore } from '../../store';
 import api from '../../services/api';
 import { Contas, Plano } from '../../types/dash-board';
@@ -30,7 +30,7 @@ const Payments: React.FC<PaymentsProps> = ( props ) => {
     const referenceDate = new Date(date.setDate(date.getDate() - 1));
     const depositDate = new Date(data);
 
-    if (destinatario.length == 0) {
+    if (destinatario.length === 0) {
       setLoaded(true);
       return toast.error('Login do destinatário não pode ser nulo')
     }
@@ -60,7 +60,7 @@ const Payments: React.FC<PaymentsProps> = ( props ) => {
         }
       });
 
-      const { data: response, status } = await api.post('/lancamentos', {
+      const { status } = await api.post('/lancamentos', {
         "conta": result.data.contaBanco.id,
         "contaDestino": destinatario,
         "data": data,
@@ -82,7 +82,7 @@ const Payments: React.FC<PaymentsProps> = ( props ) => {
       toast.error('Ocorreu algum erro ao tentar realizar o depósito.');
     }
     setLoaded(true);
-  }, [destinatario, data, descricao, valor]);
+  }, [destinatario, data, descricao, valor, store?.login, store?.token]);
 
   if(loaded) {
     return (

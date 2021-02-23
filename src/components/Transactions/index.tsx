@@ -3,7 +3,7 @@ import React, { useState, useEffect, ChangeEvent, useCallback } from 'react';
 import { MdCached } from 'react-icons/md';
 
 import { TransactionsContainer, MonthConatiner } from './style';
-import { Contas, Lancamento } from '../../types/dash-board';
+import { Contas } from '../../types/dash-board';
 import Balance from '../Balance';
 import Extract from '../Extract';
 import api from '../../services/api';
@@ -18,7 +18,7 @@ const Transactions: React.FC = () => {
   const store = useSelector( (state: ApplicationStore) => state.user );
 
 
-  function formatDate(date:string) {
+  const formatDate = useCallback((date:string) => {
     setLoaded(false);
     
     var d = new Date(date),
@@ -32,7 +32,7 @@ const Transactions: React.FC = () => {
         day = '0' + day;
 
     return [year, month, day].join('-');
-  }
+  }, []);
 
   useEffect( ()=> {
     const getDashboardValues = async() => {
@@ -50,13 +50,13 @@ const Transactions: React.FC = () => {
         setContas(result.data);
         setLoaded(true);
        
-      }catch {
-  
+      }catch (err) {
+        console.log(err);
       }
     };
 
     getDashboardValues();
-  }, [ referenceDate, store?.login, store?.token ]);
+  }, [ referenceDate, store?.login, store?.token, formatDate ]);
 
   const updateReference = (event:ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
