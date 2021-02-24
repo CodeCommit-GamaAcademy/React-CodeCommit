@@ -1,7 +1,9 @@
-import React, { useState, useCallback, useEffect, ChangeEvent } from 'react';
+import React, { useState, useCallback, useEffect, ChangeEvent, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
+import * as yup from 'yup';
 
 import {
   Container, Button,
@@ -19,10 +21,16 @@ import Input from '../../components/Input';
 import getIsAuth from '../../services/getIsAuth';
 import { maskCPF, removeMaskCPF } from '../../utils/mask';
 import Loader from '../../components/Loader';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const Landing: React.FC = () => {
   const [cpf, setCpf] = useState('');
   const [cpfMask, setCpfMask] = useState('');
+
+  const formRef = useRef<FormHandles>(null);
+
+
+  console.log(formRef);
 
   useEffect(() => {
     setCpf(removeMaskCPF(cpfMask));
@@ -38,7 +46,21 @@ const Landing: React.FC = () => {
   const handleSubmit = useCallback(async (data: object) => {
     setLoading(true);
 
+    
     try {
+
+      formRef.current?.setErrors({});
+      const schema = yup.object().shape({
+        cpf: yup.number().min(11),
+        username: yup.string().required('Este campo é obrigatório'),
+        name: yup.string().required('Este campo é obrigatório'),
+        password: yup.string().required('Este campo é obrigatório'),
+        confirmPassword: yup.string().min(6,'No mínimo 6 digitos')
+      });
+
+      await schema.validate(data, {
+        abortEarly: false
+      });
       // Validation
       // TODO
       if (password !== confirmPassword) {
@@ -51,6 +73,7 @@ const Landing: React.FC = () => {
         "login": username,
         "nome": name,
         "senha": password,
+        
       });
 
       if (status === 200 || status === 201) {
@@ -60,6 +83,10 @@ const Landing: React.FC = () => {
       }
     } catch (err) {
       console.log(err);
+
+      const errors = getValidationErrors(err);
+
+      formRef.current?.setErrors(errors);
     } finally {
       setLoading(false);
     }
@@ -97,7 +124,7 @@ const Landing: React.FC = () => {
             </MainBannerContentLeft>
 
             <MainBannerContentRight>
-              <Form onSubmit={handleSubmit}>
+              <Form ref={formRef} onSubmit={handleSubmit}>
                 <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
                 <Input name="Cpf" maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
                 <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
