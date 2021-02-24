@@ -18,43 +18,44 @@ interface AccountProps {
   contaCredito?: Conta,
 }
 
-const Balance: React.FC<AccountProps> = ( props ) => {
+const Balance: React.FC<AccountProps> = (props) => {
   const [contaBanco, setContaBanco] = useState<Conta>();
   const [contaCredito, setContaCredito] = useState<Conta>();
   const [totalTransactions, setTotalTransactions] = useState<Total>({
     banco: 0,
     credito: 0,
   });
-  const [ user, setUser ] = useState('');
-  const [ hide, setHide] = useState(true);
-  const store = useSelector( (state: ApplicationStore) => state.user );
+  const [user, setUser] = useState('');
+  const [hide, setHide] = useState(true);
+  const store = useSelector((state: ApplicationStore) => state.user);
 
-  useEffect ( () => {
+  useEffect(() => {
     if (store)
       setUser(store.name);
-  }, [ store ])
+  }, [store])
 
-  useEffect( () => {
+  useEffect(() => {
     setContaBanco(props.contaBanco);
     setContaCredito(props.contaCredito);
     setTotalTransactions({
       banco: 0,
       credito: 0,
     });
-    contaBanco?.lancamentos.forEach( lancamento => {
-      setTotalTransactions({
-        ...totalTransactions,
-        banco: totalTransactions.banco += lancamento.valor
-      });
+    contaBanco?.lancamentos.forEach(lancamento => {
+      setTotalTransactions((previewState) => ({
+        ...previewState,
+        banco: previewState.banco += lancamento.valor
+      }))
     });
 
-    contaCredito?.lancamentos.forEach( lancamento => {
-      setTotalTransactions({
-        ...totalTransactions,
-        credito: totalTransactions.credito += lancamento.valor
-      });
+    contaCredito?.lancamentos.forEach(lancamento => {
+      setTotalTransactions((previewState) => ({
+        ...previewState,
+        credito: previewState.credito += lancamento.valor
+      })
+      );
     })
-  }, [ contaBanco?.lancamentos, contaCredito?.lancamentos, props.contaBanco, props.contaCredito ])
+  }, [contaBanco?.lancamentos, contaCredito?.lancamentos, props.contaBanco, props.contaCredito])
 
   const hideOrShowInformations = () => {
     setHide(!hide);
@@ -62,43 +63,43 @@ const Balance: React.FC<AccountProps> = ( props ) => {
 
   return (
     <>
-    <DashNameSection>
-      <div>
-        <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem vindo!</p>
+      <DashNameSection>
         <div>
-          {hide?<FiEye size={35} onClick={() => hideOrShowInformations()}/>:<FiEyeOff size={35} onClick={() => hideOrShowInformations()}/>}
+          <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem vindo!</p>
+          <div>
+            {hide ? <FiEye size={35} onClick={() => hideOrShowInformations()} /> : <FiEyeOff size={35} onClick={() => hideOrShowInformations()} />}
+          </div>
         </div>
-      </div>
-    </DashNameSection>
-    <BalanceContainer>
-      <BalanceItem>
-        <div className='title'>
-          <img src={currentIcon} alt="current icon"/>
-          <p>Conta</p>
-        </div>
-        <p>Saldo disponivel</p>
-        <h3 className={`value acccount ${hide?'hide':''}`}>{contaBanco?.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
-        <div>
-          <p>Transações</p>
-          <h3 className={hide?'hide':''}>{totalTransactions.banco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
-        </div>
-      </BalanceItem>
-      <BalanceItem>
-        {/*  */}
-        <div className='title'>
-          <img src={creditIcon} alt="current icon"/>
-          <p>Conta Crédito</p>
-        </div>
-        <p>Fatura atual</p>
-        <h3 className={`value credit ${hide?'hide':''}`}>{contaCredito?.saldo.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
-        <div>
-          <p>Limite Disponivel</p>
-          <h3 className={hide?'hide':''}>{totalTransactions.credito.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h3>
-        </div>
-      </BalanceItem>
-    </BalanceContainer>
+      </DashNameSection>
+      <BalanceContainer>
+        <BalanceItem>
+          <div className='title'>
+            <img src={currentIcon} alt="current icon" />
+            <p>Conta</p>
+          </div>
+          <p>Saldo disponivel</p>
+          <h3 className={`value acccount ${hide ? 'hide' : ''}`}>{contaBanco?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+          <div>
+            <p>Transações</p>
+            <h3 className={hide ? 'hide' : ''}>{totalTransactions.banco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+          </div>
+        </BalanceItem>
+        <BalanceItem>
+          {/*  */}
+          <div className='title'>
+            <img src={creditIcon} alt="current icon" />
+            <p>Conta Crédito</p>
+          </div>
+          <p>Fatura atual</p>
+          <h3 className={`value credit ${hide ? 'hide' : ''}`}>{contaCredito?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+          <div>
+            <p>Limite Disponivel</p>
+            <h3 className={hide ? 'hide' : ''}>{totalTransactions.credito.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+          </div>
+        </BalanceItem>
+      </BalanceContainer>
     </>
-    
+
   );
 }
 
