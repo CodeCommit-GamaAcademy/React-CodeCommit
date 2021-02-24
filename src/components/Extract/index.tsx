@@ -32,7 +32,7 @@ const Extract: React.FC<ExtractData> = ( props ) => {
         }).reverse();
         
         setAllLaunchs(orderedLauchs);
-    }, [ allLauchs ]);
+    }, []);
 
     function typePlans(typePlan: string) {
         if(typePlan === 'R') {
