@@ -9,19 +9,29 @@ export const Container = styled.div`
   width: 100vw;
   max-width: 100%;
   padding: 0 16px;
-`;
 
-export const Form = styled.form`
-  width: 455px;
-  min-height: 422px;
+  form {
+    width: 455px;
+    min-height: 422px;
+    background: #fbfbfb;
+    border-radius: 8px;
+    padding: 40px 46px;
+    text-align: center;
 
-  background: #fbfbfb;
-  border-radius: 8px;
+    animation: 0.6s forwards toRight;
 
-  padding: 40px 46px;
+    input:nth-child(1) {
+      margin-top: 40px;
+    }
 
-  text-align: center;
-  animation: 0.6s forwards toRight;
+    input {
+      margin-top: 50px;
+    }
+
+    .loader {
+      margin: 42px auto 0;
+    }
+  }
 `;
 
 export const FormTitle = styled.h1`
@@ -33,38 +43,9 @@ export const FormTitle = styled.h1`
 export const FormDescription = styled.p`
   font-weight: 300;
   font-size: 14px;
-
-  margin-bottom: 40px;
 `;
 
 export const InputFields = styled.section`
   display: flex;
   flex-direction: column;
-`;
-
-export const Input = styled.input`
-  width: 100%;
-
-  border: none;
-  background: none;
-  border-bottom: 1px solid #878686;
-
-  padding: 5px 8px;
-
-  transition: 0.3s;
-
-  &:active,
-  &:focus {
-    border-bottom: 1px solid #68de5a;
-  }
-
-  &::placeholder {
-    font-weight: 500;
-    color: #878686;
-    font-size: 14px;
-  }
-
-  & + & {
-    margin-top: 55px;
-  }
 `;

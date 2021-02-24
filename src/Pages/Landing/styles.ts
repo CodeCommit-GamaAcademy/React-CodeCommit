@@ -87,19 +87,23 @@ export const MainBannerContentRight = styled.div`
     margin-bottom: 50%;
     width: 100%;
   }
-`;
 
-export const Form = styled.form`
-  width: 350px;
-  max-width: 100%;
-  min-height: 450px;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 40px 46px;
+  form {
+    width: 350px;
+    max-width: 100%;
+    min-height: 450px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 40px 46px;
 
-  @media (max-width: 680px) {
-    margin-top: 32px;
-    width: 100%;
+    @media (max-width: 680px) {
+      margin-top: 32px;
+      width: 100%;
+    }
+
+    .loader {
+      margin: 30px auto 12px !important;
+    }
   }
 `;
 
@@ -144,26 +148,6 @@ export const FormHomeTitle = styled.h1`
   align-items: center;
   margin-bottom: 30px;
   color: #1d1d1d;
-`;
-
-export const FormInput = styled.input`
-  margin-top: 20px;
-  border: none;
-  border-bottom: 1px solid #878686;
-  width: 100%;
-  padding: 10px 14px;
-  font-size: 14px;
-
-  & + input {
-    margin-top: 30px;
-  }
-
-  &::placeholder {
-    color: #878686;
-  }
-  &:focus {
-    border-bottom: 1px solid #68de5a;
-  }
 `;
 
 export const HomeFormButton = styled.button`

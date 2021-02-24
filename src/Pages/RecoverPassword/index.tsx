@@ -1,38 +1,50 @@
 import React, { FormEvent, useCallback, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
+import { Form } from '@unform/web';
 
 import Button from '../../components/Button';
 import Header from '../../components/Header';
+import Input from '../../components/Input';
+import Loader from '../../components/Loader';
 import api from '../../services/api';
 
-import { Container, Form, FormDescription, FormTitle, Input, InputFields } from './styles';
+import { Container, FormDescription, FormTitle, InputFields } from './styles';
 
 const RecoverPassword: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    const handleSubmitRecover = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleSubmitRecover = useCallback(async (data: object) => {
+        setLoading(true);
 
-        if (password !== confirmPassword) {
-            return;
+        try {
+            if (password !== confirmPassword) {
+                console.log('error password equal')
+                return;
+            }
+
+            const { status } = await api.post('/altera-senha', {
+                "usuario": username,
+                "senha": password,
+            });
+
+            if (status === 200 || status === 201) {
+                history.push('/login');
+            } else {
+                history.push('/error');
+            }
+
+        } catch (err) {
+
+        } finally {
+            setLoading(false);
         }
-
-        const { status } = await api.post('/altera-senha', {
-            "usuario": username,
-            "senha": password,
-        });
-
-        if (status === 200 || status === 201) {
-            history.push('/login');
-        } else {
-            history.push('/error');
-        }
-
     }, [username, password, confirmPassword, history]);
+
 
     return (
         <>
@@ -44,17 +56,17 @@ const RecoverPassword: React.FC = () => {
                     <FormDescription>Confirme seu Nome de usuário e escolha uma nova senha</FormDescription>
 
                     <InputFields>
-                        <Input type="text" onChange={e => setUsername(e.target.value)} placeholder="Confirme seu Nome de usuário" />
-                        <Input type="text" onChange={e => setPassword(e.target.value)} placeholder="Digite sua nova senha" />
-                        <Input type="text" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua nova senha" />
+                        <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Confirme seu nome de usuário" />
+                        <Input name="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua nova senha" />
+                        <Input name="confirmPassword" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua nova senha" />
                     </InputFields>
 
-                    <Button
+                    {loading ? <Loader /> : <Button
                         text="Enviar"
                         Icon={FaArrowRight}
                         type="submit"
                         style={{ marginTop: 28 }}
-                    />
+                    />}
                 </Form>
             </Container>
         </>

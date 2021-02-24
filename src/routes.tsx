@@ -7,18 +7,19 @@ import Login from './Pages/Login';
 import RecoverPassword from './Pages/RecoverPassword';
 import Error from './Pages/Error';
 import getIsAuth from './services/getIsAuth';
+import ErrorRecover from './Pages/ErrorRecover';
 
 const PrivateRoute: React.FC<RouteProps> = (props) => {
     const isAuth = getIsAuth();
 
-    if ( isAuth ) return <Route { ...props } />
+    if (isAuth) return <Route {...props} />
     else return <Redirect to="/" />
 };
 
 const UnauthRoute: React.FC<RouteProps> = (props) => {
     const isAuth = getIsAuth();
 
-    if ( !isAuth ) return <Route { ...props } />
+    if (!isAuth) return <Route {...props} />
     else return <Redirect to="/dashboard" />
 };
 
@@ -27,12 +28,12 @@ const Routes: React.FC = () => {
         <BrowserRouter>
             <Switch>
                 {/* Rotas */}
-
                 <Route path="/" exact component={Landing} />
                 <UnauthRoute path="/login" component={Login} />
                 <UnauthRoute path="/recover" component={RecoverPassword} />
-                <Route path="/error" component = { Error } />
-                <PrivateRoute path="/dashboard" exact component={ Dashboard } />
+                <Route path="/error" component={Error} />
+                <Route path="/error-recover" component={ErrorRecover} />
+                <PrivateRoute path="/dashboard" exact component={Dashboard} />
             </Switch>
         </BrowserRouter>
     );

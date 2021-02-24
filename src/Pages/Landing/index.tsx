@@ -1,10 +1,11 @@
-import React, { useState, FormEvent, useCallback, useEffect, ChangeEvent } from 'react';
+import React, { useState, useCallback, useEffect, ChangeEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import { Form } from '@unform/web';
 
 import {
   Container, Button,
-  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, Form, FormHomeTitle, FormInput, HomeFormButton,
+  MainBanner, MainBannerContent, MainBannerContentLeft, MainBannerContentText, MainBannerContentRight, FormHomeTitle, HomeFormButton,
   SectionAbout, SectionAboutContainer, SectionAboutContent, SectionAboutContentLeft, SectionAboutContentRight,
   SectionAnnuity, SectionAnnuityContent, SectionAnnuityContentLeft, SectionAnnuityContentRight,
   SectionBannerInfo, SectionBannerInfoContent, SectionBannerInfoText,
@@ -14,60 +15,69 @@ import {
 import ImgCellPhone from '../../assets/landing-3.png';
 import api from '../../services/api';
 import Header from '../../components/Header';
+import Input from '../../components/Input';
 import getIsAuth from '../../services/getIsAuth';
 import { maskCPF, removeMaskCPF } from '../../utils/mask';
+import Loader from '../../components/Loader';
 
 const Landing: React.FC = () => {
   const [cpf, setCpf] = useState('');
-  const [ cpfMask, setCpfMask ] = useState('');
+  const [cpfMask, setCpfMask] = useState('');
 
   useEffect(() => {
-    setCpf( removeMaskCPF( cpfMask ) );
-  }, [ cpfMask ]);
+    setCpf(removeMaskCPF(cpfMask));
+  }, [cpfMask]);
 
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = useCallback(async (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(async (data: object) => {
+    setLoading(true);
 
-    // Validation
-    // TODO
-    if (password !== confirmPassword) {
-      return;
+    try {
+      // Validation
+      // TODO
+      if (password !== confirmPassword) {
+        return;
+      }
+
+      //API Request
+      const { status } = await api.post('/usuarios', {
+        "cpf": cpf,
+        "login": username,
+        "nome": name,
+        "senha": password,
+      });
+
+      if (status === 200 || status === 201) {
+        history.push('/login');
+      } else {
+        history.push('/error');
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
-
-    //API Request
-    const { status } = await api.post('/usuarios', {
-      "cpf": cpf,
-      "login": username,
-      "nome": name,
-      "senha": password,
-    });
-
-    if (status === 200 || status === 201) {
-      history.push('/login');
-    } else {
-      history.push('/error');
-    }
-  }, [cpf, username, name, password, history, confirmPassword]);
+  }, [cpf, username, name, password, confirmPassword, history]);
 
   // Check if user is authenticated
   const handleRedirectToLogin = useCallback(() => {
     const isAuth = getIsAuth();
 
-    if ( isAuth ) history.push('/dashboard');
+    if (isAuth) history.push('/dashboard');
     else history.push('/login');
-  }, [ history ]);
+  }, [history]);
 
   const handleSetCpfMask = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setCpfMask( 
-      maskCPF( 
-        removeMaskCPF( e.target.value )
-      ) 
+    setCpfMask(
+      maskCPF(
+        removeMaskCPF(e.target.value)
+      )
     );
   }, []);
 
@@ -89,12 +99,12 @@ const Landing: React.FC = () => {
             <MainBannerContentRight>
               <Form onSubmit={handleSubmit}>
                 <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
-                <FormInput maxLength={ 14 } value={ cpfMask } onChange={ handleSetCpfMask } placeholder="Digite seu CPF" />
-                <FormInput onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
-                <FormInput onChange={e => setName(e.target.value)} placeholder="Nome completo" />
-                <FormInput type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
-                <FormInput type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
-                <HomeFormButton> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>
+                <Input name="Cpf" maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
+                <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
+                <Input name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
+                <Input name="password" value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
+                <Input name="confirmPassword" value={confirmPassword} type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
+                {loading ? <Loader /> : <HomeFormButton type="submit"> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
               </Form>
             </MainBannerContentRight>
           </MainBannerContent>
