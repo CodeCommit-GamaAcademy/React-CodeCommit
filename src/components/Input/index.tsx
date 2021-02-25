@@ -1,7 +1,7 @@
 import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
-import { InputForm } from './styles';
+import { InputForm, ValidationError } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -21,7 +21,10 @@ const Input: React.FC<InputProps> = ({ name, ...props }) => {
   }, [fieldName, registerField]);
 
   return (
-    <InputForm defaultValue={defaultValue} ref={inputRef} {...props} />
+    <>
+      <InputForm defaultValue={defaultValue} ref={inputRef} {...props} />
+      <ValidationError>{error}</ValidationError>
+    </>
   );
 }
 

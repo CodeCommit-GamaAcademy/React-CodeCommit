@@ -8,6 +8,7 @@ export const InputForm = styled.input`
   padding: 10px 14px;
   font-size: 14px;
 
+
   & + input {
     margin-top: 30px;
   }
@@ -19,3 +20,12 @@ export const InputForm = styled.input`
     border-bottom: 1px solid #68de5a;
   }
 `;
+
+export const ValidationError = styled.span`
+position: absolute;
+  top: 50;
+  color: red;
+  font-size: 12px;
+  display: block;
+`
+
