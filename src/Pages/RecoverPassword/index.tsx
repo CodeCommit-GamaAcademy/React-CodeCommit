@@ -31,7 +31,7 @@ const RecoverPassword: React.FC = () => {
             formUsernameRef.current?.setErrors({});
 
             const schema = yup.object().shape({
-                username: yup.string().required('Nome de usuário obrigatório '),
+                username: yup.string().required('Nome de usuário obrigatório'),
             });
 
             await schema.validate(dataProps, {
@@ -69,8 +69,8 @@ const RecoverPassword: React.FC = () => {
             formPasswordRef.current?.setErrors({});
 
             const schema = yup.object().shape({
-                password: yup.string().required('Senha obrigatório'),
-                confirmPassword: yup.string().required('Senha obrigatório'),
+                password: yup.string().min(6, 'No mínimo 6 digitos'),
+                confirmPassword: yup.string().min(6, 'No mínimo 6 digitos'),
             });
 
             await schema.validate(dataProps, {
@@ -95,6 +95,9 @@ const RecoverPassword: React.FC = () => {
         } catch (err) {
             const errors = getValidationErrors(err);
             formPasswordRef.current?.setErrors(errors);
+            if (Object.keys(err).includes('isAxiosError')) {
+                history.push('/error');
+            }
         } finally {
             setLoading(false);
         }
