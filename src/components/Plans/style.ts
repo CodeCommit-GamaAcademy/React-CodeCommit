@@ -148,6 +148,7 @@ export const ModalForm = styled.form`
     select {
         border: 0;
         border-bottom: 1px solid #444444;
+        height: 50px;
     }
 
     select, textarea {
