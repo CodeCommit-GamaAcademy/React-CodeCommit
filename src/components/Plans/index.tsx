@@ -109,7 +109,7 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
 
           closeModal();
         } else {
-          history.push('error');
+          history.push('/error');
         }
 
       });
