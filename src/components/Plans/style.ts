@@ -55,11 +55,23 @@ export const CardPlans = styled.div`
         justify-content: center;
         align-items: center;
 
+        cursor: pointer;
+
+        transition: background .4s;
+
         .icon {
-            color: #8C52E5
+            color: #8C52E5;
+
+            transition: color .4s;
         }
 
-        cursor: pointer;
+        &:hover {
+            background: #8C52E5;
+
+            .icon {
+                color: #fff;
+            }
+        }
     }
 
     @media screen and (max-width: 900px) {
