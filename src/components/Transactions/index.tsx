@@ -9,6 +9,7 @@ import Extract from '../Extract';
 import api from '../../services/api';
 import { useSelector } from 'react-redux';
 import { ApplicationStore } from '../../store';
+import Loader from '../Loader';
 
 const Transactions: React.FC = () => {
 
@@ -80,7 +81,7 @@ const Transactions: React.FC = () => {
 
     </TransactionsContainer>
   );
-  else return <MdCached color="#f0f0f0" size={ 200 } />
+  else return <Loader style={{ border: '4px solid #f0f0f0' }} />
   
 }
 

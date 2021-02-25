@@ -145,16 +145,12 @@ export const ModalForm = styled.form`
         }
     }
 
-    input {
+    select {
         border: 0;
         border-bottom: 1px solid #444444;
-        
-        &:focus {
-            border-bottom: 1px solid #68de5a;
-        }
     }
 
-    input, textarea {
+    select, textarea {
         padding: 3px 9px;
 
         font-size: 22px;
