@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { ApplicationStore } from '../../store';
 import api from '../../services/api';
 import { Plano } from '../../types/dash-board';
-import { MdCached } from 'react-icons/md';
+import { MdCached, MdAdd } from 'react-icons/md';
 
 
 const Plans: React.FC = () => {
@@ -26,8 +26,9 @@ const Plans: React.FC = () => {
     getAccountPlans();
   }, [ store?.login, store?.token ]);
 
-  if(loaded) return (
+  if (loaded) return (
     <PlansContainer>
+
       {plans?.map( (plan, index) => {
         return ( 
         <CardPlans key={ index }>
@@ -38,6 +39,13 @@ const Plans: React.FC = () => {
           </p>
         </CardPlans>);
       })}
+
+      <CardPlans
+        className="addCard"
+      >
+        <MdAdd className="icon" size={ 50 } />
+      </CardPlans>
+
     </PlansContainer>
   );
   else return <MdCached color="#f0f0f0" size={ 200 } />

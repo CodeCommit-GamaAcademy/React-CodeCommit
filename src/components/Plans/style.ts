@@ -49,6 +49,19 @@ export const CardPlans = styled.div`
     .type-movement {
         color: #212529;
     }
+
+    &.addCard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+            color: #8C52E5
+        }
+
+        cursor: pointer;
+    }
+
     @media screen and (max-width: 900px) {
         margin-top: 20px;
     }
