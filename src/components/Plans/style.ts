@@ -78,3 +78,108 @@ export const CardPlans = styled.div`
         margin-top: 20px;
     }
 `
+
+
+// Modal Styles
+
+export const ModalContainer = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw; 
+
+    background-color: rgba(0, 0, 0, .6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const Modal = styled.div`
+    position: relative;
+
+    width: calc(100% - 50px);
+    max-width: 700px;
+    min-width: 330px;
+    background-color: #f0f0f0;
+
+    padding: 40px; 
+
+    h1 {
+        margin-bottom: 40px;
+
+        color: #444444;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+            margin-right: 8px;
+        }
+    }
+
+    & > .icon {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+
+        cursor: pointer;
+    }
+`
+
+export const ModalForm = styled.form`
+    display: grid;
+    grid-template-rows: 1fr;
+    row-gap: 30px;
+
+    textarea {
+        min-height: 80px;
+        max-height: 200px;
+        resize: vertical;
+
+        &:focus, &:not(:empty) {
+            border: 1px solid #68de5a;
+        }
+    }
+
+    input {
+        border: 0;
+        border-bottom: 1px solid #444444;
+        
+        &:focus {
+            border-bottom: 1px solid #68de5a;
+        }
+    }
+
+    input, textarea {
+        padding: 3px 9px;
+
+        font-size: 22px;
+    }
+
+    button {
+        padding: 20px 18px;
+
+        border: 0;
+        border-radius: 8px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #f0f0f0;
+
+        background: #8C52E5;
+
+        font-size: 20px;
+
+        transition: .3s;
+
+        &:hover {
+            filter: brightness(.8);
+        }
+    }
+`
