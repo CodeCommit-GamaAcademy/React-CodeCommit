@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';

@@ -5,10 +5,15 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   max-width: 100%;
-  padding: 0 16px;
+  padding: 150px 16px 30px;
+
+  @media (max-width: 680px) {
+    min-height: auto;
+    padding: 50px 16px;
+  }
 
   form {
     width: 455px;

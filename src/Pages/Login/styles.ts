@@ -6,7 +6,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 16px;
+  padding: 150px 16px 30px;
+
+  @media (max-width: 680px) {
+    min-height: auto;
+    padding: 50px 16px;
+  }
 
   form {
     padding: 40px 46px;
