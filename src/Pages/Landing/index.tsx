@@ -4,6 +4,10 @@ import { FaArrowRight } from 'react-icons/fa';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as yup from 'yup';
+import api from '../../services/api';
+import getIsAuth from '../../services/getIsAuth';
+import getValidationErrors from '../../utils/getValidationErrors';
+import { maskCPF, removeMaskCPF } from '../../utils/mask';
 
 import {
   Container, Button,
@@ -14,66 +18,53 @@ import {
   SectionAccount, SectionAccountContent, SectionAccountContentText, SectionAccountContentImg
 } from './styles';
 
-import ImgCellPhone from '../../assets/landing-3.png';
-import api from '../../services/api';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
-import getIsAuth from '../../services/getIsAuth';
-import { maskCPF, removeMaskCPF } from '../../utils/mask';
 import Loader from '../../components/Loader';
-import getValidationErrors from '../../utils/getValidationErrors';
+
+import ImgCellPhone from '../../assets/landing-3.png';
 
 const Landing: React.FC = () => {
+  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [cpf, setCpf] = useState('');
   const [cpfMask, setCpfMask] = useState('');
-
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
   const formRef = useRef<FormHandles>(null);
-
-
-  console.log(formRef);
 
   useEffect(() => {
     setCpf(removeMaskCPF(cpfMask));
   }, [cpfMask]);
 
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
-
   const handleSubmit = useCallback(async (data: object) => {
     setLoading(true);
-
-    
     try {
-
       formRef.current?.setErrors({});
+
       const schema = yup.object().shape({
-        cpf: yup.number().min(11),
-        username: yup.string().required('Este campo é obrigatório'),
-        name: yup.string().required('Este campo é obrigatório'),
-        password: yup.string().required('Este campo é obrigatório'),
-        confirmPassword: yup.string().min(6,'No mínimo 6 digitos')
+        cpf: yup.string().min(14, 'Obrigatório ter 11 digitos'),
+        username: yup.string().required('Nome de usuário obrigatório '),
+        name: yup.string().required('Nome completo obrigatório'),
+        password: yup.string().min(6, 'No mínimo 6 digitos'),
+        confirmPassword: yup.string().min(6, 'No mínimo 6 digitos')
       });
 
       await schema.validate(data, {
         abortEarly: false
       });
-      // Validation
-      // TODO
+
       if (password !== confirmPassword) {
         return;
       }
 
-      //API Request
       const { status } = await api.post('/usuarios', {
         "cpf": cpf,
         "login": username,
         "nome": name,
         "senha": password,
-        
       });
 
       if (status === 200 || status === 201) {
@@ -82,10 +73,7 @@ const Landing: React.FC = () => {
         history.push('/error');
       }
     } catch (err) {
-      console.log(err);
-
       const errors = getValidationErrors(err);
-
       formRef.current?.setErrors(errors);
     } finally {
       setLoading(false);
@@ -126,7 +114,7 @@ const Landing: React.FC = () => {
             <MainBannerContentRight>
               <Form ref={formRef} onSubmit={handleSubmit}>
                 <FormHomeTitle> Peça sua conta e cartão de crédito do Gama Bank</FormHomeTitle>
-                <Input name="Cpf" maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
+                <Input name="cpf" maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
                 <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
                 <Input name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
                 <Input name="password" value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
