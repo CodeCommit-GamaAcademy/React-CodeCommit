@@ -22,6 +22,8 @@ export const Container = styled.div`
     border-radius: 8px;
     padding: 40px 46px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 
     animation: 0.6s forwards toRight;
 
@@ -50,7 +52,14 @@ export const FormDescription = styled.p`
   font-size: 14px;
 `;
 
-export const InputFields = styled.section`
+export const FormBoxInput = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  &.has-animation {
+    animation: toRight 0.6s forwards;
+  }
 `;
