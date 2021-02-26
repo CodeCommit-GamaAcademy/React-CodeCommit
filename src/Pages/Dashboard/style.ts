@@ -133,3 +133,72 @@ export const LogOutButton = styled.button`
     display: none;
   }
 `
+export const ContainerMobile = styled.div`
+padding: 4em;
+position: absolute;
+top: 80px;
+z-index: 9999;
+background-color: rgba(0, 0, 0, 0.7);
+height: 100vh;
+width: 100%;
+display: flex;
+flex-direction: column;
+
+div { 
+  margin-bottom: 0.5em;
+}
+
+@media ( min-width: 900px ) {
+  display: none;
+}
+
+`
+
+
+export const ExitButton = styled.div`
+    background: #8C52E5;
+    border-radius: 5px;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    height: 90px;
+    justify-content: space-around;
+    padding: 10px;
+    width: 90px;
+    font-size: 14px;
+    &.card-selected {
+        border: 2px solid #FFF; 
+    }
+
+    img {
+        height: 28px;
+        width: 28px;
+    }
+
+    span {
+        font-size: 12px;
+    }
+
+    :hover {
+        cursor: pointer;
+        background: #68DE5A;
+          }
+
+    @media ( max-width: 900px ) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: initial;
+
+        height: 55px;
+
+        img {
+            height: 16px;
+            width: 16px;
+        }
+
+        span {
+            margin-left: 12px;
+        }
+    }
+`

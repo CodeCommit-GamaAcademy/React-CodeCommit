@@ -11,8 +11,6 @@ export const CardItem = styled.div`
     padding: 10px;
     width: 90px;
 
-
-
     &.card-selected {
         border: 2px solid #FFF;
     }
@@ -28,7 +26,7 @@ export const CardItem = styled.div`
 
     :hover {
         cursor: pointer;
-    }
+        background: #68DE5A;    }
 
     @media ( max-width: 900px ) {
         flex-direction: row;
