@@ -13,6 +13,7 @@ import Input from '../../components/Input';
 import Loader from '../../components/Loader';
 
 import { Container, FormDescription, FormTitle, FormBoxInput } from './styles';
+import { toast } from 'react-toastify';
 
 const RecoverPassword: React.FC = () => {
     const [isValidUsername, setIsValidUsername] = useState(false);
@@ -54,6 +55,7 @@ const RecoverPassword: React.FC = () => {
             const errors = getValidationErrors(err);
             formUsernameRef.current?.setErrors(errors);
             console.log(err);
+            toast.error('Preencha com um usuário válido!');
             if (Object.keys(err).includes('isAxiosError')) {
                 history.push('/error');
             }
@@ -88,6 +90,7 @@ const RecoverPassword: React.FC = () => {
             });
 
             if (data.status === 200 || data.status === 201) {
+                toast.success('Senha alterada com sucesso');
                 history.push('/login');
             } else {
                 history.push('/error');
@@ -95,7 +98,16 @@ const RecoverPassword: React.FC = () => {
         } catch (err) {
             const errors = getValidationErrors(err);
             formPasswordRef.current?.setErrors(errors);
+            if (password != confirmPassword) {
+                toast.error('As senhas estão incorretas!');
+            } else if (password.length < 6) {
+                toast.error('As senhas devem ter um minimo de 6 caracteres');
+            }
+            if ( password.length === 0 || confirmPassword.length === 0 ) {
+                toast.error('Algum dos campos está inválido.');
+            }
             if (Object.keys(err).includes('isAxiosError')) {
+                toast.error('Ocorreu algum erro!');
                 history.push('/error');
             }
         } finally {
