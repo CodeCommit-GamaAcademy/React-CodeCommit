@@ -17,6 +17,7 @@ const Deposit: React.FC = () => {
   const [data, setData] = useState('');
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState(0);
+  const [invoicePayment, setInvoicePayment] = useState(true);
   const store = useSelector((state: ApplicationStore) => state.user);
 
   const handleSubmit = useCallback(async (dataProps: object) => {
@@ -59,7 +60,7 @@ const Deposit: React.FC = () => {
         "data": filteredData,
         "descricao": descricao.trim(),
         "login": store?.login,
-        "planoConta": resultPlan.data[0].id,
+        "planoConta": invoicePayment ? resultPlan.data[2].id : resultPlan.data[0].id,
         "valor": valor,
       }, {
         headers: {
@@ -68,28 +69,44 @@ const Deposit: React.FC = () => {
       });
 
       if (status !== 200) throw new Error('Something went wrong with request');
-      toast.success('Depósito realizado');
+      toast.success(invoicePayment ? 'Pagamento realizado' : 'Depósito realizado');
+      clearForm();
     }
     catch (err) {
       console.log(err);
-      toast.error('Ocorreu algum erro ao tentar realizar o depósito.');
+      toast.error('Ocorreu algum erro ao tentar realizar o' + invoicePayment ? 'pagamento.' : 'depósito.');
     }
     setLoaded(true);
   }, [data, descricao, valor, store?.login, store?.token]);
 
+  function clearForm() {
+    setData('');
+    setDescricao('');
+    setValor(0);
+  }
+
   if (loaded) {
     return (
       <DepositContainer>
-        <Form onSubmit={handleSubmit}>
+        <div className="header-form">
           <p>
-            Realize o seu depósito
-            </p>
+            { invoicePayment ? 'Realize o pagamento da sua fatura' : 'Realize o seu depósito' }
+          </p>
+          <Button onClick={ () => setInvoicePayment(!invoicePayment) }>
+            <span>
+              { invoicePayment ? 'Realizar depósito' : 'Realizar pagamento de fatura' }
+            </span>
+          </Button>
+        </div>
+        <Form onSubmit={handleSubmit}>
           <Input name="date" value={data} onChange={e => setData(e.target.value)} type="date" />
           <Input name="description" value={descricao} onChange={e => setDescricao(e.target.value)} type="text" placeholder="Descrição" />
           <Input name="transferValue" value={valor} onChange={e => setValor(Number(e.target.value))} type="text" placeholder="Qual o valor de sua transferência?" />
 
           <Button type='submit'>
-            <span>Depositar agora</span>
+            <span>
+              { invoicePayment ? 'Pagar agora' : 'Depositar agora' }
+            </span>
             <FaArrowRight color="#8c52e5" />
           </Button>
         </Form>

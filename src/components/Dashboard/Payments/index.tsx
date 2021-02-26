@@ -82,14 +82,22 @@ const Payments: React.FC<PaymentsProps> = (props) => {
       });
 
       if (status !== 200) throw new Error('Something went wrong with request');
-      toast.success('Pagamento realizado com sucesso.');
+      toast.success('Transferência realizada com sucesso.');
+      clearForm();
     }
     catch (err) {
       console.log(err);
-      toast.error('Ocorreu algum erro ao tentar realizar o depósito.');
+      toast.error('Ocorreu algum erro ao tentar realizar a transferência.');
     }
     setLoaded(true);
   }, [destinatario, data, descricao, valor, store?.login, store?.token]);
+
+  function clearForm() {
+    setDestinatario('');
+    setData('');
+    setDescricao('');
+    setValor(0);
+  }
 
   if (loaded) {
     return (
