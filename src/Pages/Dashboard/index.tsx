@@ -59,9 +59,6 @@ const Dashboard: React.FC = () => {
             <CardMenuMobile title = 'Pagamentos' func={changeComponent}  />
             <CardMenuMobile title = 'Transações' func={changeComponent} />
             <ExitButton onClick={ handleLogOut }> Sair </ExitButton>
-            <LogOutButton  >
-            <FiLogOut color="#fff" size={ 20 } />
-          </LogOutButton>
           </ContainerMobile>
         )}
       <DashBoardMobile>
