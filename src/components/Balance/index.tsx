@@ -26,7 +26,7 @@ const Balance: React.FC<AccountProps> = (props) => {
     credito: 0,
   });
   const [user, setUser] = useState('');
-  const [hide, setHide] = useState(true);
+  const [hide, setHide] = useState(false);
   const store = useSelector((state: ApplicationStore) => state.user);
 
   useEffect(() => {

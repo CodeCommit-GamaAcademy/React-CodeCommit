@@ -23,6 +23,7 @@ import Input from '../../components/Input';
 import Loader from '../../components/Loader';
 
 import ImgCellPhone from '../../assets/landing-3.png';
+import { toast } from 'react-toastify';
 
 const Landing: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -68,13 +69,16 @@ const Landing: React.FC = () => {
       });
 
       if (status === 200 || status === 201) {
+        toast.success('Usuário registrado!');
         history.push('/login');
       } else {
+        toast.error('Ocorreu algum erro!');
         history.push('/error');
       }
     } catch (err) {
       const errors = getValidationErrors(err);
       formRef.current?.setErrors(errors);
+      toast.error('O formulário está incorreto!');
     } finally {
       setLoading(false);
     }
