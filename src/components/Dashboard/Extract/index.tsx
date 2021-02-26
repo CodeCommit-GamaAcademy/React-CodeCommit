@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 
 import { ExtractContainer, ExtractItem } from './style';
-import currentIcon from '../../assets/svgs/current-icon.svg';
-import creditCardsIcon from '../../assets/svgs/credit-cards-icon.svg';
+import currentIcon from '../../../assets/svgs/current-icon.svg';
+import creditCardsIcon from '../../../assets/svgs/credit-cards-icon.svg';
 import { Conta } from '../../../types/dash-board';
 
 interface ExtractData {

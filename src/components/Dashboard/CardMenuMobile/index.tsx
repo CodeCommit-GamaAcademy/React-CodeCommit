@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CardItem } from './style';
-import pixIcon from '../../assets/svgs/pix-icon.svg';
+import pixIcon from '../../../assets/svgs/pix-icon.svg';
 
 interface ComponentProp {
     title: string;
