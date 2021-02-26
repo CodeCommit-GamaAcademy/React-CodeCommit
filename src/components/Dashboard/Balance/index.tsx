@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BalanceContainer, BalanceItem, DashNameSection } from './style';
 import currentIcon from '../../assets/svgs/current-icon.svg';
 import creditIcon from '../../assets/svgs/credit-card-icon.svg';
-import { Conta } from '../../types/dash-board';
+import { Conta } from '../../../types/dash-board';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { ApplicationStore } from '../../store';
+import { ApplicationStore } from '../../../store';
 import { useSelector } from 'react-redux';
 
 

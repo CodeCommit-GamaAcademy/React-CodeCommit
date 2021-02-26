@@ -1,15 +1,13 @@
 import React, { useState, useEffect, ChangeEvent, useCallback } from 'react';
 
-import { MdCached } from 'react-icons/md';
-
 import { TransactionsContainer, MonthConatiner } from './style';
-import { Contas } from '../../types/dash-board';
+import { Contas } from '../../../types/dash-board';
 import Balance from '../Balance';
 import Extract from '../Extract';
-import api from '../../services/api';
+import api from '../../../services/api';
 import { useSelector } from 'react-redux';
-import { ApplicationStore } from '../../store';
-import Loader from '../Loader';
+import { ApplicationStore } from '../../../store';
+import Loader from '../../Loader';
 
 const Transactions: React.FC = () => {
 

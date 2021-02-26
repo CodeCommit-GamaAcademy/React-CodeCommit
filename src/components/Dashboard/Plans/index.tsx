@@ -1,12 +1,12 @@
 import React, { Dispatch, FormEvent, HTMLAttributes, SetStateAction, useCallback, useEffect, useState } from 'react';
 import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm } from './style';
 import { useSelector } from 'react-redux';
-import { ApplicationStore } from '../../store';
-import api from '../../services/api';
-import { Plano } from '../../types/dash-board';
+import { ApplicationStore } from '../../../store';
+import api from '../../../services/api';
+import { Plano } from '../../../types/dash-board';
 import { MdAdd, MdEventNote, MdClose } from 'react-icons/md';
-import Loader from '../Loader';
-import { UserData } from '../../store/user/types';
+import Loader from '../../Loader';
+import { UserData } from '../../../store/user/types';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 

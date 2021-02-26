@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { FiLogOut, FiAlignRight } from 'react-icons/fi';
 import { DashMenu, DashBoard, DashMain, LogOutButton, DashBoardMobile, SandwichDiv, ContainerMobile, ExitButton } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
-import CardMenu from '../../components/CardMenu';
-import CardMenuMobile from '../../components/CardMenuMobile';
-import Deposit from '../../components/Deposit';
-import Payments from '../../components/Payments';
-import Plans from '../../components/Plans';
-import Transactions from '../../components/Transactions';
+import CardMenu from '../../components/Dashboard/CardMenu';
+import CardMenuMobile from '../../components/Dashboard/CardMenuMobile';
+import Deposit from '../../components/Dashboard/Deposit';
+import Payments from '../../components/Dashboard/Payments';
+import Plans from '../../components/Dashboard/Plans';
+import Transactions from '../../components/Dashboard/Transactions';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove_user } from '../../store/user/actions';
 import { ApplicationStore } from '../../store';
@@ -37,9 +37,9 @@ const Dashboard: React.FC = () => {
 
   function setModal() { 
     if(modalIsOpen === true)
-    setIsOpen(false);
+      setIsOpen(false);
     else
-    setIsOpen(true);
+      setIsOpen(true);
   }
 
   return (
