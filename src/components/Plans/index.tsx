@@ -8,6 +8,7 @@ import { MdAdd, MdEventNote, MdClose } from 'react-icons/md';
 import Loader from '../Loader';
 import { UserData } from '../../store/user/types';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Plans: React.FC = () => {
@@ -89,7 +90,7 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
       e.preventDefault();
 
       // Validação
-      if ( type.length === 0 || description.length === 0 ) return;
+      if ( type.length === 0 || description.length === 0 ) return toast.error('Preencha todos os campos!');;
 
       const data = {
         descricao: description,
@@ -104,11 +105,14 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
       }}).then( response => {
         if ( response.status === 200 ) {
           setPlans((previewPlans) =>{
-            if ( previewPlans ) return [ ...previewPlans, data ];
+            if ( previewPlans ) {
+              toast.success('Plano adicionado com sucesso!');
+              return [ ...previewPlans, data ];
+            }
           });
-
           closeModal();
         } else {
+          toast.error('Ocorreu algum erro!');
           history.push('/error');
         }
 
