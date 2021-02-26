@@ -6,7 +6,7 @@ import updateReduxState from './services/updateReduxState';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
-
+import './customToast.css'
 import GlobalStyles from './styles/global';
 
 const App: React.FC = () => {

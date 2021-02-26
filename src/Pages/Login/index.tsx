@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { FaArrowRight } from 'react-icons/fa';
 import { Form } from '@unform/web';
 import * as yup from 'yup';
@@ -41,19 +42,21 @@ const Login: React.FC = () => {
         "usuario": username,
         "senha": password
       });
-
       localStorage.setItem('@token_user', response.token);
       localStorage.setItem('@user_name', response.usuario.nome);
       updateReduxState();
-
+      toast.success('Seja bem vindo(a)');
       history.push('/dashboard');
     }
     catch (err) {
       const errors = getValidationErrors(err);
       formRef.current?.setErrors(errors);
       if (Object.keys(err).includes('isAxiosError')) {
-        history.push('/error');
+        toast.error('Ocorreu algum erro!');
+        return history.push('/error');
       }
+      setLoading(false);
+      toast.error('Usuario ou senha incorretos!');
     } finally {
       setLoading(false);
     }

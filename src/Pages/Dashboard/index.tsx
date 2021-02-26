@@ -1,17 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiLogOut, FiAlignRight } from 'react-icons/fi';
-import { DashMenu, DashBoard, DashMain, LogOutButton, DashBoardMobile, SandwichDiv } from './style';
+import { DashMenu, DashBoard, DashMain, LogOutButton, DashBoardMobile, SandwichDiv, ContainerMobile, ExitButton } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
 import CardMenu from '../../components/CardMenu';
+import CardMenuMobile from '../../components/CardMenuMobile';
 import Deposit from '../../components/Deposit';
 import Payments from '../../components/Payments';
 import Plans from '../../components/Plans';
 import Transactions from '../../components/Transactions';
 import { useDispatch } from 'react-redux';
 import { remove_user } from '../../store/user/actions';
-import MenuModal from '../../components/MenuModal'
-
 interface Actual {
   componentName: string,
   isActual: boolean,
@@ -30,6 +29,7 @@ const Dashboard: React.FC = () => {
 
   //Setting data accounts;
   const changeComponent = useCallback((title: string) => {
+    setIsOpen(false);
     setActual({
       componentName: title,
       isActual: true,
@@ -43,24 +43,30 @@ const Dashboard: React.FC = () => {
   }, [ dispatch, history ]);
 
   function setModal() { 
+    if(modalIsOpen == true)
+    setIsOpen(false);
+    else
     setIsOpen(true);
   }
 
   return (
     <>
+            {modalIsOpen && (
+          <ContainerMobile onClick={setModal}>
+
+            <CardMenuMobile title = 'Depósitos' func={changeComponent} />
+            <CardMenuMobile title = 'Planos' func={changeComponent} />
+            <CardMenuMobile title = 'Pagamentos' func={changeComponent}  />
+            <CardMenuMobile title = 'Transações' func={changeComponent} />
+            <ExitButton onClick={ handleLogOut }> Sair </ExitButton>
+          </ContainerMobile>
+        )}
       <DashBoardMobile>
         <img className="logo" src={gamaIcon} alt="Gama icon"/>
         <SandwichDiv>
         <FiAlignRight color="#fff" size={ 60 } onClick={() => setModal()} ></FiAlignRight>
         </SandwichDiv>
-        {modalIsOpen && (
-          <MenuModal>
-            <CardMenu title = 'Depósitos' func={changeComponent} selected={actual.componentName === 'Depósitos' && actual.isActual} />
-            <CardMenu title = 'Planos' func={changeComponent} selected={actual.componentName === 'Planos' && actual.isActual} />
-            <CardMenu title = 'Pagamentos' func={changeComponent} selected={actual.componentName === 'Pagamentos' && actual.isActual} />
-            <CardMenu title = 'Transações' func={changeComponent} selected={actual.componentName === 'Transações' && actual.isActual} />
-          </MenuModal>
-        )}
+
       </DashBoardMobile> 
       <DashBoard>
         <DashMenu>
