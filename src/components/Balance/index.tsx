@@ -67,7 +67,7 @@ const Balance: React.FC<AccountProps> = (props) => {
         <div>
           <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem vindo!</p>
           <div>
-            {hide ? <FiEye size={35} onClick={() => hideOrShowInformations()} /> : <FiEyeOff size={35} onClick={() => hideOrShowInformations()} />}
+            {!hide ? <FiEye size={35} onClick={() => hideOrShowInformations()} /> : <FiEyeOff size={35} onClick={() => hideOrShowInformations()} />}
           </div>
         </div>
       </DashNameSection>
