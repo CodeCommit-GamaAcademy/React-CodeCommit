@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import { CardItem } from './style';
 import pixIcon from '../../assets/svgs/pix-icon.svg';
 
-interface ComponentProp {
+interface ComponentProp extends HTMLAttributes<HTMLDivElement> {
     title: string;
-    func: Function;
     selected: boolean
 }
 
-const CardMenu: React.FC<ComponentProp> = ( props ) => {
-
-    const changeComponent = () => {
-        props.func(props.title);
-    }
+const CardMenu: React.FC<ComponentProp> = ( { selected, ...props } ) => {
 
     return (
         <>
-            <CardItem className={props.selected ? 'card-selected' : ''} onClick={changeComponent}>
+            <CardItem { ...props } className={selected ? 'card-selected' : ''}>
                 <img src={pixIcon} alt="pix icon" />
                 <span>{props.title}</span>
             </CardItem>
