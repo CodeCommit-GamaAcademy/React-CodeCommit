@@ -31,7 +31,7 @@ export default createGlobalStyle`
 
     body::-webkit-scrollbar {
         width: 8px;
-        border: 1px solid lightgray;
+        border-left: 1px solid lightgray;
     }
     body::-webkit-scrollbar-track {
         background: '#fff';
