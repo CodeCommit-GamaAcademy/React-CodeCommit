@@ -136,13 +136,6 @@ export const ModalForm = styled.form`
     row-gap: 30px;
 
     textarea {
-        min-height: 80px;
-        max-height: 200px;
-        resize: vertical;
-
-        &:focus, &:not(:empty) {
-            border: 1px solid #68de5a;
-        }
     }
 
     select {
@@ -178,5 +171,29 @@ export const ModalForm = styled.form`
         &:hover {
             filter: brightness(.8);
         }
+    }
+`
+
+export const TextareaWrapper = styled.div`
+    position: relative;
+    display: flex;
+    height: 100px;
+
+    textarea {
+        flex: 1;
+        resize: none;
+
+        &:focus, &:not(:empty) {
+            border: 1px solid #68de5a;
+        }
+    }
+
+    label {
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+
+        opacity: .4;
+        font-size: 12px;
     }
 `

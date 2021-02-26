@@ -1,5 +1,5 @@
 import React, { Dispatch, FormEvent, HTMLAttributes, SetStateAction, useCallback, useEffect, useState } from 'react';
-import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm } from './style';
+import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm, TextareaWrapper } from './style';
 import { useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
 import api from '../../../services/api';
@@ -140,11 +140,18 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
                 <option value="TC">Transferência entre contas</option>
                 <option value="TU">Transferência entre usúarios</option>
               </select>
-              <textarea 
-                placeholder="Descrição do plano" 
-                value={ description }
-                onChange={ e => setDescription(e.target.value) }
-              />
+              <TextareaWrapper>
+                <textarea 
+                  placeholder="Descrição" 
+                  maxLength={20}
+                  value={ description }
+                  onChange={ e => setDescription(e.target.value) }
+                />
+
+                <label htmlFor="">
+                  Restante: { 20 - description.length }
+                </label>
+              </TextareaWrapper>
 
               <button
                 type='submit'
