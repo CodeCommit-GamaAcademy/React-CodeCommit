@@ -26,11 +26,13 @@ const Deposit: React.FC = () => {
     const referenceDate = new Date(date.setDate(date.getDate() - 1));
     const depositDate = new Date(data);
 
-    if (referenceDate > depositDate || data === '') {
+    const filteredData = data.trim();
+
+    if (referenceDate > depositDate || filteredData === '') {
       setLoaded(true);
       return toast.error('Escolha outra data');
     }
-    if (descricao.length <= 2) {
+    if (descricao.trim().length <= 2) {
       setLoaded(true);
       return toast.error('Descrição não pode ser nula');
     }
@@ -54,8 +56,8 @@ const Deposit: React.FC = () => {
 
       const { status } = await api.post('/lancamentos', {
         "conta": result.data.contaBanco.id,
-        "data": data,
-        "descricao": descricao,
+        "data": filteredData,
+        "descricao": descricao.trim(),
         "login": store?.login,
         "planoConta": resultPlan.data[0].id,
         "valor": valor,

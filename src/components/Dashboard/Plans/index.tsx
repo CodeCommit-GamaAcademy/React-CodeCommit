@@ -89,15 +89,18 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
     const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
+      const filteredType = type.trim();
+      const filteredDescription = description.trim();
+
       // Validação
-      if ( type.length === 0 || description.length === 0 ) return toast.error('Preencha todos os campos!');;
+      if ( filteredType.length === 0 || filteredDescription.length === 0 ) return toast.error('Preencha todos os campos!');;
 
       const data = {
-        descricao: description,
+        descricao: filteredDescription,
         id: 0,
         login,
         padrao: true,
-        tipoMovimento: type
+        tipoMovimento: filteredType
       }
 
       api.post('lancamentos/planos-conta', data, { headers: {

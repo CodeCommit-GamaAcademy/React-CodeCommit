@@ -31,7 +31,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
     const referenceDate = new Date(date.setDate(date.getDate() - 1));
     const depositDate = new Date(data);
 
-    if (destinatario.length === 0) {
+    if (destinatario.trim().length === 0) {
       setLoaded(true);
       return toast.error('Login do destinatário não pode ser nulo')
     }
@@ -69,7 +69,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
 
       const { status } = await api.post('/lancamentos', {
         "conta": result.data.contaBanco.id,
-        "contaDestino": destinatario,
+        "contaDestino": destinatario.trim(),
         "data": data,
         "descricao": descricao,
         "login": store?.login,
