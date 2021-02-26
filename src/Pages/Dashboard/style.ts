@@ -154,7 +154,6 @@ div {
 
 `
 
-
 export const ExitButton = styled.div`
     background: #8C52E5;
     border-radius: 5px;
