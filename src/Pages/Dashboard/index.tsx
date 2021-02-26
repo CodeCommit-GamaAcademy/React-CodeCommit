@@ -51,14 +51,17 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-            {modalIsOpen && (
+        {modalIsOpen && (
           <ContainerMobile onClick={setModal}>
 
             <CardMenuMobile title = 'Depósitos' func={changeComponent} />
             <CardMenuMobile title = 'Planos' func={changeComponent} />
             <CardMenuMobile title = 'Pagamentos' func={changeComponent}  />
             <CardMenuMobile title = 'Transações' func={changeComponent} />
-            <ExitButton onClick={ handleLogOut }> Sair </ExitButton>
+            <ExitButton onClick={ handleLogOut }>
+              <FiLogOut size={16} color="#fff" style={{ marginRight: 8 }} />
+              Sair
+            </ExitButton>
           </ContainerMobile>
         )}
       <DashBoardMobile>
