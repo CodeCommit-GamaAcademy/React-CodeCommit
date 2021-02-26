@@ -15,6 +15,19 @@ export const PlansContainer = styled.div`
     margin-top: 100px;
     overflow-y: auto;
 
+    &::-webkit-scrollbar {
+        width: 8px;
+        border: 1px solid lightgray;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 100%;
+        background: #68DE5A;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
     @media screen and ( max-width: 1200px ) {
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
@@ -134,9 +147,6 @@ export const ModalForm = styled.form`
     display: grid;
     grid-template-rows: 1fr;
     row-gap: 30px;
-
-    textarea {
-    }
 
     select {
         border: 0;
