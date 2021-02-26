@@ -127,7 +127,9 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
               Adicionar um plano
             </h1>
             <ModalForm onSubmit={ handleSubmit } >
-              <select>
+              <select
+                onChange={ e => setType(e.target.value) }
+              >
                 <option style={{ color: '#b3b3b3' }} value="">Escolha o tipo</option>
                 <option value="R">Receita</option>
                 <option value="D">Despesa</option>
