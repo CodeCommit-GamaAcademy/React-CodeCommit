@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import { Form } from '@unform/web';
 import { DepositContainer } from './style';
 import { Button } from '../Payments/style';
@@ -12,6 +12,7 @@ import { MdCached } from 'react-icons/md';
 
 import Input from '../../Input'
 import { change_screen, set_transaction_data } from '../../../store/dashboard/actions';
+import { number } from 'yup/lib/locale';
 
 const Deposit: React.FC = () => {
 
@@ -93,6 +94,13 @@ const Deposit: React.FC = () => {
     setValor(0);
   }
 
+  const handleChangeValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const numberToAdd = Number(e.target.value);
+
+    if ( numberToAdd > 10000 ) setValor(10000);
+    else setValor(numberToAdd);
+  }, []); 
+
   if (loaded) {
     return (
       <DepositContainer>
@@ -109,7 +117,7 @@ const Deposit: React.FC = () => {
         <Form onSubmit={handleSubmit}>
           <Input name="date" value={data} onChange={e => setData(e.target.value)} type="date" />
           <Input name="description" value={descricao} onChange={e => setDescricao(e.target.value)} type="text" placeholder="Descrição" />
-          <Input name="transferValue" value={valor ? valor : ''} onChange={e => setValor(Number(e.target.value))} type="number" placeholder="Qual o valor de sua transferência?" />
+          <Input name="transferValue" value={valor ? valor : ''} onChange={handleChangeValue} type="number" placeholder="Qual o valor de sua transferência?" />
 
           <Button type='submit'>
             <span>
