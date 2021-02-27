@@ -1,6 +1,6 @@
 import React, { Dispatch, FormEvent, HTMLAttributes, SetStateAction, useCallback, useEffect, useState } from 'react';
 import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm, TextareaWrapper } from './style';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
 import api from '../../../services/api';
 import { Plano } from '../../../types/dash-board';
@@ -9,20 +9,36 @@ import Loader from '../../Loader';
 import { UserData } from '../../../store/user/types';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { insert_plans_data } from '../../../store/dashboard/actions';
 
 
 const Plans: React.FC = () => {
   const store = useSelector( (state: ApplicationStore) => state.user );
   const [ plans, setPlans ] = useState<Plano[]>();
-  const [ loaded, setLoaded ] = useState(false);
+  const [ loaded, setLoaded ] = useState(true);
 
   const [ isAddingCard, setIsAddingCard ] = useState(false);
+
+  const dashboard = useSelector((store: ApplicationStore) => store.dashboard);
+
+  const dispatch = useDispatch();
 
   const closeModal = useCallback(() => {
     setIsAddingCard(false);
   }, []);
 
+  useEffect(() => {
+    if (plans)
+      dispatch(insert_plans_data(plans))
+  }, [ dispatch, plans ]);
+
   useEffect( () => {
+    if ( dashboard.plans_data ) {
+      setPlans(dashboard.plans_data);
+
+      return;
+    }
+
     setLoaded(false);
 
     const getAccountPlans = async () => {
@@ -36,7 +52,7 @@ const Plans: React.FC = () => {
     }
 
     getAccountPlans();
-  }, [ store?.login, store?.token ]);
+  }, [ store, dashboard ]);
 
   if (loaded) return (
     <>
