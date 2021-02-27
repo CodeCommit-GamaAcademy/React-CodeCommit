@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Form } from '@unform/web';
 import { FaArrowRight } from 'react-icons/fa'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { MdCached } from 'react-icons/md';
 
@@ -11,11 +11,15 @@ import api from '../../../services/api';
 import { Contas, Plano } from '../../../types/dash-board';
 import Input from '../../Input';
 
+import { change_screen } from '../../../store/dashboard/actions';
+
 interface PaymentsProps {
   func: Function;
 }
 
 const Payments: React.FC<PaymentsProps> = (props) => {
+
+  const dispatch = useDispatch();
 
   const [loaded, setLoaded] = useState(true);
   const [destinatario, setDestinatario] = useState('');
@@ -82,6 +86,9 @@ const Payments: React.FC<PaymentsProps> = (props) => {
       });
 
       if (status !== 200) throw new Error('Something went wrong with request');
+
+      dispatch(change_screen('Transações'));
+
       toast.success('Pagamento realizado com sucesso.');
     }
     catch (err) {
@@ -89,7 +96,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
       toast.error('Ocorreu algum erro ao tentar realizar o depósito.');
     }
     setLoaded(true);
-  }, [destinatario, data, descricao, valor, store?.login, store?.token]);
+  }, [destinatario, data, descricao, valor, store?.login, store?.token, dispatch]);
 
   if (loaded) {
     return (
@@ -103,7 +110,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
             <Input name="receiver" value={destinatario} onChange={e => setDestinatario(e.target.value)} type="text" placeholder="Login do destinatário" />
             <Input name="date" value={data} onChange={e => setData(e.target.value)} type="date" />
             <Input name="description" value={descricao} onChange={e => setDescricao(e.target.value)} type="text" placeholder="Descrição" />
-            <Input name="transferValur" value={valor} onChange={e => setValor(Number(e.target.value))} type="text" placeholder="Qual o valor de sua transferência?" />
+            <Input name="transferValur" value={valor ? valor: ''} onChange={e => setValor(Number(e.target.value))} type="number" placeholder="Qual o valor de sua transferência?" />
 
             <Button type="submit">
               <span>Transferir agora</span>
