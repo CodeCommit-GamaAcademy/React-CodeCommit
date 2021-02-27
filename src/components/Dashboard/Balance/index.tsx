@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BalanceContainer, BalanceItem, DashNameSection } from './style';
-import currentIcon from '../../assets/svgs/current-icon.svg';
-import creditIcon from '../../assets/svgs/credit-card-icon.svg';
-import { Conta } from '../../types/dash-board';
+import currentIcon from '../../../assets/svgs/current-icon.svg';
+import creditIcon from '../../../assets/svgs/credit-card-icon.svg';
+import { Conta } from '../../../types/dash-board';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { ApplicationStore } from '../../store';
+import { ApplicationStore } from '../../../store';
 import { useSelector } from 'react-redux';
 
 
@@ -67,7 +67,7 @@ const Balance: React.FC<AccountProps> = (props) => {
         <div>
           <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem vindo!</p>
           <div>
-            {hide ? <FiEye size={35} onClick={() => hideOrShowInformations()} /> : <FiEyeOff size={35} onClick={() => hideOrShowInformations()} />}
+            {!hide ? <FiEye size={35} onClick={() => hideOrShowInformations()} /> : <FiEyeOff size={35} onClick={() => hideOrShowInformations()} />}
           </div>
         </div>
       </DashNameSection>

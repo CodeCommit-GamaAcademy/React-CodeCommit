@@ -15,6 +15,19 @@ export const PlansContainer = styled.div`
     margin-top: 100px;
     overflow-y: auto;
 
+    &::-webkit-scrollbar {
+        width: 8px;
+        border: 1px solid lightgray;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 100%;
+        background: #68DE5A;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
     @media screen and ( max-width: 1200px ) {
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
@@ -135,16 +148,6 @@ export const ModalForm = styled.form`
     grid-template-rows: 1fr;
     row-gap: 30px;
 
-    textarea {
-        min-height: 80px;
-        max-height: 200px;
-        resize: vertical;
-
-        &:focus, &:not(:empty) {
-            border: 1px solid #68de5a;
-        }
-    }
-
     select {
         border: 0;
         border-bottom: 1px solid #444444;
@@ -178,5 +181,29 @@ export const ModalForm = styled.form`
         &:hover {
             filter: brightness(.8);
         }
+    }
+`
+
+export const TextareaWrapper = styled.div`
+    position: relative;
+    display: flex;
+    height: 100px;
+
+    textarea {
+        flex: 1;
+        resize: none;
+
+        &:focus, &:not(:empty) {
+            border: 1px solid #68de5a;
+        }
+    }
+
+    label {
+        position: absolute;
+        bottom: 6px;
+        right: 6px;
+
+        opacity: .4;
+        font-size: 12px;
     }
 `

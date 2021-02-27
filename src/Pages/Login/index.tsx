@@ -16,6 +16,7 @@ import Loader from '../../components/Loader';
 import Input from '../../components/Input';
 import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
+import { AnyObject } from '../../types/utils';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -24,7 +25,13 @@ const Login: React.FC = () => {
   const history = useHistory();
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (data: object) => {
+  const handleSubmit = useCallback(async (data: AnyObject) => {
+    const filteredData: AnyObject = {}
+
+    Object.keys(data).forEach( key => {
+      filteredData[key] = data[key].trim();
+    });
+
     setLoading(true);
     try {
       formRef.current?.setErrors({});
@@ -34,7 +41,7 @@ const Login: React.FC = () => {
         password: yup.string().required('Senha obrigatória'),
       });
 
-      await schema.validate(data, {
+      await schema.validate(filteredData, {
         abortEarly: false
       })
 

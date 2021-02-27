@@ -24,6 +24,7 @@ import Loader from '../../components/Loader';
 
 import ImgCellPhone from '../../assets/landing-3.png';
 import { toast } from 'react-toastify';
+import { AnyObject } from '../../types/utils';
 
 const Landing: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -40,7 +41,13 @@ const Landing: React.FC = () => {
     setCpf(removeMaskCPF(cpfMask));
   }, [cpfMask]);
 
-  const handleSubmit = useCallback(async (data: object) => {
+  const handleSubmit = useCallback(async (data: AnyObject) => {
+    const filteredData: AnyObject = {}
+
+    Object.keys(data).forEach( key => {
+      filteredData[key] = data[key].trim();
+    });
+
     setLoading(true);
     try {
       formRef.current?.setErrors({});
@@ -53,7 +60,7 @@ const Landing: React.FC = () => {
         confirmPassword: yup.string().min(6, 'No mínimo 6 digitos')
       });
 
-      await schema.validate(data, {
+      await schema.validate(filteredData, {
         abortEarly: false
       });
 

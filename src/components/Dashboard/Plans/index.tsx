@@ -1,13 +1,14 @@
 import React, { Dispatch, FormEvent, HTMLAttributes, SetStateAction, useCallback, useEffect, useState } from 'react';
-import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm } from './style';
+import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm, TextareaWrapper } from './style';
 import { useSelector } from 'react-redux';
-import { ApplicationStore } from '../../store';
-import api from '../../services/api';
-import { Plano } from '../../types/dash-board';
+import { ApplicationStore } from '../../../store';
+import api from '../../../services/api';
+import { Plano } from '../../../types/dash-board';
 import { MdAdd, MdEventNote, MdClose } from 'react-icons/md';
-import Loader from '../Loader';
-import { UserData } from '../../store/user/types';
+import Loader from '../../Loader';
+import { UserData } from '../../../store/user/types';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Plans: React.FC = () => {
@@ -88,15 +89,18 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
     const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
+      const filteredType = type.trim();
+      const filteredDescription = description.trim();
+
       // Validação
-      if ( type.length === 0 || description.length === 0 ) return;
+      if ( filteredType.length === 0 || filteredDescription.length === 0 ) return toast.error('Preencha todos os campos!');;
 
       const data = {
-        descricao: description,
+        descricao: filteredDescription,
         id: 0,
         login,
         padrao: true,
-        tipoMovimento: type
+        tipoMovimento: filteredType
       }
 
       api.post('lancamentos/planos-conta', data, { headers: {
@@ -104,11 +108,14 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
       }}).then( response => {
         if ( response.status === 200 ) {
           setPlans((previewPlans) =>{
-            if ( previewPlans ) return [ ...previewPlans, data ];
+            if ( previewPlans ) {
+              toast.success('Plano adicionado com sucesso!');
+              return [ ...previewPlans, data ];
+            }
           });
-
           closeModal();
         } else {
+          toast.error('Ocorreu algum erro!');
           history.push('/error');
         }
 
@@ -127,18 +134,27 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
               Adicionar um plano
             </h1>
             <ModalForm onSubmit={ handleSubmit } >
-              <select>
+              <select
+                onChange={ e => setType(e.target.value) }
+              >
                 <option style={{ color: '#b3b3b3' }} value="">Escolha o tipo</option>
                 <option value="R">Receita</option>
                 <option value="D">Despesa</option>
                 <option value="TC">Transferência entre contas</option>
                 <option value="TU">Transferência entre usúarios</option>
               </select>
-              <textarea 
-                placeholder="Descrição do plano" 
-                value={ description }
-                onChange={ e => setDescription(e.target.value) }
-              />
+              <TextareaWrapper>
+                <textarea 
+                  placeholder="Descrição" 
+                  maxLength={20}
+                  value={ description }
+                  onChange={ e => setDescription(e.target.value) }
+                />
+
+                <label htmlFor="">
+                  Restante: { 20 - description.length }
+                </label>
+              </TextareaWrapper>
 
               <button
                 type='submit'

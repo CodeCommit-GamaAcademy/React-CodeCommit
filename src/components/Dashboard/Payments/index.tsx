@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 import { MdCached } from 'react-icons/md';
 
 import { PaymentsContainer, Button } from './style';
-import { ApplicationStore } from '../../store';
-import api from '../../services/api';
-import { Contas, Plano } from '../../types/dash-board';
-import Input from '../Input';
+import { ApplicationStore } from '../../../store';
+import api from '../../../services/api';
+import { Contas, Plano } from '../../../types/dash-board';
+import Input from '../../Input';
 
 interface PaymentsProps {
   func: Function;
@@ -31,7 +31,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
     const referenceDate = new Date(date.setDate(date.getDate() - 1));
     const depositDate = new Date(data);
 
-    if (destinatario.length === 0) {
+    if (destinatario.trim().length === 0) {
       setLoaded(true);
       return toast.error('Login do destinatário não pode ser nulo')
     }
@@ -69,7 +69,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
 
       const { status } = await api.post('/lancamentos', {
         "conta": result.data.contaBanco.id,
-        "contaDestino": destinatario,
+        "contaDestino": destinatario.trim(),
         "data": data,
         "descricao": descricao,
         "login": store?.login,
@@ -82,14 +82,22 @@ const Payments: React.FC<PaymentsProps> = (props) => {
       });
 
       if (status !== 200) throw new Error('Something went wrong with request');
-      toast.success('Pagamento realizado com sucesso.');
+      toast.success('Transferência realizada com sucesso.');
+      clearForm();
     }
     catch (err) {
       console.log(err);
-      toast.error('Ocorreu algum erro ao tentar realizar o depósito.');
+      toast.error('Ocorreu algum erro ao tentar realizar a transferência.');
     }
     setLoaded(true);
   }, [destinatario, data, descricao, valor, store?.login, store?.token]);
+
+  function clearForm() {
+    setDestinatario('');
+    setData('');
+    setDescricao('');
+    setValor(0);
+  }
 
   if (loaded) {
     return (

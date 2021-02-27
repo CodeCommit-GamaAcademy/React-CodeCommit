@@ -3,38 +3,31 @@ import { useHistory } from 'react-router-dom';
 import { FiLogOut, FiAlignRight } from 'react-icons/fi';
 import { DashMenu, DashBoard, DashMain, LogOutButton, DashBoardMobile, SandwichDiv, ContainerMobile, ExitButton } from './style';
 import gamaIcon from '../../assets/svgs/gama-icon.svg';
-import CardMenu from '../../components/CardMenu';
-import CardMenuMobile from '../../components/CardMenuMobile';
-import Deposit from '../../components/Deposit';
-import Payments from '../../components/Payments';
-import Plans from '../../components/Plans';
-import Transactions from '../../components/Transactions';
-import { useDispatch } from 'react-redux';
+import CardMenu from '../../components/Dashboard/CardMenu';
+import CardMenuMobile from '../../components/Dashboard/CardMenuMobile';
+import Deposit from '../../components/Dashboard/Deposit';
+import Payments from '../../components/Dashboard/Payments';
+import Plans from '../../components/Dashboard/Plans';
+import Transactions from '../../components/Dashboard/Transactions';
+import { useDispatch, useSelector } from 'react-redux';
 import { remove_user } from '../../store/user/actions';
-interface Actual {
-  componentName: string,
-  isActual: boolean,
-}
+import { ApplicationStore } from '../../store';
+import { change_screen } from '../../store/dashboard/actions';
+import { Screen } from '../../store/dashboard/types';
 
 const Dashboard: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [ actual, setActual ] = useState<Actual>({
-    componentName: 'Transações',
-    isActual: true,
-  });
-  const [modalIsOpen,setIsOpen] = React.useState(false);
+  const currentScreen = useSelector((store: ApplicationStore) => store.dashboard.current_screen);
 
+  const [modalIsOpen,setIsOpen] = useState(false);
 
   //Setting data accounts;
-  const changeComponent = useCallback((title: string) => {
+  const changeComponent = useCallback((title: Screen) => {
     setIsOpen(false);
-    setActual({
-      componentName: title,
-      isActual: true,
-    });
-  }, []);
+    dispatch( change_screen(title) );
+  }, [dispatch]);
 
   const handleLogOut = useCallback(() => {
     dispatch(remove_user());
@@ -43,22 +36,25 @@ const Dashboard: React.FC = () => {
   }, [ dispatch, history ]);
 
   function setModal() { 
-    if(modalIsOpen == true)
-    setIsOpen(false);
+    if(modalIsOpen === true)
+      setIsOpen(false);
     else
-    setIsOpen(true);
+      setIsOpen(true);
   }
 
   return (
     <>
-            {modalIsOpen && (
+        {modalIsOpen && (
           <ContainerMobile onClick={setModal}>
 
             <CardMenuMobile title = 'Depósitos' func={changeComponent} />
             <CardMenuMobile title = 'Planos' func={changeComponent} />
             <CardMenuMobile title = 'Pagamentos' func={changeComponent}  />
             <CardMenuMobile title = 'Transações' func={changeComponent} />
-            <ExitButton onClick={ handleLogOut }> Sair </ExitButton>
+            <ExitButton onClick={ handleLogOut }>
+              <FiLogOut size={16} color="#fff" style={{ marginRight: 8 }} />
+              Sair
+            </ExitButton>
           </ContainerMobile>
         )}
       <DashBoardMobile>
@@ -71,10 +67,10 @@ const Dashboard: React.FC = () => {
       <DashBoard>
         <DashMenu>
           <img className="logo" src={gamaIcon} alt="Gama icon" />
-          <CardMenu title = 'Depósitos' func={changeComponent} selected={actual.componentName === 'Depósitos' && actual.isActual} />
-          <CardMenu title = 'Planos' func={changeComponent} selected={actual.componentName === 'Planos' && actual.isActual} />
-          <CardMenu title = 'Pagamentos' func={changeComponent} selected={actual.componentName === 'Pagamentos' && actual.isActual} />
-          <CardMenu title = 'Transações' func={changeComponent} selected={actual.componentName === 'Transações' && actual.isActual} />
+          <CardMenu title='Depósitos' onClick={() => changeComponent('Depósitos')} selected={currentScreen === 'Depósitos'} />
+          <CardMenu title='Planos' onClick={() => changeComponent('Planos')} selected={currentScreen === 'Planos'} />
+          <CardMenu title='Pagamentos' onClick={() => changeComponent('Pagamentos')} selected={currentScreen === 'Pagamentos'} />
+          <CardMenu title='Transações' onClick={() => changeComponent('Transações')} selected={currentScreen === 'Transações'} />
 
           <LogOutButton onClick={ handleLogOut } >
             <FiLogOut color="#fff" size={ 20 } />
@@ -82,14 +78,11 @@ const Dashboard: React.FC = () => {
 
         </DashMenu>
         <DashMain>
-          {/* Componente para depósitos */}
-          {actual.componentName === 'Depósitos' && actual.isActual && <Deposit />}
-          {/* Componente para pagamentos */}  
-          {actual.componentName === 'Pagamentos' && actual.isActual && <Payments func={changeComponent}></Payments>}
-          {/* Componente para planos */}  
-          {actual.componentName === 'Planos' && actual.isActual && <Plans />}
-          {/* Componente para transações */}  
-          {actual.componentName === 'Transações' && actual.isActual && <Transactions></Transactions>}
+          {/* Render component by currentScreen */}
+          {currentScreen === 'Depósitos' && <Deposit />}
+          {currentScreen === 'Pagamentos' && <Payments func={changeComponent}></Payments>}
+          {currentScreen === 'Planos' && <Plans />}
+          {currentScreen === 'Transações' && <Transactions></Transactions>}
         </DashMain>
       </DashBoard>
     </>
