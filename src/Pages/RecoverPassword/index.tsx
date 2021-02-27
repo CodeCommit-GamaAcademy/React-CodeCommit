@@ -77,7 +77,7 @@ const RecoverPassword: React.FC = () => {
 
             await schema.validate(dataProps, {
                 abortEarly: false
-            })
+            });
 
             if (password !== confirmPassword) {
                 // Validation TO DO
@@ -103,7 +103,7 @@ const RecoverPassword: React.FC = () => {
             } else if (password.length < 6) {
                 toast.error('As senhas devem ter um minimo de 6 caracteres');
             }
-            if ( password.length === 0 || confirmPassword.length === 0 ) {
+            if (password.length === 0 || confirmPassword.length === 0) {
                 toast.error('Algum dos campos está inválido.');
             }
             if (Object.keys(err).includes('isAxiosError')) {
