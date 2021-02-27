@@ -29,9 +29,11 @@ export const BalanceItem = styled.div`
   }
 
   .hide {
+    width: calc(100% - 50px);
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
+    pointer-events: none;
     @keyframes glow {
       from {
         background: #68DE5A;
@@ -51,6 +53,7 @@ export const BalanceItem = styled.div`
 
   p {
     margin-left: 25px;
+    margin-right: 5px;
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: 400;
@@ -61,11 +64,7 @@ export const BalanceItem = styled.div`
     font-size: 20px;
     font-weight: 700;
     margin-right: 25px;
-
     text-overflow: ellipsis;
-      width: 270px;
-
-
     
   }
 
