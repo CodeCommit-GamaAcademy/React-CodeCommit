@@ -4,15 +4,19 @@ import { DepositContainer } from './style';
 import { Button } from '../Payments/style';
 import { FaArrowRight } from 'react-icons/fa';
 import api from '../../../services/api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
 import { Contas, Plano } from '../../../types/dash-board';
 import { toast } from 'react-toastify';
 import { MdCached } from 'react-icons/md';
 
 import Input from '../../Input'
+import { change_screen } from '../../../store/dashboard/actions';
 
 const Deposit: React.FC = () => {
+
+  const dispatch = useDispatch();
+
   const [loaded, setLoaded] = useState(true);
   const [data, setData] = useState('');
   const [descricao, setDescricao] = useState('');
@@ -69,6 +73,9 @@ const Deposit: React.FC = () => {
       });
 
       if (status !== 200) throw new Error('Something went wrong with request');
+
+      dispatch(change_screen('Transações'));
+      
       toast.success(invoicePayment ? 'Pagamento realizado' : 'Depósito realizado');
       clearForm();
     }
@@ -77,7 +84,7 @@ const Deposit: React.FC = () => {
       toast.error('Ocorreu algum erro ao tentar realizar o' + invoicePayment ? 'pagamento.' : 'depósito.');
     }
     setLoaded(true);
-  }, [data, descricao, valor, store?.login, store?.token]);
+  }, [data, descricao, valor, store?.login, store?.token, dispatch, invoicePayment]);
 
   function clearForm() {
     setData('');
@@ -101,7 +108,7 @@ const Deposit: React.FC = () => {
         <Form onSubmit={handleSubmit}>
           <Input name="date" value={data} onChange={e => setData(e.target.value)} type="date" />
           <Input name="description" value={descricao} onChange={e => setDescricao(e.target.value)} type="text" placeholder="Descrição" />
-          <Input name="transferValue" value={valor} onChange={e => setValor(Number(e.target.value))} type="text" placeholder="Qual o valor de sua transferência?" />
+          <Input name="transferValue" value={valor ? valor : ''} onChange={e => setValor(Number(e.target.value))} type="number" placeholder="Qual o valor de sua transferência?" />
 
           <Button type='submit'>
             <span>
