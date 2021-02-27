@@ -155,8 +155,8 @@ export const FormHomeTitle = styled.h1`
   color: #1d1d1d;
 `;
 
-export const HomeFormButton = styled.button`
-  background: #d8d8d8;
+export const HomeFormButton = styled.button<{ filled: boolean }>`
+  background: ${ props => props.filled ? '#68DE5A': '#d8d8d8'};
   border-radius: 20px;
   height: 47.66px;
   width: 100%;
@@ -171,12 +171,19 @@ export const HomeFormButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  color: #9b9b9b;
+  color: ${ props => props.filled ? '#fff': '#9b9b9b'};
+  pointer-events: ${ props => props.filled ? "all" : "none"};
+
+  transition: filter .4s;
 
   .ArrowRight {
     width: 24px;
     height: 20px;
     justify-content: right;
+  }
+
+  &:hover {
+    filter: brightness(${ props => props.filled ? 0.85 : 1});
   }
 `;
 

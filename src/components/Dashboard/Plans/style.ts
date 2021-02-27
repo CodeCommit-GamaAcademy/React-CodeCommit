@@ -96,12 +96,12 @@ export const CardPlans = styled.div`
 // Modal Styles
 
 export const ModalContainer = styled.div`
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 
     height: 100vh;
-    width: 100vw; 
+    width: 100vw;
 
     background-color: rgba(0, 0, 0, .6);
 
@@ -115,7 +115,7 @@ export const Modal = styled.div`
 
     width: calc(100% - 50px);
     max-width: 700px;
-    min-width: 330px;
+    min-width: 400px;
     background-color: #f0f0f0;
 
     padding: 40px; 
@@ -158,6 +158,8 @@ export const ModalForm = styled.form`
         padding: 3px 9px;
 
         font-size: 22px;
+
+        background: none;
     }
 
     button {

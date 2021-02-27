@@ -25,6 +25,8 @@ import Loader from '../../components/Loader';
 import ImgCellPhone from '../../assets/landing-3.png';
 import { toast } from 'react-toastify';
 import { AnyObject } from '../../types/utils';
+import { UserResponse } from '../../types/user';
+import updateReduxState from '../../services/updateReduxState';
 
 const Landing: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -37,10 +39,24 @@ const Landing: React.FC = () => {
   const history = useHistory();
   const formRef = useRef<FormHandles>(null);
 
+  const [ isFilled, setIsFilled ] = useState(false);
+
+  // Atualiza a mascara do CPF
   useEffect(() => {
     setCpf(removeMaskCPF(cpfMask));
   }, [cpfMask]);
 
+  // Atualiza se todos os campos estão preenchidos para deixar o botão de confirmar verde
+  useEffect(() => {
+    if ( name.length > 3 && 
+      password && 
+      confirmPassword && 
+      cpf.length === 11 && 
+      username ) setIsFilled(true);
+    else setIsFilled(false);
+  }, [name, password, confirmPassword, cpf, username]);
+
+  // Lidar com o registro
   const handleSubmit = useCallback(async (data: AnyObject) => {
     const filteredData: AnyObject = {}
 
@@ -49,6 +65,7 @@ const Landing: React.FC = () => {
     });
 
     setLoading(true);
+
     try {
       formRef.current?.setErrors({});
 
@@ -76,8 +93,17 @@ const Landing: React.FC = () => {
       });
 
       if (status === 200 || status === 201) {
+        const { data } = await api.post<UserResponse>('/login', {
+          usuario: username,
+          senha: password
+        });
+
+        localStorage.setItem('@token_user', data.token);
+        localStorage.setItem('@user_name', data.usuario.nome);
+        updateReduxState();
+
         toast.success('Usuário registrado!');
-        history.push('/login');
+        history.push('/dashboard');
       } else {
         toast.error('Ocorreu algum erro!');
         history.push('/error');
@@ -130,7 +156,7 @@ const Landing: React.FC = () => {
                 <Input name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
                 <Input name="password" value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
                 <Input name="confirmPassword" value={confirmPassword} type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
-                {loading ? <Loader /> : <HomeFormButton type="submit"> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
+                {loading ? <Loader /> : <HomeFormButton filled={ isFilled } type="submit"> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
               </Form>
             </MainBannerContentRight>
           </MainBannerContent>
