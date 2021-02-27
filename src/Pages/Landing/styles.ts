@@ -34,6 +34,10 @@ export const MainBanner = styled.div`
     min-height: auto;
     background-size: 100%;
   }
+
+  @media (max-height: 700px) {
+    background-size: 30%;
+  }
 `;
 
 export const Container = styled.div`

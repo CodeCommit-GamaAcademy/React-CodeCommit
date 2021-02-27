@@ -132,6 +132,14 @@ export const LogOutButton = styled.button`
     right: 30px;
     display: none;
   }
+
+  @media ( max-height: 650px ) {
+    position: initial;
+    margin-top: 13px;
+    margin-bottom: 16px;
+    width: 50px;
+    height: 50px;
+  }
 `
 export const ContainerMobile = styled.div`
 padding: 4em;
