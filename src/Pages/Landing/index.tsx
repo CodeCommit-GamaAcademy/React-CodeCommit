@@ -25,6 +25,8 @@ import Loader from '../../components/Loader';
 import ImgCellPhone from '../../assets/landing-3.png';
 import { toast } from 'react-toastify';
 import { AnyObject } from '../../types/utils';
+import { UserResponse } from '../../types/user';
+import updateReduxState from '../../services/updateReduxState';
 
 const Landing: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -49,6 +51,7 @@ const Landing: React.FC = () => {
     });
 
     setLoading(true);
+    
     try {
       formRef.current?.setErrors({});
 
@@ -76,8 +79,17 @@ const Landing: React.FC = () => {
       });
 
       if (status === 200 || status === 201) {
+        const { data } = await api.post<UserResponse>('/login', {
+          usuario: username,
+          senha: password
+        });
+
+        localStorage.setItem('@token_user', data.token);
+        localStorage.setItem('@user_name', data.usuario.nome);
+        updateReduxState();
+
         toast.success('Usuário registrado!');
-        history.push('/login');
+        history.push('/dashboard');
       } else {
         toast.error('Ocorreu algum erro!');
         history.push('/error');

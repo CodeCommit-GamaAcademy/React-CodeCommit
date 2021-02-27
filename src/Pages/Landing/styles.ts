@@ -156,7 +156,7 @@ export const FormHomeTitle = styled.h1`
 `;
 
 export const HomeFormButton = styled.button`
-  background: #d8d8d8;
+  background: #68DE5A;
   border-radius: 20px;
   height: 47.66px;
   width: 100%;
@@ -171,7 +171,7 @@ export const HomeFormButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  color: #9b9b9b;
+  color: #fff;
 
   .ArrowRight {
     width: 24px;
