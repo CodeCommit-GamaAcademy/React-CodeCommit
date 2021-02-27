@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+<div align="center"> 
+<img  src="https://assets.website-files.com/5ff79f3ebebf6b12f6b7747f/5ffe04fc6284b7e90070d985_logo-gama-academy.png" width="250" />
+</div>
+<h1 align="center" style="margin-top: -20px">  
+GamaBank - Versão WEB
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">Desenvolvido pela equipe da <strong>CodeCommit</strong>. Deploy <a href="#">aqui</a>.</p>
 
-## Available Scripts
+<p align="center">
+	<a href="#">Equipe</a> | 
+	<a href="#">Tecnologias</a> | 
+	<a href="#">Features</a> | 
+	<a href="#">Arquitetura de pastas</a> | 
+	<a href="#">Como usar</a> | 
+	<a href="#">Licença</a> 
+	</p>
+<img src="https://raw.githubusercontent.com/igorsantos97/bank-acc-react/main/docs/home-print.png" />
+<p>Projeto desenvolvido na academia da <a href="https://www.gama.academy/" target="_blank">Gama Academy</a> em parceria com a <a href="https://www.accenture.com/br-pt" target="_blank">Accenture</a> com objetivo de aplicar todos os conceitos aprendidos durante o curso e apresentar para banca como projeto final!</p>
 
-In the project directory, you can run:
+## Equipe da CodeCommit
 
-### `yarn start`
+<a href="https://cutt.ly/blOnLPV" target="_blank"> 
+<img src="https://cutt.ly/glOknQX" width="90"/></a>     
+<a href="https://cutt.ly/7lOQfzv" target="_blank"> 
+<img src="https://cutt.ly/MlOkJaB" width="90"/></a>     
+<a href="https://cutt.ly/SlOQcBf" target="_blank"> 
+<img src="https://cutt.ly/1lOlfra" width="90"/></a>     
+<a href="https://cutt.ly/LlOQCM4" target="_blank"> 
+<img src="https://cutt.ly/3lOj5ZR" width="90"/></a>      
+<a href="https://cutt.ly/NlOm8Tm" target="_blank"> 
+<img src="https://cutt.ly/jlOlWa2" width="90"/></a>
+<a href="https://cutt.ly/slOQ5xI" target="_blank"> 
+<img src="https://cutt.ly/JlOvHsQ" width="90"/>
+</a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+&nbsp;<a href="https://cutt.ly/blOnLPV" target="_blank">Alisson O.</a> | &nbsp;<a href="https://cutt.ly/7lOQfzv" target="_blank">Ana Laura</a> | <a href="https://cutt.ly/SlOQcBf" target="_blank">Gabriel M.</a> | <a href="https://cutt.ly/LlOQCM4" target="_blank">Gabriel N.</a> | <a href="https://cutt.ly/NlOm8Tm" target="_blank">Glauber A.</a> | <a href="https://cutt.ly/slOQ5xI" target="_blank">Igor Santos</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tecnologias
 
-### `yarn test`
+- ReactJS
+- Typescript
+- axios
+- react-redux
+- react-router-dom
+- styled-components
+- jsonwebtoken
+- react-toastify
+- yup
+- unform
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `yarn build`
+Conexão com API para:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Componentização de elementos da interface para o reaproveitamento de código
+- Responsividade
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Outras características:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Cadastro e autenticação de usuários
+- Recuperação de senha
+- Validação de input com unform
+- Alertas de mensagens com Yup e React Toastify
+- Ação de fazer depósitos
+-
 
-### `yarn eject`
+## Arquitetura de pastas
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+├── public
+├── src
+│ ├── assets
+│ │ └── \*subtile
+│ ├── components
+│ ├── pages
+│ ├── services
+│ ├── store
+│ ├── styles
+│ ├── utils
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Como Usar
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Instalando as Dependências
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+yarn
+```
 
-## Learn More
+#### Iniciando a Aplicação
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+yarn start
+```
