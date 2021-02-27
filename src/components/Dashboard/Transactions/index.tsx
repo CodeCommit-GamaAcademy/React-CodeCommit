@@ -8,7 +8,7 @@ import api from '../../../services/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
 import Loader from '../../Loader';
-import { insert_transaction_data } from '../../../store/dashboard/actions';
+import { set_transaction_data } from '../../../store/dashboard/actions';
 
 const Transactions: React.FC = () => {
 
@@ -39,7 +39,7 @@ const Transactions: React.FC = () => {
 
   useEffect(() => {
     if ( contas )
-      dispatch( insert_transaction_data({ accounts: contas }) );
+      dispatch( set_transaction_data({ accounts: contas }) );
   }, [dispatch, contas]);
 
   useEffect( ()=> {

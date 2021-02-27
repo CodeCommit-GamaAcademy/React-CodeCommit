@@ -11,7 +11,7 @@ import api from '../../../services/api';
 import { Contas, Plano } from '../../../types/dash-board';
 import Input from '../../Input';
 
-import { change_screen } from '../../../store/dashboard/actions';
+import { change_screen, set_transaction_data } from '../../../store/dashboard/actions';
 
 interface PaymentsProps {
   func: Function;
@@ -87,6 +87,7 @@ const Payments: React.FC<PaymentsProps> = (props) => {
 
       if (status !== 200) throw new Error('Something went wrong with request');
 
+      dispatch(set_transaction_data(undefined))
       dispatch(change_screen('Transações'));
 
       toast.success('Transferência realizada com sucesso.');

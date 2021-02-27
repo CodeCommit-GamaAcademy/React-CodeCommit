@@ -9,7 +9,7 @@ import Loader from '../../Loader';
 import { UserData } from '../../../store/user/types';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { insert_plans_data } from '../../../store/dashboard/actions';
+import { set_plans_data } from '../../../store/dashboard/actions';
 
 
 const Plans: React.FC = () => {
@@ -29,7 +29,7 @@ const Plans: React.FC = () => {
 
   useEffect(() => {
     if (plans)
-      dispatch(insert_plans_data(plans))
+      dispatch(set_plans_data(plans))
   }, [ dispatch, plans ]);
 
   useEffect( () => {
