@@ -28,7 +28,7 @@ const Login: React.FC = () => {
   const handleSubmit = useCallback(async (data: AnyObject) => {
     const filteredData: AnyObject = {}
 
-    Object.keys(data).forEach( key => {
+    Object.keys(data).forEach(key => {
       filteredData[key] = data[key].trim();
     });
 
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
       localStorage.setItem('@token_user', response.token);
       localStorage.setItem('@user_name', response.usuario.nome);
       updateReduxState();
-      toast.success('Seja bem vindo(a)');
+      toast.success('Seja bem-vindo(a)');
       history.push('/dashboard');
     }
     catch (err) {
