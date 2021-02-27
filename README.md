@@ -35,7 +35,7 @@
 
 &nbsp;<a href="https://cutt.ly/blOnLPV" target="_blank">Alisson O.</a> | &nbsp;<a href="https://cutt.ly/7lOQfzv" target="_blank">Ana Laura</a> | <a href="https://cutt.ly/SlOQcBf" target="_blank">Gabriel M.</a> | <a href="https://cutt.ly/LlOQCM4" target="_blank">Gabriel N.</a> | <a href="https://cutt.ly/NlOm8Tm" target="_blank">Glauber A.</a> | <a href="https://cutt.ly/slOQ5xI" target="_blank">Igor Santos</a>
 
-## Tecnologias
+## Libs
 
 - ReactJS
 - Typescript
@@ -67,10 +67,11 @@ Outras características:
 - Responsividade
 - Validação de input com unform
 - Alertas de mensagens com Yup e React Toastify
-- Arquitetura de Design: Atomic Design para separação de components
+- Arquitetura de Design: Atomic Design para organização dos componentes
 
 ## Arquitetura de pastas
 
+```
 ├── src<br />
 │ ├── assets<br />
 │ ├── components<br />
@@ -79,6 +80,54 @@ Outras características:
 │ ├── store<br />
 │ ├── styles<br />
 │ ├── utils<br />
+
+```
+
+```
+.
+├── README.md
+├── jsconfig.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── index.js
+    ├── logo.svg
+    ├── assets
+    │   ├── css
+    │   │   ├── bootstrap.min.css
+    │   │   └── bootstrap.min.css.map
+    │   ├── style
+    │   │   └── style.css
+    │   ├── fonts
+    │   ├── img
+    │   └── scss
+    │       ├── case2k20
+    │       │   ├── cards
+    │       │   ├── mixins
+    │       │   └── plugins
+    │       ├── react
+    │       │   ├── case2k20
+    │       │   ├── plugins
+    │       │   └── react-differences.scss
+    │       └── case2k20.scss
+    ├── components
+    │   ├── Footers
+    │   │   └── index.js
+    │   ├── Headers
+    │   │   └── IndexHeader.js
+    │   └── Navbar
+    │       └── index.js
+    └── views
+        ├── Index.js
+        ├── pages
+        │   ├── FlagPage.js
+        └── sections
+            ├── StageContent.js
+            └── IndexTopFooter.js
+```
 
 ## Como Usar
 
