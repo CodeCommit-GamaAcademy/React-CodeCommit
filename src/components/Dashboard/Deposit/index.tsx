@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { MdCached } from 'react-icons/md';
 
 import Input from '../../Input'
-import { change_screen } from '../../../store/dashboard/actions';
+import { change_screen, set_transaction_data } from '../../../store/dashboard/actions';
 
 const Deposit: React.FC = () => {
 
@@ -74,6 +74,7 @@ const Deposit: React.FC = () => {
 
       if (status !== 200) throw new Error('Something went wrong with request');
 
+      dispatch(set_transaction_data(undefined));
       dispatch(change_screen('Transações'));
       
       toast.success(invoicePayment ? 'Pagamento realizado' : 'Depósito realizado');

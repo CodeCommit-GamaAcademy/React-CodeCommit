@@ -5,17 +5,21 @@ import { Contas } from '../../../types/dash-board';
 import Balance from '../Balance';
 import Extract from '../Extract';
 import api from '../../../services/api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
 import Loader from '../../Loader';
+import { set_transaction_data } from '../../../store/dashboard/actions';
 
 const Transactions: React.FC = () => {
 
   const [ contas, setContas ] = useState<Contas>();
-  const [ loaded, setLoaded ] = useState(false);
+  const [ loaded, setLoaded ] = useState(true);
   const [ referenceDate, setReferenceDate ] = useState(1);
-  const store = useSelector( (state: ApplicationStore) => state.user );
 
+  const user = useSelector( (state: ApplicationStore) => state.user );
+  const dashboard = useSelector(( state: ApplicationStore ) => state.dashboard);
+
+  const dispatch = useDispatch();
 
   const formatDate = useCallback((date:string) => {
     setLoaded(false);
@@ -33,17 +37,30 @@ const Transactions: React.FC = () => {
     return [year, month, day].join('-');
   }, []);
 
+  useEffect(() => {
+    if ( contas )
+      dispatch( set_transaction_data({ accounts: contas }) );
+  }, [dispatch, contas]);
+
   useEffect( ()=> {
+    if ( dashboard.transactions_data ) {
+      setContas(dashboard.transactions_data.accounts);
+
+      return;
+    }
+
     const getDashboardValues = async() => {
       try {
+        setLoaded(false);
+
         const date = new Date();
         const newD = new Date();
         const newDate = new Date(date.setMonth(date.getMonth()-referenceDate));      
         const dateFormated = (newD.getFullYear() + "-" + ((newD.getMonth() + 1)) + "-" + (newD.getDate() ));
         const newDateFormated = (newDate.getFullYear() + "-" + ((newDate.getMonth() + 1)) + "-" + (newDate.getDate() ));
-        const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${store?.login}`, {
+        const result = await api.get(`/dashboard?fim=${formatDate(dateFormated)}&inicio=${formatDate(newDateFormated)}&login=${user?.login}`, {
           headers: {
-            Authorization: store?.token,
+            Authorization: user?.token,
           }
         });
         setContas(result.data);
@@ -55,7 +72,7 @@ const Transactions: React.FC = () => {
     };
 
     getDashboardValues();
-  }, [ referenceDate, store?.login, store?.token, formatDate ]);
+  }, [ referenceDate, user?.login, user?.token, formatDate, dashboard ]);
 
   const updateReference = (event:ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
