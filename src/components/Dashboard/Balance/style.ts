@@ -5,7 +5,9 @@ export const BalanceItem = styled.div`
   width: 40%;
   height: 170px;
   border-radius: 8px;
-
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   .title {
     margin-top: 10px;
     margin-bottom: 15px;
@@ -59,6 +61,12 @@ export const BalanceItem = styled.div`
     font-size: 20px;
     font-weight: 700;
     margin-right: 25px;
+
+    text-overflow: ellipsis;
+      width: 270px;
+
+
+    
   }
 
   div {
@@ -66,6 +74,7 @@ export const BalanceItem = styled.div`
     justify-content: space-between;
     align-items: baseline;
     margin-top: 20px;
+    
     h3 {
       color: #68DE5A;
     }

@@ -13,8 +13,8 @@ interface ExtractData {
 enum PlanosConta {
     R = 'Receitas',
     D = 'Despesas',
-    TC = 'Trasferência entre contas',
-    TU = 'Tranferência entre usuários'
+    TC = 'Transferência entre contas',
+    TU = 'Transferência entre usuários'
 }
 
 const Extract: React.FC<ExtractData> = (props) => {

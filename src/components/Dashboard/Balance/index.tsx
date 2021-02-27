@@ -65,7 +65,7 @@ const Balance: React.FC<AccountProps> = (props) => {
     <>
       <DashNameSection>
         <div>
-          <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem vindo!</p>
+          <p>Olá <strong>{user.split(' ')[0]}</strong>, seja bem-vindo(a)!</p>
           <div>
             {!hide ? <FiEye size={35} onClick={() => hideOrShowInformations()} /> : <FiEyeOff size={35} onClick={() => hideOrShowInformations()} />}
           </div>
@@ -78,11 +78,12 @@ const Balance: React.FC<AccountProps> = (props) => {
             <p>Conta</p>
           </div>
           <p>Saldo disponivel</p>
-          <h3 className={`value acccount ${hide ? 'hide' : ''}`}>{contaBanco?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+          <h3 className={`value acccount ${hide ? 'hide' : ''}`} title={contaBanco?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}>{contaBanco?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
           <div>
             <p>Transações</p>
-            <h3 className={hide ? 'hide' : ''}>{totalTransactions.banco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+            <h3 className={hide ? 'hide' : ''} title={totalTransactions.banco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}>{totalTransactions.banco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
           </div>
+
         </BalanceItem>
         <BalanceItem>
           {/*  */}
@@ -91,10 +92,11 @@ const Balance: React.FC<AccountProps> = (props) => {
             <p>Conta Crédito</p>
           </div>
           <p>Fatura atual</p>
-          <h3 className={`value credit ${hide ? 'hide' : ''}`}>{contaCredito?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+          <h3 className={`value credit ${hide ? 'hide' : ''}`} title={contaCredito?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}>{contaCredito?.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
           <div>
             <p>Limite Disponivel</p>
-            <h3 className={hide ? 'hide' : ''}>{totalTransactions.credito.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
+            <h3 className={hide ? 'hide' : ''} title={totalTransactions.credito.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+            }>{totalTransactions.credito.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h3>
           </div>
         </BalanceItem>
       </BalanceContainer>
