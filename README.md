@@ -53,24 +53,21 @@ GamaBank - Versão WEB
 
 Conexão com API para:
 
-- Componentização de elementos da interface para o reaproveitamento de código
-- Responsividade
+- Cadastro e autenticação de usuários
+- Recuperação de senha
+- Fazer depósitos
 
 Outras características:
 
-- Cadastro e autenticação de usuários
-- Recuperação de senha
+- Componentização de elementos da interface para o reaproveitamento de código
+- Responsividade
 - Validação de input com unform
 - Alertas de mensagens com Yup e React Toastify
-- Ação de fazer depósitos
--
 
 ## Arquitetura de pastas
 
-├── public
 ├── src
 │ ├── assets
-│ │ └── \*subtile
 │ ├── components
 │ ├── pages
 │ ├── services
@@ -91,3 +88,7 @@ yarn
 ```bash
 yarn start
 ```
+
+## Licença
+
+Esse projeto utiliza a [LICENÇA](../LICENSE) MIT.
