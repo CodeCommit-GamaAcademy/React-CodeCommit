@@ -1,20 +1,20 @@
 <div align="center"> 
 <img  src="https://assets.website-files.com/5ff79f3ebebf6b12f6b7747f/5ffe04fc6284b7e90070d985_logo-gama-academy.png" width="250" />
 </div>
-<h1 align="center" style="margin-top: -20px">  
-GamaBank - Versão WEB
+<h1 align="center" style="margin-top: -20px">  GamaBank - Versão WEB
 </h1>
 
 <p align="center">Desenvolvido pela equipe da <strong>CodeCommit</strong>. Deploy <a href="#">aqui</a>.</p>
 
-<p align="center">
-	<a href="#">Equipe</a> | 
-	<a href="#">Tecnologias</a> | 
-	<a href="#">Features</a> | 
-	<a href="#">Arquitetura de pastas</a> | 
-	<a href="#">Como usar</a> | 
-	<a href="#">Licença</a> 
-	</p>
+<p align="center"> 
+	<a href="#equipe-da-codecommit">Equipe</a> | 
+	<a href="#tecnologias">Tecnologias</a> | 
+	<a href="#features">Features</a> | 
+	<a href="#arquitetura-de-pastas">Arquitetura de pastas</a> | 
+	<a href="#como-usar">Como usar</a> | 
+	<a href="#licença">Licença</a>
+</p>
+
 <img src="https://raw.githubusercontent.com/igorsantos97/bank-acc-react/main/docs/home-print.png" />
 <p>Projeto desenvolvido na academia da <a href="https://www.gama.academy/" target="_blank">Gama Academy</a> em parceria com a <a href="https://www.accenture.com/br-pt" target="_blank">Accenture</a> com objetivo de aplicar todos os conceitos aprendidos durante o curso e apresentar para banca como projeto final!</p>
 
@@ -55,7 +55,10 @@ Conexão com API para:
 
 - Cadastro e autenticação de usuários
 - Recuperação de senha
+- Busca das informações do usuário e da sua conta
 - Fazer depósitos
+- Fazer pagamentos
+- Cadastrar planos
 
 Outras características:
 
@@ -66,21 +69,33 @@ Outras características:
 
 ## Arquitetura de pastas
 
-├── src
-│ ├── assets
-│ ├── components
-│ ├── pages
-│ ├── services
-│ ├── store
-│ ├── styles
-│ ├── utils
+├── src<br/>
+│ ├── assets<br/>
+│ ├── components<br/>
+│ ├── pages<br/>
+│ ├── services<br/>
+│ ├── store<br/>
+│ ├── styles<br/>
+│ ├── utils<br/>
 
 ## Como Usar
+
+#### Clonando o repositório
+
+```bash
+git clone https://github.com/igorsantos97/bank-acc-react.git
+```
+
+#### Entrando no diretório do projeto
+
+```bash
+cd bank-acc-react
+```
 
 #### Instalando as Dependências
 
 ```bash
-yarn
+yarn install
 ```
 
 #### Iniciando a Aplicação
