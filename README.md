@@ -1,8 +1,7 @@
 <div align="center"> 
 <img  src="https://assets.website-files.com/5ff79f3ebebf6b12f6b7747f/5ffe04fc6284b7e90070d985_logo-gama-academy.png" width="250" />
 </div>
-<h1 align="center" style="margin-top: -20px">  GamaBank - Versão WEB
-</h1>
+<h1 align="center"> GamaBank - Versão WEB</h1>
 
 <p align="center">Desenvolvido pela equipe da <strong>CodeCommit</strong>. Deploy <a href="#">aqui</a>.</p>
 
@@ -41,6 +40,7 @@
 - ReactJS
 - Typescript
 - axios
+- jest
 - react-redux
 - react-router-dom
 - styled-components
@@ -54,8 +54,9 @@
 Conexão com API para:
 
 - Cadastro e autenticação de usuários
-- Recuperação de senha
+- Recuperação de senha do usuário
 - Busca das informações do usuário e da sua conta
+- Transferências entre contas de usuários
 - Fazer depósitos
 - Fazer pagamentos
 - Cadastrar planos
@@ -66,17 +67,18 @@ Outras características:
 - Responsividade
 - Validação de input com unform
 - Alertas de mensagens com Yup e React Toastify
+- Arquitetura de Design: Atomic Design para separação de components
 
 ## Arquitetura de pastas
 
-├── src<br/>
-│ ├── assets<br/>
-│ ├── components<br/>
-│ ├── pages<br/>
-│ ├── services<br/>
-│ ├── store<br/>
-│ ├── styles<br/>
-│ ├── utils<br/>
+├── src<br />
+│ ├── assets<br />
+│ ├── components<br />
+│ ├── pages<br />
+│ ├── services<br />
+│ ├── store<br />
+│ ├── styles<br />
+│ ├── utils<br />
 
 ## Como Usar
 
