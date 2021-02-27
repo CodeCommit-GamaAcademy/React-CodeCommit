@@ -70,12 +70,14 @@ const Plans: React.FC = () => {
           </CardPlans>);
         })}
 
-        <CardPlans
-          className="addCard"
-          onClick={ () => setIsAddingCard(true) }
-        >
-          <MdAdd className="icon" size={ 50 } />
-        </CardPlans>
+        {plans && (
+          <CardPlans
+            className="addCard"
+            onClick={ () => setIsAddingCard(true) }
+          >
+            <MdAdd className="icon" size={ 50 } />
+          </CardPlans>
+        )}
 
       </PlansContainer>
     </>
