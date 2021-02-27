@@ -21,7 +21,7 @@ export const DepositContainer = styled.div`
       display: flex;
       justify-content: center;
       margin: 0;
-      width: 40%;
+      width: 45%;
     }
 
     @media screen and (max-width: 900px) {
