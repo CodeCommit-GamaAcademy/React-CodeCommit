@@ -15,6 +15,7 @@ export const MainBanner = styled.div`
   background-position: 40% bottom;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-size: 50%;
 
   opacity: 0;
   animation: 0.6s forwards animationBanner;
@@ -36,7 +37,7 @@ export const MainBanner = styled.div`
   }
 
   @media (max-height: 700px) {
-    background-size: 30%;
+    background-size: 45%;
   }
 `;
 

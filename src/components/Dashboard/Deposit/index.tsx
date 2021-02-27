@@ -21,7 +21,7 @@ const Deposit: React.FC = () => {
   const [data, setData] = useState('');
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState(0);
-  const [invoicePayment, setInvoicePayment] = useState(true);
+  const [invoicePayment, setInvoicePayment] = useState(false);
   const store = useSelector((state: ApplicationStore) => state.user);
 
   const handleSubmit = useCallback(async (dataProps: object) => {
