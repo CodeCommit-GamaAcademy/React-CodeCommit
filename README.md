@@ -116,7 +116,7 @@ Outras características:
 
 ## Mindmap
 
-<img src="https://cutt.ly/1lGuEMh" />
+<img src="https://cutt.ly/llGiL2b" />
 
 ## Como Usar
 
