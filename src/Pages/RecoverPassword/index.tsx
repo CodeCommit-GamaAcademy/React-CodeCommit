@@ -80,7 +80,7 @@ const RecoverPassword: React.FC = () => {
             });
 
             if (password !== confirmPassword) {
-                // Validation TO DO
+                toast.error('As senhas devem ser iguais');
                 return;
             }
 
@@ -98,9 +98,7 @@ const RecoverPassword: React.FC = () => {
         } catch (err) {
             const errors = getValidationErrors(err);
             formPasswordRef.current?.setErrors(errors);
-            if (password != confirmPassword) {
-                toast.error('As senhas estão incorretas!');
-            } else if (password.length < 6) {
+            if (password.length < 6) {
                 toast.error('As senhas devem ter um minimo de 6 caracteres');
             }
             if (password.length === 0 || confirmPassword.length === 0) {
