@@ -142,7 +142,7 @@ const Landing: React.FC = () => {
           <MainBannerContent>
             <MainBannerContentLeft>
               <MainBannerContentText>
-                <p>Gama Bank é um projeto de nossos alunos.
+                <p>yarn é um projeto de nossos alunos.
                 <span> Já tem conta?</span></p>
               </MainBannerContentText>
               <Button onClick={handleRedirectToLogin}>Acessar <FaArrowRight /></Button>
@@ -154,9 +154,9 @@ const Landing: React.FC = () => {
                 <Input name="cpf" maxLength={14} value={cpfMask} onChange={handleSetCpfMask} placeholder="Digite seu CPF" />
                 <Input name="username" value={username} onChange={e => setUsername(e.target.value)} placeholder="Escolha um nome de usuário" />
                 <Input name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
-                <Input name="password" value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha " />
+                <Input name="password" value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha" />
                 <Input name="confirmPassword" value={confirmPassword} type="password" onChange={e => setConfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
-                {loading ? <Loader /> : <HomeFormButton filled={ isFilled } type="submit"> Continuar <FaArrowRight className="ArrowRight" /></HomeFormButton>}
+                {loading ? <Loader /> : <HomeFormButton filled={ isFilled } type="submit">Continuar<FaArrowRight className="ArrowRight" /></HomeFormButton>}
               </Form>
             </MainBannerContentRight>
           </MainBannerContent>
