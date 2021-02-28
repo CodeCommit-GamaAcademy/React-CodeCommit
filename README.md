@@ -1,46 +1,163 @@
-# Getting Started with Create React App
+<div align="center"> 
+<img  src="https://assets.website-files.com/5ff79f3ebebf6b12f6b7747f/5ffe04fc6284b7e90070d985_logo-gama-academy.png" width="250" />
+</div>
+<h1 align="center"> GamaBank - Versão WEB</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">Desenvolvido pela equipe da <strong>CodeCommit</strong>. Deploy <a href="#">aqui</a>.</p>
 
-## Available Scripts
+<p align="center"> 
+    <a  href="#equipe-da-codecommit">Equipe</a> |
+    <a  href="#libs">Libs</a> |
+    <a  href="#features">Features</a> |
+    <a  href="#arquitetura-de-pastas">Arquit. de pastas</a> |
+    <a  href="#arquitetura-flux">Arquit. Flux - Redux</a> |
+    <a  href="#testes">Testes</a> |
+    <a  href="#mindmap">Mindmap</a> |
+    <a  href="#como-usar">Como usar</a> |
+    <a  href="#licença">Licença</a>
+</p>
 
-In the project directory, you can run:
+<img src="https://raw.githubusercontent.com/igorsantos97/bank-acc-react/main/docs/home-print.png" />
+<p>Projeto desenvolvido na academia da <a href="https://www.gama.academy/" target="_blank">Gama Academy</a> em parceria com a <a href="https://www.accenture.com/br-pt" target="_blank">Accenture</a> com objetivo de aplicar todos os conceitos aprendidos durante o curso e apresentar para banca como projeto final!</p>
 
-### `yarn start`
+## Equipe da CodeCommit
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<a href="https://cutt.ly/blOnLPV" target="_blank"> 
+<img src="https://cutt.ly/glOknQX" width="90"/></a>     
+<a href="https://cutt.ly/7lOQfzv" target="_blank"> 
+<img src="https://cutt.ly/MlOkJaB" width="90"/></a>     
+<a href="https://cutt.ly/SlOQcBf" target="_blank"> 
+<img src="https://cutt.ly/1lOlfra" width="90"/></a>     
+<a href="https://cutt.ly/LlOQCM4" target="_blank"> 
+<img src="https://cutt.ly/3lOj5ZR" width="90"/></a>      
+<a href="https://cutt.ly/NlOm8Tm" target="_blank"> 
+<img src="https://cutt.ly/jlOlWa2" width="90"/></a>
+<a href="https://cutt.ly/slOQ5xI" target="_blank"> 
+<img src="https://cutt.ly/JlOvHsQ" width="90"/>
+</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+&nbsp;&nbsp;<a href="https://cutt.ly/blOnLPV" rel="nofollow">Alisson O.</a>&nbsp; | &nbsp;<a href="https://cutt.ly/7lOQfzv" rel="nofollow">Ana Laura</a>&nbsp; | &nbsp;<a href="https://cutt.ly/SlOQcBf" rel="nofollow">Gabriel M.</a> | &nbsp;<a href="https://cutt.ly/LlOQCM4" rel="nofollow">Gabriel N.</a>&nbsp; | &nbsp;<a href="https://cutt.ly/NlOm8Tm" rel="nofollow">Glauber A.</a>&nbsp; | <a href="https://cutt.ly/slOQ5xI" rel="nofollow">Igor Santos</a>
 
-### `yarn test`
+## Libs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ReactJS
+- Typescript
+- axios
+- jest
+- react-redux
+- react-router-dom
+- styled-components
+- jsonwebtoken
+- react-toastify
+- yup
+- unform
 
-### `yarn build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Conexão com API para:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Cadastro e autenticação de usuários
+- Recuperação de senha do usuário
+- Busca das informações do usuário e da sua conta
+- Transferências entre contas de usuários
+- Fazer depósitos
+- Fazer pagamentos
+- Cadastrar planos
+- Testes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Outras características:
 
-### `yarn eject`
+- Componentização de elementos da interface para o reaproveitamento de código
+- Responsividade
+- Validação de input com unform
+- Alertas de mensagens com Yup e React Toastify
+- Arquitetura de Design: Atomic Design para organização dos componentes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Arquitetura de pastas
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+├── src
+│   ├── assets
+|   |   ├── svgs
+|   ├── components
+|   |   ├── Button
+|   |   ├── Dashboard
+|   |   |   ├── Balance
+|   |   |   ├── CardMenu
+|   |   |   ├── CardMenuMobile
+|   |   |   ├── Deposit
+|   |   |   ├── Extract
+|   |   |   ├── MenuModal
+|   |   |   ├── Payments
+|   |   |   ├── Plans
+|   |   |   ├── Transactions
+|   |   ├── Header
+|   |   ├── Input
+|   |   ├── Loader
+|   |   ├── Logo
+|   |   ├── Tooltip
+|   ├── docs
+|   ├── Pages
+|   |   ├── Dashboard
+|   |   ├── Error
+|   |   ├── ErrorRecover
+|   |   ├── Landing
+|   |   ├── Login
+|   |   ├── RecoverPassword
+|   ├── store
+|   |   ├── dashboard
+|   |   ├── user
+|   ├── styles
+|   ├── types
+|   ├── utils
+|   ├── App.tsx
+│   ├── customToast.css
+│   ├── index.tsx
+│   ├── react-app-env.d.ts
+│   ├── routes.tsx
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Arquitetura Flux
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img  src="https://raw.githubusercontent.com/CodeCommit-GamaAcademy/React-CodeCommit/prod/src/docs/redux.png?token=ALJFOQHMY7WPIQOBX5A7LQTAHPHKO" />
+<p>Foi utilizado o Redux para globalização dos dados do usuário, necessário para requisições em API e para impedir requisições desnecessárias na API, melhorando significativamente a experiencia do usuário durante a utilização do GamaBank.
+</p>
 
-## Learn More
+## Testes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src="https://raw.githubusercontent.com/CodeCommit-GamaAcademy/React-CodeCommit/prod/src/docs/tdd-02.png?token=ALJFOQGXQ4IXYHMGD5RIAX3AHPHCA" />
+<p>Foi realizado o teste dos componentes de input, simulando e verificando o funcionamento dos formulários de cadastro, login e recuperação de senha. Tendo êxito em todos os testes.</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Mindmap
+
+<img src="https://cutt.ly/llGiL2b" />
+
+## Como Usar
+
+#### Clonando o repositório
+
+```bash
+git clone https://github.com/igorsantos97/bank-acc-react.git
+```
+
+#### Entrando no diretório do projeto
+
+```bash
+cd bank-acc-react
+```
+
+#### Instalando as Dependências
+
+```bash
+yarn install
+```
+
+#### Iniciando a Aplicação
+
+```bash
+yarn start
+```
+
+## Licença
+
+Esse projeto utiliza a <a href="https://cutt.ly/olGu4ds">LICENÇA</a> MIT.
