@@ -7,14 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
 import { Contas, Plano } from '../../../types/dash-board';
 import { toast } from 'react-toastify';
-import { MdCached } from 'react-icons/md';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as yup from 'yup';
 
 import Input from '../../Input'
 import { change_screen, set_transaction_data } from '../../../store/dashboard/actions';
-import { number, string } from 'yup/lib/locale';
 import getValidationErrors from '../../../utils/getValidationErrors';
 import Loader from '../../Loader';
 
@@ -50,7 +48,7 @@ const Deposit: React.FC = () => {
       }
 
       const schema = yup.object().shape({
-        date: yup.string().required('Obrigatória data'),
+        date: yup.string().required('Obrigatório data'),
         description: yup.string().min(3, 'Obrigatório descrição (min. 3 caracteres)'),
         transferValue: yup.string().required('Obrigatório transferência (max. 10000)')
       });
