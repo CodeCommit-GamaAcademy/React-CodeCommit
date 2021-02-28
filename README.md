@@ -119,13 +119,13 @@ Outras características:
 
 ## Arquitetura Flux
 
-<img  src="https://cutt.ly/TlJklzS" />
+<img  src="https://raw.githubusercontent.com/CodeCommit-GamaAcademy/React-CodeCommit/prod/src/docs/redux.png?token=ALJFOQHMY7WPIQOBX5A7LQTAHPHKO" />
 <p>Foi utilizado o Redux para globalização dos dados do usuário, necessário para requisições em API e para impedir requisições desnecessárias na API, melhorando significativamente a experiencia do usuário durante a utilização do GamaBank.
 </p>
 
 ## Testes
 
-<img src="https://cutt.ly/hlJkOyA" />
+<img src="https://raw.githubusercontent.com/CodeCommit-GamaAcademy/React-CodeCommit/prod/src/docs/tdd-02.png?token=ALJFOQGXQ4IXYHMGD5RIAX3AHPHCA" />
 <p>Foi realizado o teste dos componentes de input, simulando e verificando o funcionamento dos formulários de cadastro, login e recuperação de senha. Tendo êxito em todos os testes.</p>
 
 ## Mindmap
