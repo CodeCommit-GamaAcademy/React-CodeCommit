@@ -7,7 +7,7 @@
 
 <p align="center"> 
     <a  href="#equipe-da-codecommit">Equipe</a> |
-    <a  href="#tecnologias">Tecnologias</a> |
+    <a  href="#libs">Libs</a> |
     <a  href="#features">Features</a> |
     <a  href="#arquitetura-de-pastas">Arquit. de pastas</a> |
     <a  href="#arquitetura-flux">Arquit. Flux - Redux</a> |
