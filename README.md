@@ -9,7 +9,8 @@
 	<a href="#equipe-da-codecommit">Equipe</a> | 
 	<a href="#tecnologias">Tecnologias</a> | 
 	<a href="#features">Features</a> | 
-	<a href="#arquitetura-de-pastas">Arquitetura de pastas</a> | 
+	<a href="#arquitetura-de-pastas">Arquit. de pastas</a> | 
+	<a href="#mindmap">Mindmap</a> | 
 	<a href="#como-usar">Como usar</a> | 
 	<a href="#licença">Licença</a>
 </p>
@@ -33,7 +34,7 @@
 <img src="https://cutt.ly/JlOvHsQ" width="90"/>
 </a>
 
-&nbsp;<a href="https://cutt.ly/blOnLPV" target="_blank">Alisson O.</a> | &nbsp;<a href="https://cutt.ly/7lOQfzv" target="_blank">Ana Laura</a> | <a href="https://cutt.ly/SlOQcBf" target="_blank">Gabriel M.</a> | <a href="https://cutt.ly/LlOQCM4" target="_blank">Gabriel N.</a> | <a href="https://cutt.ly/NlOm8Tm" target="_blank">Glauber A.</a> | <a href="https://cutt.ly/slOQ5xI" target="_blank">Igor Santos</a>
+&nbsp;&nbsp;<a href="https://cutt.ly/blOnLPV" rel="nofollow">Alisson O.</a>&nbsp; | &nbsp;<a href="https://cutt.ly/7lOQfzv" rel="nofollow">Ana Laura</a>&nbsp; | &nbsp;<a href="https://cutt.ly/SlOQcBf" rel="nofollow">Gabriel M.</a> | &nbsp;<a href="https://cutt.ly/LlOQCM4" rel="nofollow">Gabriel N.</a>&nbsp; | &nbsp;<a href="https://cutt.ly/NlOm8Tm" rel="nofollow">Glauber A.</a>&nbsp; | <a href="https://cutt.ly/slOQ5xI" rel="nofollow">Igor Santos</a>
 
 ## Libs
 
@@ -72,62 +73,50 @@ Outras características:
 ## Arquitetura de pastas
 
 ```
-├── src<br />
-│ ├── assets<br />
-│ ├── components<br />
-│ ├── pages<br />
-│ ├── services<br />
-│ ├── store<br />
-│ ├── styles<br />
-│ ├── utils<br />
-
+├── src
+│   ├── assets
+|   |   ├── svgs
+|   ├── components
+|   |   ├── Button
+|   |   ├── Dashboard
+|   |   |   ├── Balance
+|   |   |   ├── CardMenu
+|   |   |   ├── CardMenuMobile
+|   |   |   ├── Deposit
+|   |   |   ├── Extract
+|   |   |   ├── MenuModal
+|   |   |   ├── Payments
+|   |   |   ├── Plans
+|   |   |   ├── Transactions
+|   |   ├── Header
+|   |   ├── Input
+|   |   ├── Loader
+|   |   ├── Logo
+|   |   ├── Tooltip
+|   ├── docs
+|   ├── Pages
+|   |   ├── Dashboard
+|   |   ├── Error
+|   |   ├── ErrorRecover
+|   |   ├── Landing
+|   |   ├── Login
+|   |   ├── RecoverPassword
+|   ├── store
+|   |   ├── dashboard
+|   |   ├── user
+|   ├── styles
+|   ├── types
+|   ├── utils
+|   ├── App.tsx
+│   ├── customToast.css
+│   ├── index.tsx
+│   ├── react-app-env.d.ts
+│   ├── routes.tsx
 ```
 
-```
-.
-├── README.md
-├── jsconfig.json
-├── package.json
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── index.js
-    ├── logo.svg
-    ├── assets
-    │   ├── css
-    │   │   ├── bootstrap.min.css
-    │   │   └── bootstrap.min.css.map
-    │   ├── style
-    │   │   └── style.css
-    │   ├── fonts
-    │   ├── img
-    │   └── scss
-    │       ├── case2k20
-    │       │   ├── cards
-    │       │   ├── mixins
-    │       │   └── plugins
-    │       ├── react
-    │       │   ├── case2k20
-    │       │   ├── plugins
-    │       │   └── react-differences.scss
-    │       └── case2k20.scss
-    ├── components
-    │   ├── Footers
-    │   │   └── index.js
-    │   ├── Headers
-    │   │   └── IndexHeader.js
-    │   └── Navbar
-    │       └── index.js
-    └── views
-        ├── Index.js
-        ├── pages
-        │   ├── FlagPage.js
-        └── sections
-            ├── StageContent.js
-            └── IndexTopFooter.js
-```
+## Mindmap
+
+<img src="https://cutt.ly/1lGuEMh" />
 
 ## Como Usar
 
@@ -157,4 +146,4 @@ yarn start
 
 ## Licença
 
-Esse projeto utiliza a [LICENÇA](../LICENSE) MIT.
+Esse projeto utiliza a <a href="https://cutt.ly/olGu4ds">LICENÇA</a> MIT.
