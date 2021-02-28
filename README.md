@@ -63,7 +63,7 @@ Conexão com API para:
 - Fazer depósitos
 - Fazer pagamentos
 - Cadastrar planos
-- TDD
+- Testes
 
 Outras características:
 
