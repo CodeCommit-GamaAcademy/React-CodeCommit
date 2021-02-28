@@ -6,13 +6,15 @@
 <p align="center">Desenvolvido pela equipe da <strong>CodeCommit</strong>. Deploy <a href="#">aqui</a>.</p>
 
 <p align="center"> 
-	<a href="#equipe-da-codecommit">Equipe</a> | 
-	<a href="#tecnologias">Tecnologias</a> | 
-	<a href="#features">Features</a> | 
-	<a href="#arquitetura-de-pastas">Arquit. de pastas</a> | 
-	<a href="#mindmap">Mindmap</a> | 
-	<a href="#como-usar">Como usar</a> | 
-	<a href="#licença">Licença</a>
+    <a  href="#equipe-da-codecommit">Equipe</a> |
+    <a  href="#tecnologias">Tecnologias</a> |
+    <a  href="#features">Features</a> |
+    <a  href="#arquitetura-de-pastas">Arquit. de pastas</a> |
+    <a  href="#arquitetura-flux">Arquit. Flux - Redux</a> |
+    <a  href="#testes">Testes</a> |
+    <a  href="#mindmap">Mindmap</a> |
+    <a  href="#como-usar">Como usar</a> |
+    <a  href="#licença">Licença</a>
 </p>
 
 <img src="https://raw.githubusercontent.com/igorsantos97/bank-acc-react/main/docs/home-print.png" />
@@ -61,6 +63,7 @@ Conexão com API para:
 - Fazer depósitos
 - Fazer pagamentos
 - Cadastrar planos
+- TDD
 
 Outras características:
 
@@ -113,6 +116,17 @@ Outras características:
 │   ├── react-app-env.d.ts
 │   ├── routes.tsx
 ```
+
+## Arquitetura Flux
+
+<img  src="https://cutt.ly/PlJf0mX" />
+<p>Foi utilizado o Redux para globalização dos dados do usuário, necessário para requisições em API e para impedir requisições desnecessárias na API, melhorando significativamente a experiencia do usuário durante a utilização do GamaBank.
+</p>
+
+## Testes
+
+<img src="https://cutt.ly/VlJhioZ" />
+<p>Foi realizado o teste dos componentes de input, simulando e verificando o funcionamento dos formulários de cadastro, login e recuperação de senha. Tendo êxito em todos os testes.</p>
 
 ## Mindmap
 
