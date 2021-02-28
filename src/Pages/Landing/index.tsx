@@ -142,7 +142,7 @@ const Landing: React.FC = () => {
           <MainBannerContent>
             <MainBannerContentLeft>
               <MainBannerContentText>
-                <p>yarn é um projeto de nossos alunos.
+                <p>Gama Bank é um projeto de nossos alunos.
                 <span> Já tem conta?</span></p>
               </MainBannerContentText>
               <Button onClick={handleRedirectToLogin}>Acessar <FaArrowRight /></Button>
