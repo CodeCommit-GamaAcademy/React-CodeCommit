@@ -3,7 +3,6 @@ import { Form } from '@unform/web';
 import { FaArrowRight } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { MdCached } from 'react-icons/md';
 import * as yup from 'yup';
 
 import { PaymentsContainer, Button } from './style';
@@ -93,8 +92,6 @@ const Payments: React.FC<PaymentsProps> = (props) => {
         return;
       }
 
-      console.log('oi');
-
       const { status } = await api.post('/lancamentos', {
         "conta": result.data.contaBanco.id,
         "contaDestino": destinatario.trim(),
@@ -120,6 +117,10 @@ const Payments: React.FC<PaymentsProps> = (props) => {
     catch (err) {
       const errors = getValidationErrors(err);
       formRef.current?.setErrors(errors);
+
+      if ( err.response && err.response.status === 400 )
+        toast.error('Usuário não encontrado!');
+      
     } finally {
       setLoading(false);
     }
