@@ -1,4 +1,4 @@
-import React, { Dispatch, FormEvent, HTMLAttributes, SetStateAction, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, Dispatch, FormEvent, HTMLAttributes, SetStateAction, useCallback, useEffect, useState } from 'react';
 import { PlansContainer, CardPlans, ModalContainer, Modal, ModalForm, TextareaWrapper } from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationStore } from '../../../store';
@@ -104,6 +104,10 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
     const [ type, setType ] = useState('');
     const [ description, setDescription ] = useState('');
 
+    const handleChangeDescription = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
+      if ( e.target.value.length <= 20 ) setDescription(e.target.value);
+    }, []);
+
     const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
@@ -163,10 +167,9 @@ const AddPlansModal: React.FC<AddPlansModalProps> = ({ closeModal, setPlans, ...
               </select>
               <TextareaWrapper>
                 <textarea 
-                  placeholder="Descrição" 
-                  maxLength={20}
+                  placeholder="Descrição"
                   value={ description }
-                  onChange={ e => setDescription(e.target.value) }
+                  onChange={ handleChangeDescription }
                 />
 
                 <label htmlFor="">
