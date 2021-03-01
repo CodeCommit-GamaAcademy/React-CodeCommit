@@ -56,10 +56,10 @@ export const ButtonWrapper = styled.div`
     } 
 `
 
-export const Button = styled.button<{ accept?: boolean }>`
+export const Button = styled.button<{ isAcceptButton?: boolean }>`
     background: '#fff';
     border-radius: 4px;
-    border: 1px solid ${props => props.accept ? '#68DE5A' : '#8C52E5'};
+    border: 1px solid ${props => props.isAcceptButton ? '#68DE5A' : '#8C52E5'};
     
     width: 100%;
     max-width: 180px;
@@ -76,7 +76,7 @@ export const Button = styled.button<{ accept?: boolean }>`
     }
 
     &:hover {
-        background: ${ props => props.accept ? '#68DE5A' : '#8C52E5' };
+        background: ${ props => props.isAcceptButton ? '#68DE5A' : '#8C52E5' };
         color: #fff;
         border: 1px solid #000;
     }

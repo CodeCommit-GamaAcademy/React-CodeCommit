@@ -14,7 +14,7 @@ const ExitModal: React.FC<ExitModalProps> = ({ setResponse, ...props }) => {
 
                 <div>
                     <Button onClick={() => setResponse(false)} >Cancelar</Button>
-                    <Button accept onClick={() => setResponse(true)}>Tenho</Button>
+                    <Button onClick={() => setResponse(true)} isAcceptButton >Tenho</Button>
                 </div>
             </ButtonWrapper>
         </Container>
