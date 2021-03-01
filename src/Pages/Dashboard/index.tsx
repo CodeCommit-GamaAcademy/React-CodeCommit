@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiLogOut, FiAlignRight } from 'react-icons/fi';
 import { DashMenu, DashBoard, DashMain, LogOutButton, DashBoardMobile, SandwichDiv, ContainerMobile, ExitButton } from './style';
@@ -14,6 +14,7 @@ import { remove_user } from '../../store/user/actions';
 import { ApplicationStore } from '../../store';
 import { change_screen } from '../../store/dashboard/actions';
 import { Screen } from '../../store/dashboard/types';
+import ExitModal from '../../components/Dashboard/ExitModal';
 
 const Dashboard: React.FC = () => {
   const history = useHistory();
@@ -22,6 +23,7 @@ const Dashboard: React.FC = () => {
   const currentScreen = useSelector((store: ApplicationStore) => store.dashboard.current_screen);
 
   const [modalIsOpen,setIsOpen] = useState(false);
+  const [ isExiting, setIsExiting ] = useState(false);
 
   //Setting data accounts;
   const changeComponent = useCallback((title: Screen) => {
@@ -29,10 +31,14 @@ const Dashboard: React.FC = () => {
     dispatch( change_screen(title) );
   }, [dispatch]);
 
-  const handleLogOut = useCallback(() => {
-    dispatch(remove_user());
-
-    history.push('/');
+  const handleLogOut = useCallback((accepted: boolean) => {
+    if ( accepted ) {
+      dispatch(remove_user());
+  
+      history.push('/');
+    } else {
+      setIsExiting(false);
+    }
   }, [ dispatch, history ]);
 
   function setModal() { 
@@ -44,6 +50,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
+        { isExiting && <ExitModal setResponse={ handleLogOut } /> }
+
         {modalIsOpen && (
           <ContainerMobile onClick={setModal}>
 
@@ -51,7 +59,10 @@ const Dashboard: React.FC = () => {
             <CardMenuMobile title = 'Planos' func={changeComponent} />
             <CardMenuMobile title = 'Pagamentos' func={changeComponent}  />
             <CardMenuMobile title = 'Transações' func={changeComponent} />
-            <ExitButton onClick={ handleLogOut }>
+            <ExitButton onClick={ () => {
+              setIsExiting(true);
+              setIsOpen(false);
+            }}>
               <FiLogOut size={16} color="#fff" style={{ marginRight: 8 }} />
               Sair
             </ExitButton>
@@ -72,7 +83,7 @@ const Dashboard: React.FC = () => {
           <CardMenu title='Pagamentos' onClick={() => changeComponent('Pagamentos')} selected={currentScreen === 'Pagamentos'} />
           <CardMenu title='Transações' onClick={() => changeComponent('Transações')} selected={currentScreen === 'Transações'} />
 
-          <LogOutButton onClick={ handleLogOut } >
+          <LogOutButton onClick={ () => setIsExiting(true) } >
             <FiLogOut color="#fff" size={ 20 } />
           </LogOutButton>
 
